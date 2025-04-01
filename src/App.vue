@@ -1,4 +1,3 @@
-<script></script>
 
 <template>
   <header>
@@ -7,6 +6,7 @@
     </div>
   </header>
 </template>
+<script></script>
 
 <style scoped lang="scss">
 
