@@ -29,7 +29,7 @@ export default {
   setup() {
     const currentLang = computed(() => langService.currentLang.value);
     const translate = computed(() => langService.translate[currentLang.value]);
-    return { currentLang, translate };
+    return { translate };
   },
   components: {
     LangBtn,
@@ -44,7 +44,7 @@ export default {
   max-width: 100%;
   margin: 0 60px;
   align-items: center;
- 
+
   .btns {
     display: flex;
     align-items: center;
@@ -68,8 +68,8 @@ export default {
 @media (max-width: 768px) {
   .header {
     .img {
-    margin-right: 10px;
-  }
+      margin-right: 10px;
+    }
     .btns {
       .navigation {
         gap: 15px;
