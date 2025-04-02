@@ -29,9 +29,13 @@ function translate() {
       drawings: "drawings",
       settings: "settings",
       home: {
-        h1:"Welcome to DraftMaster.",
+        h1: "Welcome to DraftMaster.",
         p: "The ultimate tool for creating metal list drawings and calculating sheet sizes. Start your project today!",
-        btn:"Go to Drawings"
+        btn: "Go to Drawings",
+      },
+      sideBar: {
+        customers: "customers",
+        metals: "metals",
       },
     },
     he: {
@@ -40,7 +44,11 @@ function translate() {
       home: {
         h1: "ברוכים הבאים ל-DraftMaster.",
         p: "הכלי האולטימטיבי ליצירת שרטוטי רשימת מתכת וחישוב גדלי גיליון. התחל את הפרויקט שלך עוד היום!",
-        btn:"עבור לשרטוטים"
+        btn: "עבור לשרטוטים",
+      },
+      sideBar: {
+        customers: "לקוחות",
+        metals: "מתכות",
       },
     },
   };
