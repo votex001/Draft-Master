@@ -1,12 +1,12 @@
 <template>
   <header class="header">
-    <picture class="img">
+    <router-link to="/" class="nav-link"> <picture class="img">
       <source
         srcset="/src/assets/imgs/header-cmp/Logo-small.svg"
         media="(max-width: 480px)"
       />
       <img src="/src/assets/imgs/header-cmp/Logo.svg" alt="" />
-    </picture>
+    </picture></router-link>
     <section class="btns">
       <nav class="navigation">
         <router-link to="/drawings" class="nav-link">{{
