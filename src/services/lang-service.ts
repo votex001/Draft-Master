@@ -26,7 +26,7 @@ function changeLang(lang: "en" | "he") {
 function translate() {
   return {
     en: {
-      drafts: "drawings",
+      drawings: "drawings",
       settings: "settings",
       home: {
         h1:"Welcome to DraftMaster.",
@@ -35,7 +35,7 @@ function translate() {
       },
     },
     he: {
-      drafts: "טיוטות",
+      drawings: "טיוטות",
       settings: "הגדרות",
       home: {
         h1: "ברוכים הבאים ל-DraftMaster.",
