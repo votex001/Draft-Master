@@ -9,10 +9,10 @@
     </picture>
     <section class="btns">
       <nav class="navigation">
-        <router-link to="drawings" class="nav-link">{{
+        <router-link to="/drawings" class="nav-link">{{
           translate.drawings
         }}</router-link>
-        <router-link to="settings" class="nav-link">{{
+        <router-link to="/settings" class="nav-link">{{
           translate.settings
         }}</router-link>
       </nav>
