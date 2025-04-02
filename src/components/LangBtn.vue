@@ -2,14 +2,14 @@
   <section class="lang">
     <button
       @click="changeLang('en')"
-      class="btn"
+      class="button"
       :class="{ selected: currentLang === 'en' }"
     >
       En
     </button>
     <button
       @click="changeLang('he')"
-      class="btn"
+      class="button"
       :class="{ selected: currentLang === 'he' }"
     >
       He
@@ -19,16 +19,21 @@
 
 <script lang="ts">
 import { langService } from "@/services/lang-service";
-import { computed } from "vue";
 
 export default {
-  setup() {
-    const currentLang = computed(() => langService.currentLang.value);
-    function changeLang(lang: "en" | "he") {
-      langService.changeLang(lang);
-    }
-    return { currentLang, changeLang };
+  computed: {
+    currentLang() {
+      return langService.currentLang.value;
+    },
+    translate() {
+      return langService.translate[this.currentLang];
+    },
   },
+  methods:{
+    changeLang(lang: "en" | "he"){
+      langService.changeLang(lang)
+    }
+  }
 };
 </script>
 
@@ -36,7 +41,7 @@ export default {
 .lang {
   display: flex;
   gap: 10px;
-  .btn {
+  .button {
     width: min-content;
     padding: 5px;
     border-radius: 6px;
@@ -49,15 +54,15 @@ export default {
   }
 }
 @media (max-width: 480px) {
-  .lang{
-    .btn{
+  .lang {
+    .button {
       font-size: 14px;
     }
   }
 }
 @media (max-width: 360px) {
-  .lang{
-    .btn{
+  .lang {
+    .button {
       font-size: 12px;
     }
   }

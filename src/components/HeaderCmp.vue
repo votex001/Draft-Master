@@ -1,12 +1,13 @@
 <template>
   <header class="header">
-    <router-link to="/" class="nav-link"> <picture class="img">
-      <source
-        srcset="/src/assets/imgs/header-cmp/Logo-small.svg"
-        media="(max-width: 480px)"
-      />
-      <img src="/src/assets/imgs/header-cmp/Logo.svg" alt="" />
-    </picture></router-link>
+    <router-link to="/" class="nav-link">
+      <picture class="img">
+        <source
+          srcset="/src/assets/imgs/header-cmp/Logo-small.svg"
+          media="(max-width: 480px)"
+        />
+        <img src="/src/assets/imgs/header-cmp/Logo.svg" alt="" /> </picture
+    ></router-link>
     <section class="btns">
       <nav class="navigation">
         <router-link to="/drawings" class="nav-link">{{
@@ -23,13 +24,13 @@
 <script lang="ts">
 import { langService } from "@/services/lang-service";
 import LangBtn from "./LangBtn.vue";
-import { computed } from "vue";
 
 export default {
-  setup() {
-    const currentLang = computed(() => langService.currentLang.value);
-    const translate = computed(() => langService.translate[currentLang.value]);
-    return { translate };
+  computed: {
+    translate() {
+      const currentLang = langService.currentLang.value;
+      return langService.translate[currentLang];
+    },
   },
   components: {
     LangBtn,

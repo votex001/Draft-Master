@@ -47,12 +47,14 @@
 <script lang="ts">
 import LangBtn from "@/components/LangBtn.vue";
 import { langService } from "@/services/lang-service";
-import { computed } from "vue";
 export default {
-  setup() {
-    const currentLang = computed(() => langService.currentLang.value);
-    const translate = computed(() => langService.translate[currentLang.value]);
-    return { currentLang, translate };
+  computed: {
+    currentLang() {
+      return langService.currentLang.value;
+    },
+    translate() {
+      return langService.translate[this.currentLang];
+    },
   },
   components: {
     LangBtn,
@@ -132,13 +134,8 @@ export default {
         padding: 10px 20px;
         border: none;
         border-radius: 11px;
-        color: var(--white);
-        background-color: var(--btn);
         font-size: 18px;
         font-weight: 600;
-        &:hover {
-          background-color: var(--btn-hover);
-        }
       }
     }
   }
