@@ -3,7 +3,7 @@
     <nav class="nav" :class="{ he: currentLang === 'he' }">
       <router-link to="/settings" class="nav-link" exact-active-class="active"
         ><img src="/src/assets/imgs/side-bar/customer.svg" />{{
-          translate.sideBar.customers
+          translate.settingsPage.customers
         }}</router-link
       >
       <router-link
@@ -11,7 +11,7 @@
         class="nav-link"
         exact-active-class="active"
         ><img src="/src/assets/imgs/side-bar/metals.svg" />{{
-          translate.sideBar.metals
+          translate.settingsPage.metals
         }}</router-link
       >
     </nav>
@@ -20,13 +20,15 @@
 
 <script lang="ts">
 import { langService } from "@/services/lang-service";
-import { computed } from "vue";
 
 export default {
-  setup() {
-    const currentLang = computed(() => langService.currentLang.value);
-    const translate = computed(() => langService.translate[currentLang.value]);
-    return { currentLang, translate };
+    computed: {
+    currentLang() {
+      return langService.currentLang.value;
+    },
+    translate() {
+      return langService.translate[this.currentLang];
+    },
   },
 };
 </script>
