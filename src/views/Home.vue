@@ -3,7 +3,7 @@
     <div class="left-bg"></div>
     <section class="page">
       <header>
-        <picture>
+        <picture class="logo">
           <source
             srcset="/src/assets/Images/home-page/Logo-white-small.svg"
             media="(max-width: 480px)"
@@ -68,7 +68,7 @@ export default {
   grid-template-columns: 1fr 1128px;
 
   .left-bg {
-    background-image: url("/src/assets/Images/home-page/Home-bg.svg");
+    background-image: var(--home-bg-img);
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
@@ -85,6 +85,9 @@ export default {
       align-items: center;
 
       width: 100%;
+      .logo{
+        margin-right: 25px;
+      }
       .btns {
         display: flex;
         padding: 0 10px;
@@ -145,56 +148,82 @@ export default {
 @media (max-width: 1440px) {
   .home {
     grid-template-columns: 1fr 720px;
-    .left-bg {
-      background-image: url("/src/assets/Images/home-page/Home-bg.svg");
-    }
   }
 }
 @media (max-width: 1000px) {
   .home {
     display: block;
     color: var(--white);
-    background-image: url("/src/assets/Images/home-page/Home-bg-dark.svg");
+    background-image: var(--home-bg-img-dark);
     background-repeat: no-repeat;
     background-size: cover;
     .left-bg {
       display: none;
     }
-
-    .nav-link {
-      color: var(--white) !important;
+    .page {
+      header .btns .navigation .nav-link {
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        color: var(--white);
+      }
+      main {
+        .title,
+        .text {
+          text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+      }
     }
   }
 }
 @media (max-width: 768px) {
-  .home {
-    background-image: url("/src/assets/Images/home-page/Home-bg-dark.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    // background-position: center;
-    .left-bg {
-      display: none;
+  .home .page {
+    padding: 35px 20px;
+    header .btns {
+      gap: 15px;
+      .navigation {
+        .nav-link {
+          font-size: 18px;
+        }
+      }
+    }
+    main {
+      .title {
+        font-size: 48px;
+      }
+      .text {
+        font-size: 16px;
+      }
+      .btn {
+        font-size: 16px;
+      }
     }
   }
 }
 @media (max-width: 480px) {
-  .home {
-    background-image: url("/src/assets/Images/home-page/Home-bg-dark.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    .left-bg {
-      display: none;
+  .home .page {
+    padding: 10px 15px;
+    header .btns {
+      gap: 0px;
+      .navigation {
+        gap: 0;
+        .nav-link {
+          font-size: 14px;
+        }
+      }
+    }
+    main {
+      width: 300px;
+      .title {
+        font-size: 32px;
+      }
+      .text {
+        font-size: 12px;
+      }
+      .btn {
+        font-size: 12px;
+      }
     }
   }
 }
-@media (max-width: 360px) {
-  .home {
-    background-image: url("/src/assets/Images/home-page/Home-bg-dark.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    .left-bg {
-      display: none;
-    }
-  }
-}
+// @media (max-width: 360px) {
+// }
 </style>
