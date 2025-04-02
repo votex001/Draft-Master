@@ -28,27 +28,68 @@ function translate() {
     en: {
       drawings: "drawings",
       settings: "settings",
+      search: "Search",
       home: {
         h1: "Welcome to DraftMaster.",
         p: "The ultimate tool for creating metal list drawings and calculating sheet sizes. Start your project today!",
         btn: "Go to Drawings",
       },
-      sideBar: {
+      settingsPage: {
         customers: "customers",
         metals: "metals",
+      },
+      customersOutput: {
+        p1: "On the Customers settings page, you can perform the following actions:",
+        ul: [
+          {
+            bold: "Add a new customer:",
+            regular:
+              'Click the "Add" button, enter the customer`s name, and add their details.',
+          },
+          {
+            bold: "Edit or delete a customer:",
+            regular:
+              'Click on the customer`s name to modify their details, including the name, metal and bending prices, or select "Delete" to remove them from the list.',
+          },
+          {
+            bold: "Edit metal and bending prices:",
+            regular:
+              "When editing a customer, you can change the prices for metal and bending in their data table.",
+          },
+        ],
       },
     },
     he: {
       drawings: "טיוטות",
       settings: "הגדרות",
+      search: "חיפוש",
       home: {
         h1: "ברוכים הבאים ל-DraftMaster.",
         p: "הכלי האולטימטיבי ליצירת שרטוטי רשימת מתכת וחישוב גדלי גיליון. התחל את הפרויקט שלך עוד היום!",
         btn: "עבור לשרטוטים",
       },
-      sideBar: {
+      settingsPage: {
         customers: "לקוחות",
         metals: "מתכות",
+      },
+      customersOutput: {
+        p1: "בדף הגדרות לקוחות, תוכל לבצע את הפעולות הבאות:",
+        ul: [
+          {
+            bold: "הוסף לקוח חדש:",
+            regular: 'לחץ על כפתור "הוסף", הזן את שם הלקוח והוסף את פרטיו.',
+          },
+          {
+            bold: "ערוך או מחיקה של לקוח:",
+            regular:
+              'לחץ על שם הלקוח כדי לשנות את פרטיו, כולל השם, מחירי המתכת והכיפוף, או בחר "מחק" כדי להסיר אותם מהרשימה.',
+          },
+          {
+            bold: "עריכת מחירי מתכת וכיפוף:",
+            regular:
+              "בעת עריכת לקוח, ניתן לשנות את המחירים של מתכת וכיפוף בטבלת הנתונים שלו.",
+          },
+        ],
       },
     },
   };
