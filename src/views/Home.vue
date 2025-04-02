@@ -85,7 +85,7 @@ export default {
       align-items: center;
 
       width: 100%;
-      .logo{
+      .logo {
         margin-right: 25px;
       }
       .btns {
@@ -118,9 +118,7 @@ export default {
       width: 440px;
       gap: 30px;
       &.he {
-        justify-content: end;
         align-self: flex-end;
-        text-align: right;
       }
       .title {
         font-size: 64px;
