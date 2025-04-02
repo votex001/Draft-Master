@@ -1,10 +1,8 @@
 
 <template>
-  <header>
-    <div class="wrapper">
+    <section class="wrapper">
       <router-view />
-    </div>
-  </header>
+    </section>
 </template>
 <script></script>
 
