@@ -5,22 +5,22 @@
       <header>
         <picture class="logo">
           <source
-            srcset="/src/assets/Images/home-page/Logo-white-small.svg"
+            srcset="/src/assets/imgs/home-page/Logo-white-small.svg"
             media="(max-width: 480px)"
           />
           <source
-            srcset="/src/assets/Images/home-page/Logo-white.svg"
+            srcset="/src/assets/imgs/home-page/Logo-white.svg"
             media="(max-width: 1000px)"
           />
           <img
-            src="/src/assets/Images/home-page/Logo.svg"
+            src="/src/assets/imgs/home-page/Logo.svg"
             alt="Responsive Image"
           />
         </picture>
         <section class="btns">
           <nav class="navigation">
             <router-link class="nav-link" to="/drawings">
-              {{ translate.drafts }}</router-link
+              {{ translate.drawings }}</router-link
             >
             <router-link class="nav-link" to="/settings">
               {{ translate.settings }}
