@@ -6,7 +6,11 @@
       class="input"
     />
     <button class="btn" @click="emitSearch">
-      <img src="/src/assets/imgs/search-cmp/search.svg" alt="search button" class="img"/>
+      <img
+        src="/src/assets/imgs/search-cmp/search.svg"
+        alt="search button"
+        class="img"
+      />
     </button>
   </section>
 </template>
@@ -17,11 +21,9 @@ import { langService } from "@/services/lang-service";
 export default {
   emits: ["search"],
   computed: {
-    currentLang() {
-      return langService.currentLang.value;
-    },
     translate() {
-      return langService.translate[this.currentLang];
+      const currentLang = langService.currentLang.value;
+      return langService.translate[currentLang];
     },
   },
   data() {
@@ -48,7 +50,7 @@ export default {
     border: none;
     background-color: var(--bg);
     flex: 1;
-    padding-left: 10px;
+    padding: 0 10px;
     &:focus {
       outline: none;
     }
@@ -56,9 +58,9 @@ export default {
   .btn {
     border: none;
     padding: 8px 16px;
-    .img{
-        width: 16px;
-        height: 16px;
+    .img {
+      width: 16px;
+      height: 16px;
     }
   }
 }
