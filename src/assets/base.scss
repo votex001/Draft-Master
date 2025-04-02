@@ -12,15 +12,25 @@
   --gray: #6c6c6c;
   --white: #ffffff;
   --divider: #c2c2c2;
+  --home-bg-img: url("Images/home-page/Home-bg.svg");
+  --home-bg-img-dark: url("Images/home-page/Home-bg-dark.svg");
 }
 * {
-  font-family: "Roboto", sans-serif;
   &.he {
     direction: rtl;
   }
 }
 
-body {
-  color: var(--black);
-  background-color: var(--bg);
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal;
 }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
