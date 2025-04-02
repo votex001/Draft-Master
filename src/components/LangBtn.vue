@@ -48,4 +48,18 @@ export default {
     }
   }
 }
+@media (max-width: 480px) {
+  .lang{
+    .btn{
+      font-size: 14px;
+    }
+  }
+}
+@media (max-width: 360px) {
+  .lang{
+    .btn{
+      font-size: 12px;
+    }
+  }
+}
 </style>
