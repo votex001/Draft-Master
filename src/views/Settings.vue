@@ -12,7 +12,6 @@
 import HeaderCmp from "@/components/HeaderCmp.vue";
 import SideBar from "@/components/SideBar.vue";
 import { langService } from "@/services/lang-service";
-import { computed } from "vue";
 
 export default {
   computed: {
