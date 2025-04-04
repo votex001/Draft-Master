@@ -1,4 +1,4 @@
-// import CustomersSettings from "@/outlets/CustomersSettings.vue";
+import CustomersSettings from "@/outlets/CustomersSettings.vue";
 import MetalsSettings from "@/outlets/MetalsSettings.vue";
 import Home from "@/views/Home.vue";
 import Settings from "@/views/Settings.vue";
@@ -10,7 +10,7 @@ const routes: RouteRecordRaw[] = [
     path: "/settings",
     component: Settings,
     children: [
-      // { path: "", component: CustomersSettings },
+      { path: "", component: CustomersSettings },
       { path: "metals", component: MetalsSettings },
     ],
   },
