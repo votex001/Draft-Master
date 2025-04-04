@@ -47,11 +47,14 @@ export default defineComponent({
   border-radius: 32px;
   border: 1px solid var(--black);
   overflow: hidden;
+  max-height: 32px;
+  align-items: center;
   .input {
     border: none;
     background-color: var(--bg);
     flex: 1;
     padding: 0 10px;
+    height: 32px;
     &:focus {
       outline: none;
     }
@@ -59,6 +62,7 @@ export default defineComponent({
   .btn {
     border: none;
     padding: 8px 16px;
+    max-height: min-content;
     .img {
       width: 16px;
       height: 16px;
