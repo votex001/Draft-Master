@@ -17,8 +17,9 @@
 
 <script lang="ts">
 import { langService } from "@/services/lang-service";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   emits: ["search"],
   computed: {
     translate() {
@@ -36,7 +37,7 @@ export default {
       this.$emit("search", this.searchValue);
     },
   },
-};
+});
 </script>
 
 <style scoped lang="scss">

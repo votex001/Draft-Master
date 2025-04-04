@@ -24,8 +24,9 @@
 <script lang="ts">
 import { langService } from "@/services/lang-service";
 import LangBtn from "./LangBtn.vue";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   computed: {
     translate() {
       const currentLang = langService.currentLang.value;
@@ -35,7 +36,7 @@ export default {
   components: {
     LangBtn,
   },
-};
+});
 </script>
 
 <style scoped lang="scss">

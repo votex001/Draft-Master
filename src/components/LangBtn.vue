@@ -19,8 +19,9 @@
 
 <script lang="ts">
 import { langService } from "@/services/lang-service";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   computed: {
     currentLang() {
       return langService.currentLang.value;
@@ -34,7 +35,7 @@ export default {
       langService.changeLang(lang)
     }
   }
-};
+});
 </script>
 
 <style scoped lang="scss">
