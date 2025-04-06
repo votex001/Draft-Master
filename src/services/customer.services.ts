@@ -5,15 +5,25 @@ const DELAY = 500;
 
 export const customerService = { getQuery, getById, post, put, deleteById };
 
-async function getQuery(filter = ""): Promise<Customer[]> {
+async function getQuery(filter: {
+  sort: {
+    sortBy: "name" | "lastOrder" | "lastEdit";
+    dir: 1 | -1;
+  };
+  name: string;
+}): Promise<Customer[]> {
   try {
     const customers = loadCustomers();
-    if (!filter) return customers;
-    const lowerFiter = filter.toLowerCase();
-    const filteredCostumers = customers.filter((c: Customer) =>
-      c.name.toLowerCase().includes(lowerFiter)
-    );
-    return _delay(filteredCostumers);
+
+    let filteredCustomers = customers;
+    if (filter.name) {
+      const lowerFilter = filter.name.toLowerCase();
+      filteredCustomers = customers.filter((c: Customer) =>
+        c.name.toLowerCase().includes(lowerFilter)
+      );
+    }
+    
+    return _delay(filteredCustomers);
   } catch (err) {
     console.log(err);
     throw err;
