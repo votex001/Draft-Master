@@ -69,4 +69,12 @@ export const store = new Vuex.Store({
       }
     },
   },
+  getters: {
+    getCustomers(state) {
+      return state.customers;
+    },
+    getCurrentCustomer(state) {
+      return state.currentCustomer;
+    },
+  },
 });
