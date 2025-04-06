@@ -25,7 +25,6 @@ async function getQuery(filter: {
 
     const sortedCust = filteredCustomers.sort((a, b) => {
       const { sort } = filter;
-      let customers = [];
 
       if (sort.sortBy === "lastOrder") {
         return sort.dir * a.lastOrder - b.lastOrder;
