@@ -22,8 +22,24 @@ async function getQuery(filter: {
         c.name.toLowerCase().includes(lowerFilter)
       );
     }
-    
-    return _delay(filteredCustomers);
+
+    const sortedCust = filteredCustomers.sort((a, b) => {
+      const { sort } = filter;
+      let customers = [];
+
+      if (sort.sortBy === "lastOrder") {
+        return sort.dir * a.lastOrder - b.lastOrder;
+      }
+      if (sort.sortBy === "lastEdit") {
+        return sort.dir * a.lastEdit - b.lastEdit;
+      }
+      if (sort.sortBy === "name") {
+        return sort.dir * a.name.localeCompare(b.name);
+      }
+      return 0;
+    });
+
+    return _delay(sortedCust);
   } catch (err) {
     console.log(err);
     throw err;
