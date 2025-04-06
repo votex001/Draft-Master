@@ -23,9 +23,9 @@ export default defineComponent({
   data() {
     return {
       arrows: {
-        name: "down" as "down" | "up" | "",
-        lastOrder: "" as "down" | "up" | "",
-        lastEdit: "" as "down" | "up" | "",
+        name: 1 as -1 | 1 | null,
+        lastOrder: null as -1 | 1 | null,
+        lastEdit: null as -1 | 1 | null,
       },
     };
   },
@@ -33,13 +33,13 @@ export default defineComponent({
     onSort(column: "name" | "lastOrder" | "lastEdit") {
       for (let key in this.arrows) {
         if (key !== column) {
-          this.arrows[key] = "";
+          this.arrows[key] = null;
         }
       }
-      if (this.arrows[column] === "down") {
-        this.arrows[column] = "up";
+      if (this.arrows[column] === 1) {
+        this.arrows[column] = -1;
       } else {
-        this.arrows[column] = "down";
+        this.arrows[column] = 1;
       }
       this.$emit("sort", { column, dir: this.arrows[column] });
     },

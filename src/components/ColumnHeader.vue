@@ -6,7 +6,7 @@
       alt="arrow"
       v-if="arrow"
       class="arrow"
-      :class="{ rotate: arrow === 'up' }"
+      :class="{ rotate: arrow === -1 }"
     />
   </section>
 </template>
@@ -18,7 +18,7 @@ export default defineComponent({
   name: "Column Header",
   props: {
     name: { type: String, required: true },
-    arrow: { type: String as PropType<"up" | "down" | "">, required: false },
+    arrow: { type: Number as PropType<-1 | 1 | null>, required: false },
   },
   emits: ["sort"],
   methods: {
@@ -33,7 +33,7 @@ export default defineComponent({
 .column-header {
   display: flex;
   justify-content: space-between;
-user-select: none;
+  user-select: none;
   cursor: pointer;
   padding: 5px 10px;
   .arrow {
