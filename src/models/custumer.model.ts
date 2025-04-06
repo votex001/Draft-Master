@@ -1,7 +1,8 @@
 export interface Customer {
   id: string;
   name: string;
-  isChangible?: boolean;
+  isUnchangeable?: boolean;
   prices: { [key: string]: number };
+  lastOrder: number;
+  lastEdit: number;
 }
-
