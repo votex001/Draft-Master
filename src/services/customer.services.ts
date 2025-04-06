@@ -1,11 +1,11 @@
 import { Customer } from "@/models/custumer.model";
-import { costumers } from "./test.data";
+import { customers } from "./test.data";
 const STORAGE_KEY = "customers";
 const DELAY = 500;
 
 export const customerService = { getQuery, getById, post, put, deleteById };
 
-async function getQuery(filter: {
+async function getQuery(filter?: {
   sort: {
     sortBy: "name" | "lastOrder" | "lastEdit";
     dir: 1 | -1;
@@ -16,29 +16,31 @@ async function getQuery(filter: {
     const customers = loadCustomers();
 
     let filteredCustomers = customers;
-    if (filter.name) {
+    if (filter && filter.name) {
       const lowerFilter = filter.name.toLowerCase();
       filteredCustomers = customers.filter((c: Customer) =>
         c.name.toLowerCase().includes(lowerFilter)
       );
     }
 
-    const sortedCust = filteredCustomers.sort((a, b) => {
-      const { sort } = filter;
+    if (filter && filter.sort) {
+      filteredCustomers = filteredCustomers.sort((a, b) => {
+        const { sortBy, dir } = filter.sort;
 
-      if (sort.sortBy === "lastOrder") {
-        return sort.dir * a.lastOrder - b.lastOrder;
-      }
-      if (sort.sortBy === "lastEdit") {
-        return sort.dir * a.lastEdit - b.lastEdit;
-      }
-      if (sort.sortBy === "name") {
-        return sort.dir * a.name.localeCompare(b.name);
-      }
-      return 0;
-    });
+        if (sortBy === "lastOrder") {
+          return dir * (a.lastOrder - b.lastOrder);
+        }
+        if (sortBy === "lastEdit") {
+          return dir * (a.lastEdit - b.lastEdit);
+        }
+        if (sortBy === "name") {
+          return dir * a.name.localeCompare(b.name);
+        }
+        return 0;
+      });
+    }
 
-    return _delay(sortedCust);
+    return _delay(filteredCustomers);
   } catch (err) {
     console.log(err);
     throw err;
@@ -92,12 +94,13 @@ async function put(updatedCustomer: Customer): Promise<Customer> {
 async function deleteById(id: string) {
   try {
     let customers = loadCustomers();
-    const customer = costumers.find((c: Customer) => c.id === id);
+    const customer = customers.find((c: Customer) => c.id === id);
 
     if (customer && customer.isUnchangeable) {
       return _delay(false);
     }
-    customers.filter((c: Customer) => c.id !== id);
+
+    customers = customers.filter((c: Customer) => c.id !== id);
     _saveCustomers(customers);
 
     return _delay(true);
@@ -109,7 +112,7 @@ async function deleteById(id: string) {
 
 function loadCustomers(): Customer[] {
   const data = localStorage.getItem(STORAGE_KEY);
-  return data ? JSON.parse(data) : costumers;
+  return data ? JSON.parse(data) : customers;
 }
 
 function _delay<T>(result): Promise<T> {
