@@ -119,7 +119,7 @@ function _delay<T>(result): Promise<T> {
   return new Promise((resolve) => setTimeout(() => resolve(result), DELAY));
 }
 
-function _saveCustomers(customers) {
+function _saveCustomers(customers: Customer[]) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(customers));
 }
 
