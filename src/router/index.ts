@@ -12,6 +12,7 @@ const routes: RouteRecordRaw[] = [
     children: [
       { path: "", component: CustomersSettings },
       { path: "metals", component: MetalsSettings },
+      { path: "customer/:id", component: CustomersSettings },
     ],
   },
 ];
