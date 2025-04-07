@@ -20,14 +20,16 @@
         <button class="btn" @click="onAddNew">Add new</button>
       </section>
       <section class="customers-list">
-        <CustomersTableHeader @sort="onSort"/>
+        <CustomersTableHeader @sort="onSort" />
+        <CustomersTableBody />
       </section>
     </main>
   </section>
 </template>
 
 <script lang="ts">
-import CustomersTableHeader from "@/components/CustomersTableHeader.vue";
+import CustomersTableBody from "@/components/CustomerTable/CustomersTableBody.vue";
+import CustomersTableHeader from "@/components/CustomerTable/CustomersTableHeader.vue";
 import SearchCmp from "@/components/SearchCmp.vue";
 import { langService } from "@/services/lang-service";
 import { defineComponent } from "vue";
@@ -46,16 +48,14 @@ export default defineComponent({
     onAddNew() {
       console.log("[customersSettings:Add btn]");
     },
-    onSort(filter: {
-      column: "name" | "lastOrder" | "lastEdit";
-      dir: "down" | "up";
-    }) {
+    onSort(filter: { column: "name" | "lastOrder" | "lastEdit"; dir: -1 | 1 }) {
       console.log(filter);
     },
   },
   components: {
     SearchCmp,
     CustomersTableHeader,
+    CustomersTableBody,
   },
 });
 </script>
@@ -102,11 +102,8 @@ export default defineComponent({
     }
     .customers-list {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr) 150px;
       margin-top: 10px;
-      & > * > * {
-        border: 1px solid black;
-      }
     }
   }
 }
