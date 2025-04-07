@@ -1,6 +1,6 @@
 <template>
   <section class="column-header" @click="onClick">
-    <p>{{ name }}</p>
+    <p class="name">{{ name }}</p>
     <img
       src="/src/assets/imgs/column-header/arrow.svg"
       alt="arrow"
@@ -36,12 +36,16 @@ export default defineComponent({
   user-select: none;
   cursor: pointer;
   padding: 5px 10px;
+  .name{
+    font-size: 18px;
+    font-weight: 600;
+  }
   .arrow {
     width: 24px;
     height: 24px;
     transition: transform 0.3s ease-out;
     &.rotate {
-      transform: rotate(180deg);
+      transform: rotateX(180deg);
     }
   }
 }
