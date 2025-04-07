@@ -1,23 +1,20 @@
 <template>
   <section class="customers-table-header">
-    <ColumnHeader name="Name" :arrow="arrows.name" @sort="onSort('name')" />
     <ColumnHeader
-      name="Last order"
-      :arrow="arrows.lastOrder"
-      @sort="onSort('lastOrder')"
+      v-for="key in Object.keys(arrows)"
+      :key="key"
+      :name="names[key]"
+      :arrow="arrows[key]"
+      @sort="onSort(key as keyof typeof arrows)"
+      class="column-header"
     />
-    <ColumnHeader
-      name="Last edit"
-      :arrow="arrows.lastEdit"
-      @sort="onSort('lastEdit')"
-    />
-    <span class="empty"></span>
+    <span class="column-header empty"></span>
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import ColumnHeader from "./ColumnHeader.vue";
+import ColumnHeader from "../ColumnHeader.vue";
 export default defineComponent({
   components: { ColumnHeader },
   data() {
@@ -27,20 +24,19 @@ export default defineComponent({
         lastOrder: null as -1 | 1 | null,
         lastEdit: null as -1 | 1 | null,
       },
+      names: {
+        name: "Name",
+        lastOrder: "Last order",
+        lastEdit: "Last edit",
+      },
     };
   },
   methods: {
     onSort(column: "name" | "lastOrder" | "lastEdit") {
-      for (let key in this.arrows) {
-        if (key !== column) {
-          this.arrows[key] = null;
-        }
-      }
-      if (this.arrows[column] === 1) {
-        this.arrows[column] = -1;
-      } else {
-        this.arrows[column] = 1;
-      }
+      Object.keys(this.arrows).forEach(key => {
+        if (key !== column) this.arrows[key] = null;
+      });
+      this.arrows[column] = this.arrows[column] === 1 ? -1 : 1;
       this.$emit("sort", { column, dir: this.arrows[column] });
     },
   },
@@ -52,5 +48,8 @@ export default defineComponent({
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: subgrid;
+  & > * {
+    box-shadow: 0px 1px 1px var(--divider);
+  }
 }
 </style>
