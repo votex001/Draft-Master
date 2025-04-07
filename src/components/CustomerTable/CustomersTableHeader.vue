@@ -33,7 +33,7 @@ export default defineComponent({
   },
   methods: {
     onSort(column: "name" | "lastOrder" | "lastEdit") {
-      Object.keys(this.arrows).forEach(key => {
+      Object.keys(this.arrows).forEach((key) => {
         if (key !== column) this.arrows[key] = null;
       });
       this.arrows[column] = this.arrows[column] === 1 ? -1 : 1;
@@ -48,6 +48,7 @@ export default defineComponent({
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: subgrid;
+  margin-bottom: 1px;
   & > * {
     box-shadow: 0px 1px 1px var(--divider);
   }
