@@ -3,6 +3,6 @@ export interface Customer {
   name: string;
   isUnchangeable?: boolean;
   prices: { [key: string]: number };
-  lastOrder: number;
-  lastEdit: number;
+  lastOrder: number | null;
+  lastEdit: number | null;
 }
