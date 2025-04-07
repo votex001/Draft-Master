@@ -8,8 +8,8 @@ export const customers = [
       'Galvanized 0.4-1': 1,
       'Galvanized 1-4': 1
     },
-    lastOrder: Math.floor(Math.random() * 1000000000000),
-    lastEdit: Math.floor(Math.random() * 1000000000000)
+    lastOrder: null,
+    lastEdit: null
   },
   {
     id: 'f2c4e7a1-6d1e-4b3f-996f-b01329ae7b17',
@@ -104,6 +104,17 @@ export const customers = [
     name: 'Mia Taylor',
     prices: {
       'Painted 0.4-1': 6.5,
+      'Galvanized 0.4-1': 4.6,
+      'Galvanized 1-4': 1.1
+    },
+    lastOrder: Math.floor(Math.random() * 1000000000000),
+    lastEdit: Math.floor(Math.random() * 1000000000000)
+  },
+  {
+  id: 'fe308c6a-5c23-4e83-8fcf-08de02a9ec30',
+  name: 'Eugene Sagas',
+  prices: {
+    'Painted 0.4-1': 6.5,
       'Galvanized 0.4-1': 4.6,
       'Galvanized 1-4': 1.1
     },
