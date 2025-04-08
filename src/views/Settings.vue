@@ -35,4 +35,12 @@ export default {
     gap: 45px;
   }
 }
+@media (max-width: 768px) {
+  .settings{
+    .main{
+      flex-direction: column;
+    }
+  }
+  
+}
 </style>

@@ -23,7 +23,7 @@ import { langService } from "@/services/lang-service";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-    computed: {
+  computed: {
     currentLang() {
       return langService.currentLang.value;
     },
@@ -41,10 +41,10 @@ export default defineComponent({
   .nav {
     display: flex;
     flex-direction: column;
-    &.he{
-        .nav-link{
-            border-radius: 22px 0 0 22px;
-        }
+    &.he {
+      .nav-link {
+        border-radius: 22px 0 0 22px;
+      }
     }
     .nav-link {
       display: flex;
@@ -55,6 +55,23 @@ export default defineComponent({
       border-radius: 0 22px 22px 0;
       &.active {
         background-color: var(--selected);
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    .nav {
+      flex-direction: row;
+      &.he {
+        .nav-link {
+          border-radius: 0;
+        }
+      }
+      .nav-link{
+        border-radius: 0;
+        width: 50%;
       }
     }
   }
