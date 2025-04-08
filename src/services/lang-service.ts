@@ -58,6 +58,21 @@ function translate() {
           },
         ],
       },
+      metalsOutput: {
+        p1: "The Metal Settings Page allows you to manage different types of metals used in calculations. You can add new metal types and remove existing ones.",
+        ul: [
+          {
+            bold: "Adding a Metal:",
+            regular:
+              'Click the "Add Metal" button, enter the metal name and click "Save" to add it to the list.',
+          },
+          {
+            bold: "Deleting a Metal:",
+            regular:
+              'Locate the metal in the list, click the "Delete" button, confirm the action, and the metal will be permanently removed.',
+          },
+        ],
+      },
     },
     he: {
       drawings: "טיוטות",
@@ -88,6 +103,20 @@ function translate() {
             bold: "עריכת מחירי מתכת וכיפוף:",
             regular:
               "בעת עריכת לקוח, ניתן לשנות את המחירים של מתכת וכיפוף בטבלת הנתונים שלו.",
+          },
+        ],
+      },
+      metalsOutput: {
+        p1: "דף הגדרות המתכת מאפשר לך לנהל סוגים שונים של מתכות המשמשות בחישובים. ניתן להוסיף סוגי מתכת חדשים ולהסיר את הקיימים:",
+        ul: [
+          {
+            bold: "הוספת מתכת:",
+            regular: 'לחץ על כפתור "הוסף מתכת", הזן את שם המתכת ולחץ על "שמור" כדי להוסיף אותה לרשימה.',
+          },
+          {
+            bold: "מחיקת מתכת:",
+            regular:
+              'אתר את המתכת ברשימה, לחץ על כפתור "מחק", אשר את הפעולה, והמתכת תוסר לצמיתות.',
           },
         ],
       },
