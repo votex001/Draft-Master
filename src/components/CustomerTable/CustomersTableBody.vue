@@ -17,12 +17,8 @@
           {{ formatDate(customer.lastEdit) }}
         </p>
       </div>
-      <router-link
-        v-if="!customer.isUnchangeable"
-        class="btns"
-        :to="`/settings/customer/${customer.id}`"
-      >
-        <p class="button">
+      <section v-if="!customer.isUnchangeable" class="btns">
+        <router-link class="button" :to="`/settings/customer/${customer.id}`">
           <img
             src="/src/assets/imgs/column-body/edit.svg"
             alt="edit"
@@ -33,7 +29,7 @@
             alt="edit"
             class="icon-hover"
           />
-        </p>
+        </router-link>
         <button class="button" @click="onRemoveCustomer($event, customer.id)">
           <img
             src="/src/assets/imgs/column-body/Trash.svg"
@@ -46,7 +42,7 @@
             class="icon-hover"
           />
         </button>
-      </router-link>
+      </section>
     </section>
   </section>
 </template>
@@ -101,19 +97,21 @@ export default defineComponent({
     grid-template-columns: subgrid;
     height: 35px;
     align-items: center;
-    cursor: pointer;
     &:hover {
       background-color: var(--selected);
     }
     .cell {
       padding: 5px 10px;
       font-size: 18px;
+      text-wrap: nowrap;
+      overflow: hidden;
     }
     .btns {
       display: flex;
       gap: 30px;
       padding: 5px 10px;
       .button {
+        cursor: pointer;
         background: none;
         border: none;
         width: 40px;
@@ -134,6 +132,22 @@ export default defineComponent({
             display: none;
           }
         }
+      }
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .customers-table-body {
+    .customer {
+      & > * {
+        display: none;
+      }
+      & > :first-child,
+      & > :last-child {
+        display: flex; // show only first and last
+      }
+      .cell{
+        font-size: 16px;
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <section class="customers">
-    <header>
+    <header class="header">
       <h1 class="title">{{ translate.settingsPage.customers }}</h1>
       <section class="text">
         <p>{{ translate.customersOutput.p1 }}</p>
@@ -65,7 +65,7 @@ export default defineComponent({
   width: 100%;
   padding: 0 40px;
 
-  header {
+  .header {
     max-width: 760px;
     .title {
       text-transform: capitalize;
@@ -93,7 +93,9 @@ export default defineComponent({
       margin-top: 20px;
       justify-content: space-between;
       align-items: center;
+      gap: 100px;
       .btn {
+        text-wrap: nowrap;
         font-size: 18px;
         font-weight: 600;
         padding: 10px 20px;
@@ -104,6 +106,50 @@ export default defineComponent({
       display: grid;
       grid-template-columns: repeat(3, 1fr) 150px;
       margin-top: 10px;
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .customers {
+    .main {
+      .nav-tools {
+        gap: 40px;
+        .btn {
+          font-size: 14px;
+        }
+      }
+      .customers-list {
+        grid-template-columns: 1fr 150px;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .customers {
+    .header {
+      .title {
+        font-size: 32px;
+      }
+      .text {
+        font-size: 14px;
+      }
+    }
+  }
+}
+@media (max-width: 480px) {
+  .customers {
+    padding: 0 10px;
+  }
+}
+@media (max-width: 360px) {
+  .customers {
+    .header {
+      .title {
+        font-size: 24px;
+      }
+      .text {
+        font-size: 12px;
+      }
     }
   }
 }
