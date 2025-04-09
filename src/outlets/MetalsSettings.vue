@@ -11,11 +11,57 @@
         </ul>
       </section>
     </header>
-    <main class="main"></main>
+    <main class="main">
+      <section class="metals">
+        <h1 class="title">{{ translate.settingsPage.metals }}:</h1>
+        <section class="metal-list">
+          <ColumnHeader
+            name="Name"
+            :arrow="dir.metal as 1|-1"
+            @sort="onSort('metal')"
+          />
+          <ul>
+            <li class="metal-name" v-for="metal of metals">{{ metal.name }}</li>
+          </ul>
+        </section>
+        <section>
+          <ActionToolbar
+            @search="onSearch($event, 'metal')"
+            :btn-names="['Add metal', 'Edit', 'Delete']"
+            placeholder="Metal"
+          />
+        </section>
+      </section>
+      <section class="metal-types">
+        <h1 class="title">{{ translate.settingsPage.types }}:</h1>
+        <section>
+          <ColumnHeader
+            name="Name"
+            :arrow="dir.type as 1|-1"
+            @sort="onSort('type')"
+          />
+          <ul>
+            <li class="metal-name" v-for="metalType of metalTypes">
+              {{ metalType.type }}
+            </li>
+          </ul>
+        </section>
+        <section>
+          <ActionToolbar
+            @search="onSearch($event, 'type')"
+            :btn-names="['Add type', 'Edit', 'Delete']"
+            placeholder="Type"
+          />
+        </section>
+      </section>
+    </main>
   </section>
 </template>
 
 <script lang="ts">
+import ActionToolbar from "@/components/ActionToolbar.vue";
+import ColumnHeader from "@/components/ColumnHeader.vue";
+import { Metal } from "@/models/metal.model";
 import { langService } from "@/services/lang-service";
 import { defineComponent } from "vue";
 
@@ -25,17 +71,39 @@ export default defineComponent({
       const currentLang = langService.currentLang.value;
       return langService.translate[currentLang];
     },
+    metals(): Metal[] {
+      return this.$store.getters.getMetals;
+    },
+    metalTypes() {
+      return this.$store.getters.getMetalTypes;
+    },
   },
+  data() {
+    return {
+      dir: {
+        metal: 1,
+        type: 1,
+      },
+    };
+  },
+  components: { ActionToolbar, ColumnHeader },
   methods: {
-    onSearch(value: string) {
-      console.log(value);
+    onSearch(value: string, item: "metal" | "type") {
+      console.log(`${item}:`, value);
     },
     onAddNew() {
       console.log("[customersSettings:Add btn]");
     },
-    onSort(filter: { column: "name" | "lastOrder" | "lastEdit"; dir: -1 | 1 }) {
-      console.log(filter);
+    onSort(item: "metal" | "type") {
+      this.dir[item] = this.dir[item] === 1 ? -1 : 1;
     },
+    loadMetals() {
+      this.$store.dispatch("loadMetals");
+      this.$store.dispatch("loadMetalTypes");
+    },
+  },
+  beforeMount() {
+    this.loadMetals();
   },
 });
 </script>
@@ -66,9 +134,11 @@ export default defineComponent({
       }
     }
   }
-  //   .main {
-
-  //   }
+  .main {
+    .title {
+      text-transform: capitalize;
+    }
+  }
 }
 // @media (max-width: 1000px) {
 //   .metals {
