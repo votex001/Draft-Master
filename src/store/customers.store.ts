@@ -1,12 +1,12 @@
 import { Customer } from "@/models/custumer.model";
 import { customerService } from "@/services/customer.services";
-import Vuex from "vuex";
+import { createStore } from "vuex";
 
-export const store = new Vuex.Store({
+export const customerStore = {
   state(): { customers: Customer[]; currentCustomer: Customer | null } {
     return {
-      customers: [],
-      currentCustomer: null,
+      customers: [] as Customer[],
+      currentCustomer: null as Customer | null,
     };
   },
   mutations: {
@@ -18,7 +18,16 @@ export const store = new Vuex.Store({
     },
   },
   actions: {
-    async loadCostumers({ commit }, filter = "") {
+    async loadCostumers(
+      { commit },
+      filter = {
+        name: "",
+        sort: {
+          sortBy: "name" as "name" | "lastOrder" | "lastEdit",
+          dir: 1 as 1 | -1,
+        },
+      }
+    ) {
       try {
         const customers = await customerService.getQuery(filter);
         commit("setCustomers", customers);
@@ -77,4 +86,4 @@ export const store = new Vuex.Store({
       return state.currentCustomer;
     },
   },
-});
+};

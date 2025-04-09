@@ -4,7 +4,7 @@ import { makeId } from "./customer.services";
 const STORAGE_KEY = "metals";
 const DELAY = 500;
 
-export const customerService = { getQuery, getById, saveMetal, deleteById };
+export const metalService = { getQuery, getById, saveMetal, deleteById };
 
 async function getQuery({
   dir = 1,
@@ -14,12 +14,12 @@ async function getQuery({
   name?: string;
 }): Promise<Metal[]> {
   try {
-    const customers = loadMetals();
+    const metals = loadMetals();
 
-    let filteredMetals = customers;
+    let filteredMetals = metals;
     if (name) {
       const lowerFilter = name.toLowerCase();
-      filteredMetals = customers.filter((c: Metal) =>
+      filteredMetals = metals.filter((c: Metal) =>
         c.name.toLowerCase().includes(lowerFilter)
       );
     }

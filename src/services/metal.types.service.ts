@@ -4,10 +4,10 @@ import { makeId } from "./customer.services";
 const STORAGE_KEY = "metalTypes";
 const DELAY = 500;
 
-export const customerService = {
+export const metalTypesService = {
   getQuery,
   getById,
-  saveMetal: saveMetalType,
+  saveMetalType,
   deleteById,
 };
 

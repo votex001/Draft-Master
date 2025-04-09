@@ -37,6 +37,7 @@ function translate() {
       settingsPage: {
         customers: "customers",
         metals: "metals",
+        types: "types",
       },
       customersOutput: {
         p1: "On the Customers settings page, you can perform the following actions:",
@@ -86,6 +87,7 @@ function translate() {
       settingsPage: {
         customers: "לקוחות",
         metals: "מתכות",
+        types: "סוגים",
       },
       customersOutput: {
         p1: "בדף הגדרות לקוחות, תוכל לבצע את הפעולות הבאות:",
@@ -111,7 +113,8 @@ function translate() {
         ul: [
           {
             bold: "הוספת מתכת:",
-            regular: 'לחץ על כפתור "הוסף מתכת", הזן את שם המתכת ולחץ על "שמור" כדי להוסיף אותה לרשימה.',
+            regular:
+              'לחץ על כפתור "הוסף מתכת", הזן את שם המתכת ולחץ על "שמור" כדי להוסיף אותה לרשימה.',
           },
           {
             bold: "מחיקת מתכת:",
