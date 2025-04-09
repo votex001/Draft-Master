@@ -4,7 +4,7 @@ import { makeId } from "./customer.services";
 const STORAGE_KEY = "metals";
 const DELAY = 500;
 
-export const customerService = { getQuery, getById, saveMetal, deleteById };
+export const metalService = { getQuery, getById, saveMetal, deleteById };
 
 async function getQuery({
   dir = 1,
