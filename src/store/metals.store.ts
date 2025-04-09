@@ -1,9 +1,9 @@
 import { Metal, MetalType } from "@/models/metal.model";
 import { metalService } from "@/services/metal.service";
 import { metalTypesService } from "@/services/metal.types.service";
-import Vuex from "vuex";
+import { createStore } from "vuex";
 
-export const store = new Vuex.Store({
+export const metalsStore = {
   state(): { metals: Metal[]; metalTypes: MetalType[] } {
     return {
       metals: [],
@@ -20,7 +20,7 @@ export const store = new Vuex.Store({
   },
   actions: {
     // Metal Actions
-    async loadMetals({ commit }, filter = { name: "", dir: 1 }) {
+    async loadMetals({ commit }, filter = { name: "", dir: 1 as 1 | -1 }) {
       try {
         const metals = await metalService.getQuery(filter);
         commit("setMetals", metals);
@@ -61,10 +61,10 @@ export const store = new Vuex.Store({
       }
     },
     // MetalTypes Actions
-    async loadMetalTypes({ commit }, filter = { name: "", dir: 1 }) {
+    async loadMetalTypes({ commit }, filter = { name: "", dir: 1 as 1 | -1 }) {
       try {
         const metalsTypes = await metalTypesService.getQuery(filter);
-        commit("setMetals", metalsTypes);
+        commit("setMetalTypes", metalsTypes);
       } catch (err) {
         throw err;
       }
@@ -103,4 +103,12 @@ export const store = new Vuex.Store({
       }
     },
   },
-});
+  getters: {
+    getMetals(state) {
+      return state.metals;
+    },
+    getMetalTypes(state) {
+      return state.metalTypes;
+    },
+  },
+};

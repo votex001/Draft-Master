@@ -14,12 +14,12 @@ async function getQuery({
   name?: string;
 }): Promise<Metal[]> {
   try {
-    const customers = loadMetals();
+    const metals = loadMetals();
 
-    let filteredMetals = customers;
+    let filteredMetals = metals;
     if (name) {
       const lowerFilter = name.toLowerCase();
-      filteredMetals = customers.filter((c: Metal) =>
+      filteredMetals = metals.filter((c: Metal) =>
         c.name.toLowerCase().includes(lowerFilter)
       );
     }
