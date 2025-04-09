@@ -7,6 +7,7 @@
       :arrow="arrows[key]"
       @sort="onSort(key as keyof typeof arrows)"
       class="column-header"
+      :class="key"
     />
     <span class="column-header empty"></span>
   </section>
@@ -51,6 +52,17 @@ export default defineComponent({
   margin-bottom: 1px;
   & > * {
     box-shadow: 0px 1px 1px var(--divider);
+  }
+}
+@media (max-width: 1000px) {
+  .customers-table-header {
+    & > * {
+      display: none;
+    }
+    & > :first-child,
+    & > :last-child {
+      display: flex; // show only first and last
+    }
   }
 }
 </style>

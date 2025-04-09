@@ -44,9 +44,9 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   max-width: 100%;
-  margin: 0 60px;
+  padding: 0 60px;
   align-items: center;
-
+  box-shadow: 0px 1px 1px var(--divider);
   .btns {
     display: flex;
     align-items: center;
@@ -81,7 +81,7 @@ export default defineComponent({
 }
 @media (max-width: 480px) {
   .header {
-    margin: 0 30px;
+    padding: 0 30px;
     .btns {
       gap: 5px;
       .navigation {
@@ -95,7 +95,7 @@ export default defineComponent({
 }
 @media (max-width: 360px) {
   .header {
-    margin: 0 10px;
+    padding: 0 10px;
     .btns {
       .navigation {
         .nav-link {

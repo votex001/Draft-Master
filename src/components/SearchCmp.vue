@@ -69,4 +69,17 @@ export default defineComponent({
     }
   }
 }
+@media (max-width: 1000px) {
+  .search{
+   min-width: 300px;
+  }
+}
+@media (max-width: 768px) {
+  .search{
+    min-width: 185px;
+    .input{
+      width: 100px;
+    }
+  }
+}
 </style>
