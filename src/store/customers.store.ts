@@ -18,7 +18,16 @@ export const store = new Vuex.Store({
     },
   },
   actions: {
-    async loadCostumers({ commit }, filter = "") {
+    async loadCostumers(
+      { commit },
+      filter = {
+        name: "",
+        sort: {
+          sortBy: "name",
+          dir: 1,
+        },
+      }
+    ) {
       try {
         const customers = await customerService.getQuery(filter);
         commit("setCustomers", customers);
