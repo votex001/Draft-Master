@@ -12,45 +12,49 @@
       </section>
     </header>
     <main class="main">
-      <section class="metals">
-        <h1 class="title">{{ translate.settingsPage.metals }}:</h1>
-        <section class="metal-list">
-          <ColumnHeader
-            name="Name"
-            :arrow="dir.metal as 1|-1"
-            @sort="onSort('metal')"
-          />
-          <ul>
-            <li class="metal-name" v-for="metal of metals">{{ metal.name }}</li>
-          </ul>
-        </section>
-        <section>
+      <section class="metals-list">
+        <h1 class="title">{{ translate.settingsPage.metals }}</h1>
+        <section class="table-section">
+          <section class="table">
+            <ColumnHeader
+              name="Name"
+              :arrow="dir.metal as 1|-1"
+              @sort="onSort('metal')"
+            />
+            <ItemList
+              :items="metals"
+              display-key="name"
+              @selected="onSelect($event, 'metal')"
+            />
+          </section>
           <ActionToolbar
             @search="onSearch($event, 'metal')"
-            :btn-names="['Add metal', 'Edit', 'Delete']"
+            :btn-names="['Add', 'Edit', 'Delete']"
             placeholder="Metal"
+            :show-items-actions="!!selectedMetal"
           />
         </section>
       </section>
       <section class="metal-types">
-        <h1 class="title">{{ translate.settingsPage.types }}:</h1>
-        <section>
-          <ColumnHeader
-            name="Name"
-            :arrow="dir.type as 1|-1"
-            @sort="onSort('type')"
-          />
-          <ul>
-            <li class="metal-name" v-for="metalType of metalTypes">
-              {{ metalType.type }}
-            </li>
-          </ul>
-        </section>
-        <section>
+        <h1 class="title">{{ translate.settingsPage.types }}</h1>
+        <section class="table-section">
+          <section class="table">
+            <ColumnHeader
+              name="Name"
+              :arrow="dir.type as 1|-1"
+              @sort="onSort('type')"
+            />
+            <ItemList
+              :items="metalTypes"
+              display-key="type"
+              @selected="onSelect($event, 'type')"
+            />
+          </section>
           <ActionToolbar
             @search="onSearch($event, 'type')"
-            :btn-names="['Add type', 'Edit', 'Delete']"
+            :btn-names="['Add', 'Edit', 'Delete']"
             placeholder="Type"
+            :show-items-actions="!!selectedType"
           />
         </section>
       </section>
@@ -61,7 +65,8 @@
 <script lang="ts">
 import ActionToolbar from "@/components/ActionToolbar.vue";
 import ColumnHeader from "@/components/ColumnHeader.vue";
-import { Metal } from "@/models/metal.model";
+import ItemList from "@/components/ItemList.vue";
+import { Metal, MetalType } from "@/models/metal.model";
 import { langService } from "@/services/lang-service";
 import { defineComponent } from "vue";
 
@@ -80,14 +85,24 @@ export default defineComponent({
   },
   data() {
     return {
+      selectedMetal: null as null | string,
+      selectedType: null as null | string,
       dir: {
         metal: 1,
         type: 1,
       },
     };
   },
-  components: { ActionToolbar, ColumnHeader },
+  components: { ActionToolbar, ColumnHeader, ItemList },
   methods: {
+    onSelect(item: Metal | MetalType | null, table: "metal" | "type") {
+      if (table === "metal") {
+        this.selectedMetal = item ? item.id : item;
+      }
+      if (table === "type") {
+        this.selectedType = item ? item.id : item;
+      }
+    },
     onSearch(value: string, item: "metal" | "type") {
       console.log(`${item}:`, value);
     },
@@ -135,8 +150,32 @@ export default defineComponent({
     }
   }
   .main {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    >:first-child{
+      border-right: 1px solid var(--divider);
+    }
+    >*{
+      padding-right: 10px;
+    }
     .title {
       text-transform: capitalize;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .table-section {
+      display: flex;
+      gap: 10px;
+      .table {
+        min-width: 180px;
+        border: 1px solid var(--divider);
+        background: var(--white);
+        scrollbar-color: #e7581a var(--white);
+        > :first-child {
+          box-shadow: 0px 1px 1px var(--divider);
+        }
+      }
     }
   }
 }
