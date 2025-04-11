@@ -5,6 +5,7 @@
 :root {
   --black: #232323;
   --selected: #f69c4b;
+  --select-hover: #fcb67a;
   --btn: #ce5905;
   --btn-hover: #e67a3b;
   --checkbox-checked: #106ef2;
@@ -28,14 +29,15 @@
   font-stretch: 75% 125%;
   font-style: normal;
 }
-
+html {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: #e7581a var(--bg);
+  scrollbar-width: thin;
+}
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   background-color: var(--bg);
-  -webkit-overflow-scrolling: touch;
-  scrollbar-color: #e7581a var(--bg);
-  scrollbar-width: thin;
 }
 .btn {
   color: var(--white);
