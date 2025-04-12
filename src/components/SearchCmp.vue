@@ -49,14 +49,19 @@ export default defineComponent({
   overflow: hidden;
   max-height: 32px;
   align-items: center;
+  background-color: var(--bg);
+  &:has(.input:focus) {
+    border-color: var(--selected);
+  }
+
   .input {
     border: none;
-    background-color: var(--bg);
     flex: 1;
     padding: 0 10px;
     height: 32px;
     &:focus {
       outline: none;
+      background-color: var(--white);
     }
   }
   .btn {
@@ -70,14 +75,14 @@ export default defineComponent({
   }
 }
 @media (max-width: 1000px) {
-  .search{
-   min-width: 300px;
+  .search {
+    min-width: 300px;
   }
 }
 @media (max-width: 768px) {
-  .search{
+  .search {
     min-width: 185px;
-    .input{
+    .input {
       width: 100px;
     }
   }

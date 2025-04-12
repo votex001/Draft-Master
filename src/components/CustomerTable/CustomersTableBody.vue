@@ -97,6 +97,7 @@ export default defineComponent({
     grid-template-columns: subgrid;
     height: 35px;
     align-items: center;
+    background-color: var(--white);
     &:hover {
       background-color: var(--selected);
     }

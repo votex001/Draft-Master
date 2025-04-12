@@ -6,10 +6,7 @@
           translate.settingsPage.customers
         }}</router-link
       >
-      <router-link
-        to="/settings/metals"
-        class="nav-link"
-        exact-active-class="active"
+      <router-link to="/settings/metals" class="nav-link" active-class="active"
         ><img src="/src/assets/imgs/side-bar/metals.svg" />{{
           translate.settingsPage.metals
         }}</router-link
@@ -69,7 +66,7 @@ export default defineComponent({
           border-radius: 0;
         }
       }
-      .nav-link{
+      .nav-link {
         border-radius: 0;
         width: 50%;
       }
