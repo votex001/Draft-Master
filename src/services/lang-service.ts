@@ -37,7 +37,7 @@ function translate() {
       settingsPage: {
         customers: "customers",
         metals: "metals",
-        types: "types",
+        types: "Types",
       },
       customersOutput: {
         p1: "On the Customers settings page, you can perform the following actions:",
