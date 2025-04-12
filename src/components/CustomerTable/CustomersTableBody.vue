@@ -105,6 +105,7 @@ export default defineComponent({
       font-size: 18px;
       text-wrap: nowrap;
       overflow: hidden;
+      cursor: default;
     }
     .btns {
       display: flex;
@@ -146,7 +147,7 @@ export default defineComponent({
       & > :last-child {
         display: flex; // show only first and last
       }
-      .cell{
+      .cell {
         font-size: 16px;
       }
     }
