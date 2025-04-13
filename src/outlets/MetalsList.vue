@@ -1,8 +1,8 @@
 <template>
   <section class="metals-list">
     <ItemListComponent
-      header-name="Name"
-      placeholder="Metal"
+      :header-name="translate.settingsPage.name"
+      :placeholder="translate.settingsPage.metal"
       :items="metals"
       display-key="name"
       @add="logic.onAdd"

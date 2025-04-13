@@ -37,7 +37,10 @@ function translate() {
       settingsPage: {
         customers: "customers",
         metals: "metals",
+        metal: "metal",
         types: "Types",
+        type: "Type",
+        name: "name",
       },
       customersOutput: {
         p1: "On the Customers settings page, you can perform the following actions:",
@@ -87,7 +90,10 @@ function translate() {
       settingsPage: {
         customers: "לקוחות",
         metals: "מתכות",
+        metal: "מתכת",
         types: "סוגים",
+        type: "סוג",
+        name: "שם",
       },
       customersOutput: {
         p1: "בדף הגדרות לקוחות, תוכל לבצע את הפעולות הבאות:",
