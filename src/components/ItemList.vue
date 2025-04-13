@@ -3,7 +3,7 @@
     <li
       class="item"
       v-for="(item, index) of items"
-      :class="{ selected: selected === item[displayKey] }"
+      :class="{ selected: selected === item.id }"
       :key="index"
       @click="selectItem(item)"
     >
@@ -13,15 +13,16 @@
 </template>
 
 <script lang="ts">
+import { WithId } from "@/models/metal.model";
 import { defineComponent, PropType } from "vue";
 export default defineComponent({
   emits: ["selected"],
   props: {
-    items: { type: Array as PropType<object[]>, required: true },
+    items: { type: Array as PropType<WithId[]>, required: true },
     displayKey: { type: String, required: true },
   },
   data() {
-    return { selected: null as null | Number };
+    return { selected: null as null | string };
   },
   mounted() {
     document.addEventListener("click", this.onClickOutside);
@@ -38,7 +39,7 @@ export default defineComponent({
       }
     },
     selectItem(item: any) {
-      this.selected = item[this.displayKey];
+      this.selected = item.id;
       this.$emit("selected", item);
     },
   },
@@ -51,9 +52,9 @@ export default defineComponent({
   margin: 0;
   max-height: 242px;
   overflow: hidden;
-&.scroll{
+  &.scroll {
     overflow-y: auto;
-}
+  }
   .item {
     cursor: pointer;
     list-style: none;
