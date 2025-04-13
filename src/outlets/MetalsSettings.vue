@@ -11,7 +11,27 @@
         </ul>
       </section>
     </header>
-    <main class="main"></main>
+    <main class="main">
+      <nav class="navigation">
+        <router-link
+          to="/settings/metals"
+          class="nav-link"
+          exact-active-class="active"
+        >
+          {{ translate.settingsPage.metals }}
+        </router-link>
+        <router-link
+          to="/settings/metals/types"
+          class="nav-link"
+          exact-active-class="active"
+        >
+          {{ translate.settingsPage.types }}
+        </router-link>
+      </nav>
+      <section class="view">
+        <router-view />
+      </section>
+    </main>
   </section>
 </template>
 
@@ -24,17 +44,6 @@ export default defineComponent({
     translate() {
       const currentLang = langService.currentLang.value;
       return langService.translate[currentLang];
-    },
-  },
-  methods: {
-    onSearch(value: string) {
-      console.log(value);
-    },
-    onAddNew() {
-      console.log("[customersSettings:Add btn]");
-    },
-    onSort(filter: { column: "name" | "lastOrder" | "lastEdit"; dir: -1 | 1 }) {
-      console.log(filter);
     },
   },
 });
@@ -66,9 +75,44 @@ export default defineComponent({
       }
     }
   }
-  //   .main {
+  .main {
+    gap: 30px;
 
-  //   }
+    .navigation {
+      margin: 10px 0px;
+
+      box-shadow: 0 2px 0px 0px var(--divider);
+      .nav-link {
+        text-transform: capitalize;
+        padding-right: 20px;
+        color: var(--black);
+        font-size: 18px;
+        font-weight: 600;
+        &.active {
+          padding-bottom: 3px;
+          box-shadow: 0 2px 0 0 var(--selected);
+        }
+      }
+    }
+    .view {
+      margin-top: 30px;
+    }
+    :deep() {
+      .table-section {
+        display: flex;
+        gap: 10px;
+        .table {
+          min-width: 180px;
+          border: 1px solid var(--divider);
+          background: var(--white);
+          scrollbar-color: #e7581a var(--white);
+          > :first-child {
+            box-shadow: 0px 1px 1px var(--divider);
+          }
+        }
+      }
+    }
+  }
 }
 // @media (max-width: 1000px) {
 //   .metals {

@@ -1,5 +1,5 @@
 import { metalTypes } from "./test.data";
-import { MetalType } from "@/models/metal.model";
+import { Metal, MetalType } from "@/models/metal.model";
 import { makeId } from "./customer.services";
 const STORAGE_KEY = "metalTypes";
 const DELAY = 500;
@@ -13,17 +13,17 @@ export const metalTypesService = {
 
 async function getQuery({
   dir = 1,
-  name,
+  type,
 }: {
   dir?: 1 | -1;
-  name?: string;
+  type?: string;
 }): Promise<MetalType[]> {
   try {
     const metalTypes = loadMetalTypes();
 
     let filteredMetalTypes = metalTypes;
-    if (name) {
-      const lowerFilter = name.toLowerCase();
+    if (type) {
+      const lowerFilter = type.toLowerCase();
       filteredMetalTypes = metalTypes.filter((c: MetalType) =>
         c.type.toLowerCase().includes(lowerFilter)
       );

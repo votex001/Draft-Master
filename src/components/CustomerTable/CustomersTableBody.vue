@@ -97,6 +97,7 @@ export default defineComponent({
     grid-template-columns: subgrid;
     height: 35px;
     align-items: center;
+    background-color: var(--white);
     &:hover {
       background-color: var(--selected);
     }
@@ -105,6 +106,7 @@ export default defineComponent({
       font-size: 18px;
       text-wrap: nowrap;
       overflow: hidden;
+      cursor: default;
     }
     .btns {
       display: flex;
@@ -146,7 +148,7 @@ export default defineComponent({
       & > :last-child {
         display: flex; // show only first and last
       }
-      .cell{
+      .cell {
         font-size: 16px;
       }
     }

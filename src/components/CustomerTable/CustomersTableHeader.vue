@@ -50,8 +50,9 @@ export default defineComponent({
   grid-column: 1 / -1;
   grid-template-columns: subgrid;
   margin-bottom: 1px;
+  background-color: var(--white);
   & > * {
-    box-shadow: 0px 1px 1px var(--divider);
+    box-shadow: 0px 4px 4px var(--divider);
   }
 }
 @media (max-width: 1000px) {
