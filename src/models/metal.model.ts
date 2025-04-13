@@ -1,11 +1,15 @@
 export interface Metal {
-  id: string;
+  id?: string;
   name: string;
-  isUnchangeable?:true
+  isUnchangeable?: boolean;
 }
 export interface MetalType {
-  id: string;
+  id?: string;
   type: string;
-  isUnchangeable?:true
+  isUnchangeable?: boolean;
   paymentPerBending: boolean;
+}
+export interface WithId {
+  id: string;
+  [key: string]: any;
 }

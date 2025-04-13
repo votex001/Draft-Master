@@ -128,6 +128,7 @@ export const customers: Customer[] = [
 ];
 
 export const metals = [
+  { id: makeId(), isUnchangeable: true, name: "Default" },
   { id: makeId(), name: "Aluminum" },
   { id: makeId(), name: "Steel" },
   { id: makeId(), name: "Copper" },
@@ -141,6 +142,12 @@ export const metals = [
 ];
 
 export const metalTypes: MetalType[] = [
+  {
+    id: makeId(),
+    type: "Default",
+    isUnchangeable: true,
+    paymentPerBending: false,
+  },
   { id: makeId(), type: "Painted 0.4-1", paymentPerBending: true },
   { id: makeId(), type: "Galvanized 0.4-1", paymentPerBending: true },
   { id: makeId(), type: "Galvanized 1-4", paymentPerBending: false },
