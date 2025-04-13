@@ -1,11 +1,15 @@
 <template>
-  <span class="checkbox" :class="{ checked: checkedStatus }" @click="onClick">
+  <section
+    class="checkbox"
+    :class="{ checked: checkedStatus }"
+    @click="onClick"
+  >
     <img
       v-if="checkedStatus"
       src="/src/assets/imgs/check-box/✓.svg"
       class="img"
     />
-  </span>
+  </section>
 </template>
 
 <script lang="ts">
@@ -21,6 +25,7 @@ export default defineComponent({
   data() {
     return { checkedStatus: this.checked };
   },
+
   methods: {
     onClick() {
       this.checkedStatus = !this.checkedStatus;
@@ -33,9 +38,8 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .checkbox {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   cursor: pointer;
   width: 24px;
   min-height: 24px;
