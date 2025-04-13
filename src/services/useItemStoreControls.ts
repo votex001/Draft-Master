@@ -23,7 +23,6 @@ export function useItemStoreControls<T>(options: {
   };
 
   const onQuery = (query?: { dir: 1 | -1; name: string }) => {
-    console.log(query)
     store.dispatch(options.loadAction, query);
   };
 
