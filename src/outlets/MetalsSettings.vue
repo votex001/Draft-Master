@@ -80,14 +80,18 @@ export default defineComponent({
 
     .navigation {
       margin: 10px 0px;
-
       box-shadow: 0 2px 0px 0px var(--divider);
       .nav-link {
         text-transform: capitalize;
-        padding-right: 20px;
         color: var(--black);
         font-size: 18px;
         font-weight: 600;
+        &::after {
+          content: "";
+          display: inline-block;
+          width: 20px;
+          background-color: #fff;
+        }
         &.active {
           padding-bottom: 3px;
           box-shadow: 0 2px 0 0 var(--selected);
@@ -114,13 +118,6 @@ export default defineComponent({
     }
   }
 }
-// @media (max-width: 1000px) {
-//   .metals {
-//     .main {
-
-//     }
-//   }
-// }
 @media (max-width: 768px) {
   .metals {
     .header {
@@ -129,6 +126,17 @@ export default defineComponent({
       }
       .text {
         font-size: 14px;
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .metals {
+    .main {
+      :deep() {
+        .table-section {
+          flex-direction: column-reverse;
+        }
       }
     }
   }
