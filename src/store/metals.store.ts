@@ -3,11 +3,23 @@ import { metalService } from "@/services/metal.service";
 import { metalTypesService } from "@/services/metal.types.service";
 import { createStore } from "vuex";
 
+interface Filter {
+  name: string;
+  dir: 1 | -1;
+}
+
 export const metalsStore = {
-  state(): { metals: Metal[]; metalTypes: MetalType[] } {
+  state(): {
+    metals: Metal[];
+    metalTypes: MetalType[];
+    metalFilter: Filter;
+    metalTypeFilter: Filter;
+  } {
     return {
       metals: [],
       metalTypes: [],
+      metalFilter: { name: "", dir: 1 as 1 | -1 },
+      metalTypeFilter: { name: "", dir: 1 as 1 | -1 },
     };
   },
   mutations: {
@@ -17,33 +29,29 @@ export const metalsStore = {
     setMetalTypes(state, metalType) {
       state.metalTypes = metalType;
     },
+    setMetalFilter(state, filter) {
+      state.metalFilter = filter;
+    },
+    setMetalTypeFilter(state, filter) {
+      state.metalTypeFilter = filter;
+    },
   },
   actions: {
     // Metal Actions
     async loadMetals({ commit }, filter = { name: "", dir: 1 as 1 | -1 }) {
       try {
         const metals = await metalService.getQuery(filter);
+        commit("setMetalFilter", filter);
         commit("setMetals", metals);
       } catch (err) {
         throw err;
       }
     },
 
-    async saveMetal({ commit, state }, metal: Metal) {
+    async saveMetal({ dispatch, state }, metal: Metal) {
       try {
-        const savedMetal = await metalService.saveMetal(metal);
-        const isUpdate = !!metal.id;
-
-        let updatedList: Metal[];
-        if (isUpdate) {
-          updatedList = state.metals.map((m: Metal) =>
-            m.id === savedMetal.id ? savedMetal : m
-          );
-        } else {
-          updatedList = [...state.metals, savedMetal];
-        }
-
-        commit("setMetals", updatedList);
+        await metalService.saveMetal(metal);
+        await dispatch("loadMetals", state.metalFilter);
       } catch (err) {
         throw err;
       }
@@ -61,29 +69,19 @@ export const metalsStore = {
       }
     },
     // MetalTypes Actions
-    async loadMetalTypes({ commit }, filter = { name: "", dir: 1 as 1 | -1 }) {
+    async loadMetalTypes({ commit }, filter = { type: "", dir: 1 as 1 | -1 }) {
       try {
         const metalsTypes = await metalTypesService.getQuery(filter);
+        commit("setMetalTypeFilter", filter);
         commit("setMetalTypes", metalsTypes);
       } catch (err) {
         throw err;
       }
     },
-    async saveMetalType({ commit, state }, metalType: MetalType) {
+    async saveMetalType({ dispatch, state }, metalType: MetalType) {
       try {
-        const savedType = await metalTypesService.saveMetalType(metalType);
-        const isUpdate = !!metalType.id;
-
-        let updatedList: MetalType[];
-        if (isUpdate) {
-          updatedList = state.metalTypes.map((t: MetalType) =>
-            t.id === savedType.id ? savedType : t
-          );
-        } else {
-          updatedList = [...state.metalTypes, savedType];
-        }
-
-        commit("setMetalTypes", updatedList);
+        await metalTypesService.saveMetalType(metalType);
+        await dispatch("loadMetalTypes", state.metalTypeFilter);
       } catch (err) {
         throw err;
       }
