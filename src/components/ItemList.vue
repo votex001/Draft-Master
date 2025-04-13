@@ -2,9 +2,9 @@
   <ul class="item-list" ref="list" :class="{ scroll: items.length > 5 }">
     <li
       class="item"
-      v-for="(item, index) of items"
+      v-for="item of items"
       :class="{ selected: selected === item.id }"
-      :key="index"
+      :key="item.id"
       @click="selectItem(item)"
     >
       {{ item[displayKey] }}
