@@ -34,7 +34,7 @@ export default defineComponent({
       return this.$store.getters.getMetals;
     },
     logic() {
-      const logic = useItemStoreControls<Array<Metal & { id: string }>>({
+      const logic = useItemStoreControls<Metal & { id: string }>({
         loadAction: "loadMetals",
         saveAction: "saveMetal",
         deleteAction: "deleteMetal",

@@ -11,14 +11,14 @@ export function useItemStoreControls<T>(options: {
 }) {
   const store = useStore();
 
-  const selectedId = ref<string | null>(null);
+  const selectedItem = ref<string | null>(null);
   const isUnchangeable = ref(false);
   const dir = ref<Dir>(1);
   const filter = ref<string>("");
-  const items = ref<T | []>([]);
+  const items = ref<T[] | []>([]);
 
   const onSelect = (item: any | null) => {
-    selectedId.value = item?.id || null;
+    selectedItem.value = item;
     isUnchangeable.value = !!item?.isUnchangeable;
   };
 
@@ -36,7 +36,7 @@ export function useItemStoreControls<T>(options: {
 
   return {
     items,
-    selectedId,
+    selectedItem,
     isUnchangeable,
     dir,
     filter,

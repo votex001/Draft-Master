@@ -34,7 +34,7 @@ export default defineComponent({
     },
 
     logic() {
-      const logic = useItemStoreControls<Array<MetalType & { id: string }>>({
+      const logic = useItemStoreControls<MetalType & { id: string }>({
         loadAction: "loadMetalTypes",
         saveAction: "saveMetalType",
         deleteAction: "deleteMetalType",
