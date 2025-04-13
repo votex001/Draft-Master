@@ -24,7 +24,7 @@ async function getQuery({
       );
     }
 
-    filteredMetals = filteredMetals.sort((a, b) => {
+    filteredMetals = [...filteredMetals].sort((a, b) => {
       return dir * a.name.localeCompare(b.name);
     });
 
