@@ -41,6 +41,7 @@ function translate() {
         types: "Types",
         type: "Type",
         name: "name",
+        editType: "Edit Type",
       },
       customersOutput: {
         p1: "On the Customers settings page, you can perform the following actions:",
@@ -94,6 +95,7 @@ function translate() {
         types: "סוגים",
         type: "סוג",
         name: "שם",
+        editType: "ערוך סוג",
       },
       customersOutput: {
         p1: "בדף הגדרות לקוחות, תוכל לבצע את הפעולות הבאות:",
