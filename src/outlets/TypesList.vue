@@ -68,8 +68,8 @@ export default defineComponent({
   },
 
   methods: {
-    onEdit() {
-      console.log("selectedMetalIdForEdit", this.logic.selectedId.value);
+    onEdit(value) {
+      console.log("selectedMetalIdForEdit", value)
     },
     onChangeBendingFee(newVal: boolean) {
       const { onEdit } = this.logic;
