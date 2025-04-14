@@ -17,6 +17,9 @@
         @btn1="onAddNewItem"
         @btn2="onEdit"
         @btn3="onDelete"
+        :checked="checked"
+        @update:checked="$emit('update:checked', $event)"
+        :check-box-name="checkBoxName"
       />
     </section>
   </section>
@@ -30,12 +33,14 @@ import { WithId } from "@/models/metal.model";
 import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
-  emits: ["add", "edit", "delete", "query", "select"],
+  emits: ["add", "edit", "delete", "query", "select", "update:checked"],
   props: {
     headerName: String,
     displayKey: String,
     items: Array as PropType<WithId[]>,
     placeholder: String,
+    checked: { type: Boolean, default: false },
+    checkBoxName: String,
   },
   data() {
     return {

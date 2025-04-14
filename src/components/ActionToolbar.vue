@@ -6,6 +6,13 @@
         <input :placeholder="placeholder" v-model="inputValue" class="input" />
         <button class="btn" @click="btn1">{{ btnNames[0] }}</button>
       </section>
+      <section v-if="checkBoxName" class="check-box">
+        <CheckBox
+          :checked="checked"
+          @update:checked="$emit('update:checked', $event)"
+        />
+        <span class="name">{{ checkBoxName }}</span>
+      </section>
       <section class="item-actions" :class="{ hidden: !showItemsActions }">
         <button class="btn" @click="btn2">{{ btnNames[1] }}</button>
         <button class="btn" @click="btn3">{{ btnNames[2] }}</button>
@@ -17,14 +24,17 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import SearchCmp from "./SearchCmp.vue";
+import CheckBox from "./CheckBox.vue";
 export default defineComponent({
   showItemsActions: false,
   props: {
     placeholder: { type: String, required: false, default: "" },
     btnNames: { type: Array as () => string[], required: true },
     showItemsActions: { type: Boolean, required: false },
+    checked: { type: Boolean, default: false },
+    checkBoxName: String,
   },
-  emits: ["search", "btn1", "btn2", "btn3"],
+  emits: ["search", "btn1", "btn2", "btn3", "update:checked"],
   data() {
     return {
       inputValue: "",
@@ -47,6 +57,7 @@ export default defineComponent({
   },
   components: {
     SearchCmp,
+    CheckBox,
   },
 });
 </script>
@@ -62,6 +73,11 @@ export default defineComponent({
       background-color: var(--white);
     }
   }
+  .check-box {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
   .item-controls {
     .btn {
       padding: 10px 20px;
@@ -70,9 +86,9 @@ export default defineComponent({
       border-radius: 11px;
     }
     .add-section {
-      padding: 5px 0;
       display: flex;
       gap: 10px;
+      margin-bottom: 10px;
       .input {
         border: 1px solid var(--black);
         background-color: var(--white);

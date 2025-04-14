@@ -9,7 +9,10 @@
       @edit="onEdit"
       @delete="logic.onDelete"
       @query="logic.onQuery"
-      @select="logic.onSelect"
+      @select="onSelect"
+      :checked="checked"
+      @update:checked="onChangeBendingFee"
+      check-box-name="Bounding fee"
     />
   </section>
 </template>
@@ -23,6 +26,12 @@ import { langService } from "@/services/lang-service";
 
 export default defineComponent({
   components: { ItemListComponent },
+
+  data() {
+    return {
+      checked: false,
+    };
+  },
 
   computed: {
     translate() {
@@ -38,6 +47,7 @@ export default defineComponent({
         loadAction: "loadMetalTypes",
         saveAction: "saveMetalType",
         deleteAction: "deleteMetalType",
+        editAction: "saveMetalType",
       });
       return logic;
     },
@@ -50,6 +60,21 @@ export default defineComponent({
   methods: {
     onEdit() {
       console.log("selectedMetalIdForEdit", this.logic.selectedId.value);
+    },
+    onChangeBendingFee(newVal: boolean) {
+      const { onEdit, onSelect } = this.logic;
+      const selectedItem = this.logic.selectedItem.value;
+      this.checked = newVal;
+      if (selectedItem) {
+        const newType = { ...selectedItem, paymentPerBending: newVal };
+        onEdit(newType);
+      }
+    },
+    onSelect(type) {
+      if (type) {
+        this.checked = type?.paymentPerBending;
+        this.logic.onSelect(type);
+      }
     },
   },
 });
