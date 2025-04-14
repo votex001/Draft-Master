@@ -26,11 +26,10 @@ import { defineComponent } from "vue";
 import SearchCmp from "./SearchCmp.vue";
 import CheckBox from "./CheckBox.vue";
 export default defineComponent({
-  showItemsActions: false,
   props: {
     placeholder: { type: String, required: false, default: "" },
     btnNames: { type: Array as () => string[], required: true },
-    showItemsActions: { type: Boolean, required: false },
+    showItemsActions: { type: Boolean, required: false, default: false },
     checked: { type: Boolean, default: false },
     checkBoxName: String,
   },

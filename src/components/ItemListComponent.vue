@@ -6,7 +6,8 @@
         <ItemList
           :items="items"
           :display-key="displayKey"
-          @selected="onSelect"
+          :selected="selected"
+          @update:selected="onSelect"
         />
       </section>
       <ActionToolbar
@@ -33,7 +34,15 @@ import { WithId } from "@/models/metal.model";
 import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
-  emits: ["add", "edit", "delete", "query", "select", "update:checked"],
+  emits: [
+    "add",
+    "edit",
+    "delete",
+    "query",
+    "select",
+    "update:checked",
+    "update:selected",
+  ],
   props: {
     headerName: String,
     displayKey: String,
@@ -41,6 +50,7 @@ export default defineComponent({
     placeholder: String,
     checked: { type: Boolean, default: false },
     checkBoxName: String,
+    selected: String,
   },
   data() {
     return {
@@ -54,7 +64,7 @@ export default defineComponent({
     onSelect(item: any | null) {
       this.selectedId = item ? item.id : null;
       this.isUnchangeable = item?.isUnchangeable ?? false;
-      this.$emit("select", item);
+      this.$emit("update:selected", item);
     },
     onSort() {
       this.dir = this.dir === 1 ? -1 : 1;

@@ -9,7 +9,6 @@
       @edit="onEdit"
       @delete="logic.onDelete"
       @query="logic.onQuery"
-      @select="logic.onSelect"
     />
   </section>
 </template>

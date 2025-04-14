@@ -13,6 +13,8 @@
       :checked="checked"
       @update:checked="onChangeBendingFee"
       check-box-name="Bounding fee"
+      @update:selected="onSelect"
+      :selected="selectedId"
     />
   </section>
 </template>
@@ -30,6 +32,8 @@ export default defineComponent({
   data() {
     return {
       checked: false,
+      selectedId: "",
+      selectedItem: null,
     };
   },
 
@@ -41,20 +45,26 @@ export default defineComponent({
     metalTypes(): Array<MetalType & { id: string }> {
       return this.$store.getters.getMetalTypes;
     },
-
     logic() {
-      const logic = useItemStoreControls<MetalType & { id: string }>({
+      return useItemStoreControls<MetalType & { id: string }>({
         loadAction: "loadMetalTypes",
         saveAction: "saveMetalType",
         deleteAction: "deleteMetalType",
         editAction: "saveMetalType",
       });
-      return logic;
     },
   },
 
   beforeMount() {
     this.logic.onQuery();
+  },
+  
+  watch: {
+    selectedItem(newVal) {
+      if (newVal) {
+        this.selectedId = newVal.id;
+      }
+    },
   },
 
   methods: {
@@ -62,18 +72,22 @@ export default defineComponent({
       console.log("selectedMetalIdForEdit", this.logic.selectedId.value);
     },
     onChangeBendingFee(newVal: boolean) {
-      const { onEdit, onSelect } = this.logic;
-      const selectedItem = this.logic.selectedItem.value;
+      const { onEdit } = this.logic;
       this.checked = newVal;
-      if (selectedItem) {
-        const newType = { ...selectedItem, paymentPerBending: newVal };
+      if (this.selectedItem) {
+        const newType = { ...this.selectedItem, paymentPerBending: newVal };
         onEdit(newType);
+        setTimeout(() => {
+          this.selectedId = newType.id;
+          this.selectedItem = newType;
+        });
       }
     },
     onSelect(type) {
+      this.selectedId = type?.id || "";
+      this.selectedItem = type;
       if (type) {
-        this.checked = type?.paymentPerBending;
-        this.logic.onSelect(type);
+        this.checked = type.paymentPerBending;
       }
     },
   },
