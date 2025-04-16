@@ -26,12 +26,8 @@ export default defineComponent({
     return { checkedStatus: this.checked };
   },
   watch: {
-    checked(newValue) {
-      this.checkedStatus = newValue;
-    },
-    checkedStatus(newValue) {
-      this.$emit("update:checked", newValue);
-      this.$emit("change", newValue);
+    checked(newVal) {
+      this.checkedStatus = newVal;
     },
   },
   methods: {
@@ -50,7 +46,7 @@ export default defineComponent({
   place-items: center;
   cursor: pointer;
   width: 24px;
-  min-height: 24px;
+  height: 24px;
   user-select: none;
   border-radius: 6px;
   border: 1px solid var(--black);

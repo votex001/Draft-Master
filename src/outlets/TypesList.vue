@@ -1,15 +1,20 @@
 <template>
   <section class="metal-types-list">
     <ItemListComponent
-      header-name="Name"
-      placeholder="Type"
+      :header-name="translate.settingsPage.name"
+      :placeholder="translate.settingsPage.type"
       :items="metalTypes"
       display-key="type"
       @add="logic.onAdd"
       @edit="onEdit"
       @delete="logic.onDelete"
       @query="logic.onQuery"
-      @select="logic.onSelect"
+      @select="onSelect"
+      :checked="checked"
+      @update:checked="onChangeBendingFee"
+      check-box-name="Bounding fee"
+      @update:selected="onSelect"
+      :selected="selectedId"
     />
   </section>
 </template>
@@ -24,6 +29,14 @@ import { langService } from "@/services/lang-service";
 export default defineComponent({
   components: { ItemListComponent },
 
+  data() {
+    return {
+      checked: false,
+      selectedId: "",
+      selectedItem: null,
+    };
+  },
+
   computed: {
     translate() {
       const currentLang = langService.currentLang.value;
@@ -32,14 +45,13 @@ export default defineComponent({
     metalTypes(): Array<MetalType & { id: string }> {
       return this.$store.getters.getMetalTypes;
     },
-
     logic() {
-      const logic = useItemStoreControls<Array<MetalType & { id: string }>>({
+      return useItemStoreControls<MetalType & { id: string }>({
         loadAction: "loadMetalTypes",
         saveAction: "saveMetalType",
         deleteAction: "deleteMetalType",
+        editAction: "saveMetalType",
       });
-      return logic;
     },
   },
 
@@ -47,9 +59,32 @@ export default defineComponent({
     this.logic.onQuery();
   },
 
+  watch: {
+    selectedItem(newVal) {
+      if (newVal) {
+        this.selectedId = newVal.id;
+      }
+    },
+  },
+
   methods: {
-    onEdit() {
-      console.log("selectedMetalIdForEdit", this.logic.selectedId.value);
+    onEdit(value) {
+      console.log("selectedMetalIdForEdit", value);
+    },
+    onChangeBendingFee(newVal: boolean) {
+      const { onEdit } = this.logic;
+      this.checked = newVal;
+      if (this.selectedItem) {
+        const newType = { ...this.selectedItem, paymentPerBending: newVal };
+        onEdit(newType);
+      }
+    },
+    onSelect(type) {
+      this.selectedId = type?.id || "";
+      this.selectedItem = type;
+      if (type) {
+        this.checked = type.paymentPerBending;
+      }
     },
   },
 });

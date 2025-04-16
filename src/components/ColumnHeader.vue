@@ -36,9 +36,10 @@ export default defineComponent({
   user-select: none;
   cursor: pointer;
   padding: 5px 10px;
-  .name{
+  .name {
     font-size: 18px;
     font-weight: 600;
+    text-transform: capitalize;
   }
   .arrow {
     width: 24px;

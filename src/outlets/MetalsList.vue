@@ -1,15 +1,14 @@
 <template>
   <section class="metals-list">
     <ItemListComponent
-      header-name="Name"
-      placeholder="Metal"
+      :header-name="translate.settingsPage.name"
+      :placeholder="translate.settingsPage.metal"
       :items="metals"
       display-key="name"
       @add="logic.onAdd"
       @edit="onEdit"
       @delete="logic.onDelete"
       @query="logic.onQuery"
-      @select="logic.onSelect"
     />
   </section>
 </template>
@@ -34,7 +33,7 @@ export default defineComponent({
       return this.$store.getters.getMetals;
     },
     logic() {
-      const logic = useItemStoreControls<Array<Metal & { id: string }>>({
+      const logic = useItemStoreControls<Metal & { id: string }>({
         loadAction: "loadMetals",
         saveAction: "saveMetal",
         deleteAction: "deleteMetal",
@@ -48,8 +47,8 @@ export default defineComponent({
   },
 
   methods: {
-    onEdit() {
-      console.log("selectedMetalIdForEdit", this.logic.selectedId.value);
+    onEdit(value) {
+      console.log("selectedMetalIdForEdit", value);
     },
   },
 });

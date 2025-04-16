@@ -29,7 +29,7 @@ async function getQuery({
       );
     }
 
-    filteredMetalTypes = filteredMetalTypes.sort((a, b) => {
+    filteredMetalTypes = [...filteredMetalTypes].sort((a, b) => {
       return dir * a.type.localeCompare(b.type);
     });
 

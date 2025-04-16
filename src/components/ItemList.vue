@@ -2,9 +2,9 @@
   <ul class="item-list" ref="list" :class="{ scroll: items.length > 5 }">
     <li
       class="item"
-      v-for="(item, index) of items"
-      :class="{ selected: selected === item.id }"
-      :key="index"
+      v-for="item of items"
+      :class="{ selected: selectedId === item.id }"
+      :key="item.id"
       @click="selectItem(item)"
     >
       {{ item[displayKey] }}
@@ -14,15 +14,20 @@
 
 <script lang="ts">
 import { WithId } from "@/models/metal.model";
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType, Ref } from "vue";
 export default defineComponent({
-  emits: ["selected"],
+  emits: ["update:selected", "select"],
   props: {
     items: { type: Array as PropType<WithId[]>, required: true },
     displayKey: { type: String, required: true },
+    selected: String,
+    externalRefs: {
+      type: Array as PropType<(HTMLElement | null)[]>,
+      default: () => [],
+    },
   },
   data() {
-    return { selected: null as null | string };
+    return { selectedId: this.selected as string };
   },
   mounted() {
     document.addEventListener("click", this.onClickOutside);
@@ -30,17 +35,29 @@ export default defineComponent({
   beforeUnmount() {
     document.removeEventListener("click", this.onClickOutside);
   },
+
+  watch: {
+    selected(newVal) {
+      this.selectedId = newVal;
+    },
+  },
+
   methods: {
     onClickOutside(event: MouseEvent) {
       const listEl = this.$refs.list as HTMLElement | undefined;
-      if (!listEl || !listEl.contains(event.target as Node)) {
-        this.selected = null;
-        this.$emit("selected", null);
+      const clickedInsideExternal = this.externalRefs.some((el) => {
+        return el instanceof HTMLElement && el.contains(event.target as Node);
+      });
+      if (!listEl?.contains(event.target as Node) && !clickedInsideExternal) {
+        this.selectedId = false;
+        this.$emit("update:selected", null);
+        this.$emit("select", null);
       }
     },
     selectItem(item: any) {
-      this.selected = item.id;
-      this.$emit("selected", item);
+      this.selectedId = item.id;
+      this.$emit("update:selected", item);
+      this.$emit("select", item);
     },
   },
 });

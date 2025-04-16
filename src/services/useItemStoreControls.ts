@@ -10,19 +10,10 @@ export function useItemStoreControls<T>(options: {
   deleteAction?: string;
 }) {
   const store = useStore();
-
-  const selectedId = ref<string | null>(null);
-  const isUnchangeable = ref(false);
-  const dir = ref<Dir>(1);
-  const filter = ref<string>("");
-  const items = ref<T | []>([]);
-
-  const onSelect = (item: any | null) => {
-    selectedId.value = item?.id || null;
-    isUnchangeable.value = !!item?.isUnchangeable;
-  };
+  const filter = ref<{ dir: 1 | -1; name: string }>({ dir: 1, name: "" });
 
   const onQuery = (query?: { dir: 1 | -1; name: string }) => {
+    if (query) filter.value = query;
     store.dispatch(options.loadAction, query);
   };
 
@@ -34,15 +25,15 @@ export function useItemStoreControls<T>(options: {
     store.dispatch(options.deleteAction, id);
   };
 
+  const onEdit = (item) => {
+    store.dispatch(options.editAction, item);
+    onQuery();
+  };
+
   return {
-    items,
-    selectedId,
-    isUnchangeable,
-    dir,
-    filter,
-    onSelect,
     onQuery,
     onAdd,
     onDelete,
+    onEdit,
   };
 }
