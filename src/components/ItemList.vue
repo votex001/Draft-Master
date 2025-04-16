@@ -14,13 +14,17 @@
 
 <script lang="ts">
 import { WithId } from "@/models/metal.model";
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType, Ref } from "vue";
 export default defineComponent({
   emits: ["update:selected", "select"],
   props: {
     items: { type: Array as PropType<WithId[]>, required: true },
     displayKey: { type: String, required: true },
     selected: String,
+    externalRefs: {
+      type: Array as PropType<(HTMLElement | null)[]>,
+      default: () => [],
+    },
   },
   data() {
     return { selectedId: this.selected as string };
@@ -41,7 +45,10 @@ export default defineComponent({
   methods: {
     onClickOutside(event: MouseEvent) {
       const listEl = this.$refs.list as HTMLElement | undefined;
-      if (!listEl || !listEl.contains(event.target as Node)) {
+      const clickedInsideExternal = this.externalRefs.some((el) => {
+        return el instanceof HTMLElement && el.contains(event.target as Node);
+      });
+      if (!listEl?.contains(event.target as Node) && !clickedInsideExternal) {
         this.selectedId = false;
         this.$emit("update:selected", null);
         this.$emit("select", null);

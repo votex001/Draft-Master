@@ -8,19 +8,26 @@
           :display-key="displayKey"
           :selected="selected"
           @update:selected="onSelect"
+          :external-refs="actionRef"
         />
       </section>
       <ActionToolbar
+        @ref="setRef"
         @search="onSearch"
         :btn-names="['Add', 'Edit', 'Delete']"
         :placeholder="placeholder"
-        :show-items-actions="!!selectedId && !isUnchangeable"
+        :show-items-actions="!!selectedItem && !isUnchangeable"
         @btn1="onAddNewItem"
         @btn2="onEdit"
         @btn3="onDelete"
         :checked="checked"
         @update:checked="$emit('update:checked', $event)"
         :check-box-name="checkBoxName"
+        :edit-name="
+          selectedItem && !selectedItem?.isUnchangeable
+            ? selectedItem[displayKey]
+            : ''
+        "
       />
     </section>
   </section>
@@ -43,6 +50,7 @@ export default defineComponent({
     "update:checked",
     "update:selected",
   ],
+
   props: {
     headerName: String,
     displayKey: String,
@@ -54,15 +62,16 @@ export default defineComponent({
   },
   data() {
     return {
-      selectedId: null as string | null,
+      selectedItem: null as WithId | null,
       isUnchangeable: false,
       dir: 1 as 1 | -1,
       searchValue: "",
+      actionRef: null,
     };
   },
   methods: {
     onSelect(item: any | null) {
-      this.selectedId = item ? item.id : null;
+      this.selectedItem = item;
       this.isUnchangeable = item?.isUnchangeable ?? false;
       this.$emit("update:selected", item);
     },
@@ -83,11 +92,17 @@ export default defineComponent({
     onAddNewItem(name: string) {
       this.$emit("add", { [this.displayKey]: name });
     },
-    onEdit() {
-      this.$emit("edit", this.selectedId);
+    onEdit(name: string) {
+      this.$emit("edit", {
+        ...this.selectedItem,
+        [this.displayKey]: name,
+      });
     },
     onDelete() {
-      this.$emit("delete", this.selectedId);
+      this.$emit("delete", this.selectedItem?.id);
+    },
+    setRef(ref) {
+      this.actionRef = ref;
     },
   },
   components: {

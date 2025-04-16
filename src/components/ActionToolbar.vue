@@ -2,21 +2,29 @@
   <section class="action-toolbar">
     <SearchCmp @search="onSearch" class="search" />
     <section class="item-controls">
-      <section class="add-section">
+      <section class="add-section" ref="addRef">
         <input :placeholder="placeholder" v-model="inputValue" class="input" />
-        <button class="btn" @click="btn1">{{ btnNames[0] }}</button>
+        <button v-if="!showItemsActions" class="btn" @click="btn1">
+          {{ btnNames[0] }}
+        </button>
+        <button v-if="showItemsActions" class="btn" @click="btn2">
+          {{ btnNames[1] }}
+        </button>
+        <button v-if="showItemsActions" class="btn" @click="btn3">
+          {{ btnNames[2] }}
+        </button>
       </section>
-      <section v-if="checkBoxName" class="check-box">
+      <section v-if="checkBoxName" class="check-box" ref="checkboxRef">
         <CheckBox
           :checked="checked"
           @update:checked="$emit('update:checked', $event)"
         />
         <span class="name">{{ checkBoxName }}</span>
       </section>
-      <section class="item-actions" :class="{ hidden: !showItemsActions }">
-        <button class="btn" @click="btn2">{{ btnNames[1] }}</button>
-        <button class="btn" @click="btn3">{{ btnNames[2] }}</button>
-      </section>
+      <section
+        class="item-actions"
+        :class="{ hidden: !showItemsActions }"
+      ></section>
     </section>
   </section>
 </template>
@@ -32,12 +40,21 @@ export default defineComponent({
     showItemsActions: { type: Boolean, required: false, default: false },
     checked: { type: Boolean, default: false },
     checkBoxName: String,
+    editName: String,
   },
-  emits: ["search", "btn1", "btn2", "btn3", "update:checked"],
+  emits: ["search", "btn1", "btn2", "btn3", "update:checked", "ref"],
   data() {
     return {
       inputValue: "",
     };
+  },
+  watch: {
+    editName(newValue) {
+      this.inputValue = newValue;
+    },
+  },
+  mounted() {
+    this.$emit("ref", [this.$refs.addRef, this.$refs.checkboxRef]);
   },
   methods: {
     onSearch(text: string) {
@@ -48,7 +65,7 @@ export default defineComponent({
       this.inputValue = "";
     },
     btn2() {
-      this.$emit("btn2");
+      this.$emit("btn2", this.inputValue);
     },
     btn3() {
       this.$emit("btn3");
@@ -105,13 +122,6 @@ export default defineComponent({
       }
     }
   }
-  .item-actions {
-    display: flex;
-    gap: 10px;
-    &.hidden {
-      display: none;
-    }
-  }
 }
 @media (max-width: 600px) {
   .action-toolbar {
@@ -123,10 +133,6 @@ export default defineComponent({
     }
     .item-controls {
       width: 100%;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      justify-content: space-between;
       .btn {
         height: 32px;
         padding: 5px 20px;
@@ -134,7 +140,7 @@ export default defineComponent({
       .add-section {
         width: 60%;
         .input {
-          width: 100%;
+          width: 150px;
         }
       }
     }

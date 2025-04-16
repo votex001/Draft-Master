@@ -58,7 +58,7 @@ export default defineComponent({
   beforeMount() {
     this.logic.onQuery();
   },
-  
+
   watch: {
     selectedItem(newVal) {
       if (newVal) {
@@ -69,7 +69,7 @@ export default defineComponent({
 
   methods: {
     onEdit(value) {
-      console.log("selectedMetalIdForEdit", value)
+      console.log("selectedMetalIdForEdit", value);
     },
     onChangeBendingFee(newVal: boolean) {
       const { onEdit } = this.logic;
@@ -77,10 +77,6 @@ export default defineComponent({
       if (this.selectedItem) {
         const newType = { ...this.selectedItem, paymentPerBending: newVal };
         onEdit(newType);
-        setTimeout(() => {
-          this.selectedId = newType.id;
-          this.selectedItem = newType;
-        });
       }
     },
     onSelect(type) {
