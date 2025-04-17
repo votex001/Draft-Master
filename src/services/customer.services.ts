@@ -1,5 +1,6 @@
 import { Customer } from "@/models/custumer.model";
 import { customers } from "./test.data";
+import { metalTypesService } from "./metal.types.service";
 const STORAGE_KEY = "customers";
 const DELAY = 500;
 
@@ -50,6 +51,15 @@ async function getById(id: string): Promise<Customer | null> {
   try {
     const customers = loadCustomers();
     const customer = customers.find((c: Customer) => c.id === id) || null;
+    if (!customer) {
+      return _delay(null);
+    }
+    const types = await metalTypesService.getQuery();
+    const prices = types.reduce((acc, t) => {
+      acc[t.type] = 1;
+      return acc;
+    }, {});
+    customer.prices = { ...prices, ...customer.prices };
     return _delay(customer);
   } catch (err) {
     console.log(err);
