@@ -37,6 +37,7 @@ export default defineComponent({
         loadAction: "loadMetals",
         saveAction: "saveMetal",
         deleteAction: "deleteMetal",
+        editAction:"saveMetal"
       });
       return logic;
     },
@@ -48,7 +49,7 @@ export default defineComponent({
 
   methods: {
     onEdit(value) {
-      console.log("selectedMetalIdForEdit", value);
+      this.logic.onEdit(value);
     },
   },
 });
