@@ -61,8 +61,8 @@ export default defineComponent({
   },
   watch: {
     filter: {
-      handler(newVal) {
-        this.service.onQuery(newVal);
+      handler(newFilter) {
+        this.service.onQuery(newFilter);
       },
       deep: true,
     },
