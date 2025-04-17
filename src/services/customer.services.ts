@@ -22,7 +22,6 @@ async function getQuery(filter?: {
         c.name.toLowerCase().includes(lowerFilter)
       );
     }
-    console.log(filter.sort);
     if (filter && filter.sort) {
       filteredCustomers = [...filteredCustomers].sort((a, b) => {
         const { sortBy, dir } = filter.sort;
