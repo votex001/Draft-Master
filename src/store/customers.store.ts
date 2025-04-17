@@ -36,6 +36,9 @@ export const customerStore = {
     },
     async getById({ commit }, id: string) {
       try {
+        if (!id) {
+          commit("setCurrentCustomer", null);
+        }
         const customer = await customerService.getById(id);
         commit("setCurrentCustomer", customer);
       } catch (err) {
