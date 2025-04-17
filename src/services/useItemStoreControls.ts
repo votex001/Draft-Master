@@ -1,8 +1,6 @@
 import { ref } from "vue";
 import { useStore } from "vuex";
 
-type Dir = 1 | -1;
-
 export function useItemStoreControls<T>(options: {
   loadAction: string;
   editAction?: string;
@@ -10,11 +8,11 @@ export function useItemStoreControls<T>(options: {
   deleteAction?: string;
 }) {
   const store = useStore();
-  const filter = ref<{ dir: 1 | -1; name: string }>({ dir: 1, name: "" });
+  const filter = ref<any>({});
 
-  const onQuery = (query?: { dir: 1 | -1; name: string }) => {
+  const onQuery = async (query?: any) => {
     if (query) filter.value = query;
-    store.dispatch(options.loadAction, query);
+    await store.dispatch(options.loadAction, query);
   };
 
   const onAdd = (item: any) => {

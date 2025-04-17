@@ -1,6 +1,5 @@
 import { Customer } from "@/models/custumer.model";
 import { customerService } from "@/services/customer.services";
-import { createStore } from "vuex";
 
 export const customerStore = {
   state(): { customers: Customer[]; currentCustomer: Customer | null } {
