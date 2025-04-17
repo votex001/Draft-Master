@@ -6,17 +6,21 @@ export function useItemStoreControls<T>(options: {
   editAction?: string;
   saveAction?: string;
   deleteAction?: string;
+  getById?: string;
 }) {
   const store = useStore();
   const filter = ref<any>({});
 
-  const onQuery = async (query?: any) => {
+  const onQuery = (query?: any) => {
     if (query) filter.value = query;
-    await store.dispatch(options.loadAction, query);
+    store.dispatch(options.loadAction, query);
   };
 
   const onAdd = (item: any) => {
     store.dispatch(options.saveAction, item);
+  };
+  const getById = (id: string) => {
+    store.dispatch(options.getById, id);
   };
 
   const onDelete = (id: string) => {
@@ -31,6 +35,7 @@ export function useItemStoreControls<T>(options: {
   return {
     onQuery,
     onAdd,
+    getById,
     onDelete,
     onEdit,
   };
