@@ -21,7 +21,7 @@
       </section>
       <section class="customers-list">
         <CustomersTableHeader @sort="onSort" />
-        <CustomersTableBody />
+        <CustomersTableBody :customers="customers" />
       </section>
     </main>
   </section>
@@ -31,26 +31,55 @@
 import CustomersTableBody from "@/components/CustomerTable/CustomersTableBody.vue";
 import CustomersTableHeader from "@/components/CustomerTable/CustomersTableHeader.vue";
 import SearchCmp from "@/components/SearchCmp.vue";
+import { Customer } from "@/models/custumer.model";
 import { langService } from "@/services/lang-service";
+import { useItemStoreControls } from "@/services/useItemStoreControls";
 import { defineComponent } from "vue";
 
 export default defineComponent({
+  data() {
+    return {
+      filter: {
+        name: "",
+        sort: {
+          sortBy: "name" as "name" | "lastOrder" | "lastEdit",
+          dir: 1 as 1 | -1,
+        },
+      },
+      service: useItemStoreControls<Customer>({ loadAction: "loadCostumers" }),
+    };
+  },
   computed: {
     translate() {
       const currentLang = langService.currentLang.value;
       return langService.translate[currentLang];
     },
+
+    customers() {
+      return this.$store.getters.getCustomers;
+    },
+  },
+  watch: {
+    filter: {
+      handler(newVal) {
+        this.service.onQuery(newVal);
+      },
+      deep: true,
+    },
   },
   methods: {
     onSearch(value: string) {
-      console.log(value);
+      this.filter.name = value;
     },
     onAddNew() {
       console.log("[customersSettings:Add btn]");
     },
     onSort(filter: { column: "name" | "lastOrder" | "lastEdit"; dir: -1 | 1 }) {
-      console.log(filter);
+      this.filter.sort = { sortBy: filter.column, dir: filter.dir };
     },
+  },
+  beforeMount() {
+    this.service.onQuery();
   },
   components: {
     SearchCmp,

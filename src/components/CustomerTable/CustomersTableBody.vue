@@ -49,17 +49,13 @@
 
 <script lang="ts">
 import { Customer } from "@/models/custumer.model";
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 export default defineComponent({
-  computed: {
-    customers(): Customer[] {
-      return this.$store.getters.getCustomers;
-    },
+  props: {
+    customers: Array as PropType<Customer[]>,
   },
+
   methods: {
-    loadCostumers() {
-      this.$store.dispatch("loadCostumers");
-    },
     onRemoveCustomer(e: Event, id: string) {
       e.stopPropagation();
       e.preventDefault();
@@ -72,9 +68,6 @@ export default defineComponent({
         year: "2-digit",
       });
     },
-  },
-  beforeMount() {
-    this.loadCostumers();
   },
 });
 </script>
