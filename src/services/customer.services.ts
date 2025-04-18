@@ -68,9 +68,21 @@ async function getById(id: string): Promise<Customer | null> {
 }
 
 async function post(customer: Customer): Promise<Customer> {
+  const types = await metalTypesService.getQuery();
+  const prices = types.reduce((acc, t) => {
+    acc[t.type] = 1;
+    return acc;
+  }, {});
+  const cleanCustomer = {
+    lastEdit: new Date().getTime(),
+    lastOrder: null,
+    name: "Default",
+    prices: { "Bending price": 1, ...prices },
+  };
   try {
     const customers = loadCustomers();
     const newCustomer = {
+      ...cleanCustomer,
       ...customer,
       id: makeId(),
     };
