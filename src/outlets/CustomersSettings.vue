@@ -17,7 +17,7 @@
     <main class="main">
       <section class="nav-tools">
         <SearchCmp @search="onSearch" />
-        <button class="btn" @click="onAddNew">
+        <button class="btn" @click="isAdding = true">
           {{ translate.customersOutput.addNew }}
         </button>
       </section>
@@ -32,10 +32,16 @@
       @close="navigateTo('/settings')"
       @save="onEditCustomer"
     />
+    <AddCustomerCmp
+      v-if="isAdding"
+      @close="isAdding = false"
+      @save="onAddNew"
+    />
   </section>
 </template>
 
 <script lang="ts">
+import AddCustomerCmp from "@/components/AddCustomerCmp.vue";
 import CustomersTableBody from "@/components/CustomerTable/CustomersTableBody.vue";
 import CustomersTableHeader from "@/components/CustomerTable/CustomersTableHeader.vue";
 import EditCustomerCmp from "@/components/EditCustomerCmp.vue";
@@ -59,7 +65,9 @@ export default defineComponent({
         loadAction: "loadCostumers",
         getById: "getById",
         editAction: "updateCustomer",
+        saveAction: "addCustomer",
       }),
+      isAdding: false,
     };
   },
   computed: {
@@ -95,8 +103,10 @@ export default defineComponent({
     onSearch(value: string) {
       this.filter.name = value;
     },
-    onAddNew() {
-      console.log("[customersSettings:Add btn]");
+    async onAddNew(name: string) {
+      const newCustomer = await this.service.onAdd({ name });
+      this.isAdding = false;
+      this.navigateTo(`/settings/customer/${newCustomer.id}`);
     },
     onSort(filter: { column: "name" | "lastOrder" | "lastEdit"; dir: -1 | 1 }) {
       this.filter.sort = { sortBy: filter.column, dir: filter.dir };
@@ -114,6 +124,7 @@ export default defineComponent({
     CustomersTableHeader,
     CustomersTableBody,
     EditCustomerCmp,
+    AddCustomerCmp,
   },
 });
 </script>
