@@ -58,11 +58,15 @@ export default defineComponent({
   },
   methods: {
     onSearch(text: string) {
-      this.$emit("search", text);
+      if (text) {
+        this.$emit("search", text);
+      }
     },
     btn1() {
-      this.$emit("btn1", this.inputValue);
-      this.inputValue = "";
+      if (this.inputValue) {
+        this.$emit("btn1", this.inputValue);
+        this.inputValue = "";
+      }
     },
     btn2() {
       this.$emit("btn2", this.inputValue);
