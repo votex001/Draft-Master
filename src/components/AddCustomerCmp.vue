@@ -45,6 +45,7 @@ export default defineComponent({
 <style scoped lang="scss">
 .add-customer {
   padding: 30px 20px;
+  width: fit-content;
   .title {
     text-transform: capitalize;
     font-size: 18px;
