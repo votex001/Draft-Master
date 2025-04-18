@@ -31,8 +31,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import SearchCmp from "./SearchCmp.vue";
-import CheckBox from "./CheckBox.vue";
+import SearchCmp from "../shared/SearchCmp.vue";
+import CheckBox from "../shared/CheckBox.vue";
 export default defineComponent({
   props: {
     placeholder: { type: String, required: false, default: "" },
@@ -58,11 +58,15 @@ export default defineComponent({
   },
   methods: {
     onSearch(text: string) {
-      this.$emit("search", text);
+      if (text) {
+        this.$emit("search", text);
+      }
     },
     btn1() {
-      this.$emit("btn1", this.inputValue);
-      this.inputValue = "";
+      if (this.inputValue) {
+        this.$emit("btn1", this.inputValue);
+        this.inputValue = "";
+      }
     },
     btn2() {
       this.$emit("btn2", this.inputValue);
