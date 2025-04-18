@@ -42,6 +42,8 @@ function translate() {
         type: "Type",
         name: "name",
         editType: "Edit Type",
+        save: "Save",
+        cancel: "Cancel",
       },
       customersOutput: {
         p1: "On the Customers settings page, you can perform the following actions:",
@@ -87,9 +89,8 @@ function translate() {
       editCustomerCmp: {
         title: "Edit customer",
         prices: "Prices",
-        save: "Save",
-        cancel: "Cancel",
       },
+      addCustomer: "Add customer",
     },
     he: {
       drawings: "טיוטות",
@@ -108,6 +109,8 @@ function translate() {
         type: "סוג",
         name: "שם",
         editType: "ערוך סוג",
+        save: "שמור",
+        cancel: "בטל",
       },
       customersOutput: {
         p1: "בדף הגדרות לקוחות, תוכל לבצע את הפעולות הבאות:",
@@ -152,9 +155,8 @@ function translate() {
       editCustomerCmp: {
         title: "ערוך לקוח",
         prices: "מחירים",
-        save: "שמור",
-        cancel: "בטל",
       },
+      addCustomer: "הוסף לקוח",
     },
   };
 }
