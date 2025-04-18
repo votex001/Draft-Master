@@ -49,4 +49,12 @@ body {
   &:hover {
     background-color: var(--btn-hover);
   }
+  &.white {
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
 }

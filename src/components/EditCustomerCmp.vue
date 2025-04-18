@@ -38,10 +38,10 @@
     </main>
     <footer class="btns" :class="{ he: currentLang === 'he' }">
       <button @click="onSave" class="btn">
-        {{ translate.editCustomerCmp.save }}
+        {{ translate.settingsPage.save }}
       </button>
       <button @click="onClose" class="btn white">
-        {{ translate.editCustomerCmp.cancel }}
+        {{ translate.settingsPage.cancel }}
       </button>
     </footer>
   </Modal>
@@ -194,14 +194,7 @@ export default defineComponent({
   justify-content: flex-end;
   padding: 20px;
   gap: 20px;
-  .white {
-    background-color: var(--white);
-    color: var(--black);
-    border: 1px solid var(--black);
-    &:hover {
-      filter: brightness(0.9);
-    }
-  }
+  
   &.he {
     flex-direction: row-reverse;
   }
