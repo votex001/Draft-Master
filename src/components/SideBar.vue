@@ -1,16 +1,27 @@
 <template>
   <section class="sidebar">
     <nav class="nav" :class="{ he: currentLang === 'he' }">
-      <router-link to="/settings" class="nav-link" exact-active-class="active"
-        ><img src="/src/assets/imgs/side-bar/customer.svg" />{{
-          translate.settingsPage.customers
-        }}</router-link
+      <router-link
+        to="/settings"
+        class="nav-link"
+        :class="{
+          active:
+            $route.path === '/settings' ||
+            $route.path.startsWith('/settings/customer'),
+        }"
       >
-      <router-link to="/settings/metals" class="nav-link" active-class="active"
-        ><img src="/src/assets/imgs/side-bar/metals.svg" />{{
-          translate.settingsPage.metals
-        }}</router-link
+        <img src="/src/assets/imgs/side-bar/customer.svg" />
+        {{ translate.settingsPage.customers }}
+      </router-link>
+
+      <router-link
+        to="/settings/metals"
+        class="nav-link"
+        :class="{ active: $route.path.startsWith('/settings/metals') }"
       >
+        <img src="/src/assets/imgs/side-bar/metals.svg" />
+        {{ translate.settingsPage.metals }}
+      </router-link>
     </nav>
   </section>
 </template>

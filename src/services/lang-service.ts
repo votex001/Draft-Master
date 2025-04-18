@@ -42,6 +42,8 @@ function translate() {
         type: "Type",
         name: "name",
         editType: "Edit Type",
+        save: "Save",
+        cancel: "Cancel",
       },
       customersOutput: {
         p1: "On the Customers settings page, you can perform the following actions:",
@@ -62,6 +64,12 @@ function translate() {
               "When editing a customer, you can change the prices for metal and bending in their data table.",
           },
         ],
+        addNew: "Add new",
+        tables: {
+          name: "Name",
+          lastEdit: "Last Edit",
+          lastOrder: "Last Order",
+        },
       },
       metalsOutput: {
         p1: "The Metal Settings Page allows you to manage different types of metals used in calculations. You can add new metal types and remove existing ones.",
@@ -78,6 +86,11 @@ function translate() {
           },
         ],
       },
+      editCustomerCmp: {
+        title: "Edit customer",
+        prices: "Prices",
+      },
+      addCustomer: "Add customer",
     },
     he: {
       drawings: "טיוטות",
@@ -96,6 +109,8 @@ function translate() {
         type: "סוג",
         name: "שם",
         editType: "ערוך סוג",
+        save: "שמור",
+        cancel: "בטל",
       },
       customersOutput: {
         p1: "בדף הגדרות לקוחות, תוכל לבצע את הפעולות הבאות:",
@@ -115,6 +130,12 @@ function translate() {
               "בעת עריכת לקוח, ניתן לשנות את המחירים של מתכת וכיפוף בטבלת הנתונים שלו.",
           },
         ],
+        addNew: "הוסף חדש",
+        tables: {
+          name: "שם",
+          lastEdit: "עריכה אחרונה",
+          lastOrder: "הזמנה אחרונה",
+        },
       },
       metalsOutput: {
         p1: "דף הגדרות המתכת מאפשר לך לנהל סוגים שונים של מתכות המשמשות בחישובים. ניתן להוסיף סוגי מתכת חדשים ולהסיר את הקיימים:",
@@ -131,6 +152,11 @@ function translate() {
           },
         ],
       },
+      editCustomerCmp: {
+        title: "ערוך לקוח",
+        prices: "מחירים",
+      },
+      addCustomer: "הוסף לקוח",
     },
   };
 }

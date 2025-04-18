@@ -23,6 +23,16 @@ import { langService } from "@/services/lang-service";
 export default defineComponent({
   name: "MetalList",
   components: { ItemListComponent },
+  data() {
+    return {
+      logic: useItemStoreControls<Metal & { id: string }>({
+        loadAction: "loadMetals",
+        saveAction: "saveMetal",
+        deleteAction: "deleteMetal",
+        editAction: "saveMetal",
+      }),
+    };
+  },
 
   computed: {
     translate() {
@@ -32,14 +42,6 @@ export default defineComponent({
     metals(): Array<Metal & { id: string }> {
       return this.$store.getters.getMetals;
     },
-    logic() {
-      const logic = useItemStoreControls<Metal & { id: string }>({
-        loadAction: "loadMetals",
-        saveAction: "saveMetal",
-        deleteAction: "deleteMetal",
-      });
-      return logic;
-    },
   },
 
   beforeMount() {
@@ -48,7 +50,7 @@ export default defineComponent({
 
   methods: {
     onEdit(value) {
-      console.log("selectedMetalIdForEdit", value);
+      this.logic.onEdit(value);
     },
   },
 });

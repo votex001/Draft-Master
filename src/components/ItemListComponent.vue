@@ -12,7 +12,7 @@
         />
       </section>
       <ActionToolbar
-        @ref="setRef"
+        @ref="setRefs"
         @search="onSearch"
         :btn-names="['Add', 'Edit', 'Delete']"
         :placeholder="placeholder"
@@ -62,7 +62,7 @@ export default defineComponent({
   },
   data() {
     return {
-      selectedItem: null as WithId | null,
+      selectedItem: null as WithId,
       isUnchangeable: false,
       dir: 1 as 1 | -1,
       searchValue: "",
@@ -101,8 +101,8 @@ export default defineComponent({
     onDelete() {
       this.$emit("delete", this.selectedItem?.id);
     },
-    setRef(ref) {
-      this.actionRef = ref;
+    setRefs(refs: Object[]) {
+      this.actionRef = refs;
     },
   },
   components: {

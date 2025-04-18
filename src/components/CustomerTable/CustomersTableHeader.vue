@@ -16,19 +16,23 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import ColumnHeader from "../ColumnHeader.vue";
+import { langService } from "@/services/lang-service";
 export default defineComponent({
   components: { ColumnHeader },
+  computed: {
+    names() {
+      const currentLang = langService.currentLang.value;
+      const translate = langService.translate[currentLang];
+      const { lastEdit, lastOrder, name } = translate.customersOutput.tables;
+      return { lastEdit, lastOrder, name };
+    },
+  },
   data() {
     return {
       arrows: {
         name: 1 as -1 | 1 | null,
         lastOrder: null as -1 | 1 | null,
         lastEdit: null as -1 | 1 | null,
-      },
-      names: {
-        name: "Name",
-        lastOrder: "Last order",
-        lastEdit: "Last edit",
       },
     };
   },

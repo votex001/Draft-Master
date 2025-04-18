@@ -17,7 +17,7 @@ async function getQuery({
 }: {
   dir?: 1 | -1;
   type?: string;
-}): Promise<MetalType[]> {
+} = {}): Promise<MetalType[]> {
   try {
     const metalTypes = loadMetalTypes();
 

@@ -70,4 +70,9 @@ export default defineComponent({
     }
   }
 }
+@media (max-width: 480px) {
+  .modal {
+    min-width: 100vw;
+  }
+}
 </style>

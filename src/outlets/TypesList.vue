@@ -34,6 +34,12 @@ export default defineComponent({
       checked: false,
       selectedId: "",
       selectedItem: null,
+      logic: useItemStoreControls<MetalType & { id: string }>({
+        loadAction: "loadMetalTypes",
+        saveAction: "saveMetalType",
+        deleteAction: "deleteMetalType",
+        editAction: "saveMetalType",
+      }),
     };
   },
 
@@ -44,14 +50,6 @@ export default defineComponent({
     },
     metalTypes(): Array<MetalType & { id: string }> {
       return this.$store.getters.getMetalTypes;
-    },
-    logic() {
-      return useItemStoreControls<MetalType & { id: string }>({
-        loadAction: "loadMetalTypes",
-        saveAction: "saveMetalType",
-        deleteAction: "deleteMetalType",
-        editAction: "saveMetalType",
-      });
     },
   },
 
@@ -69,7 +67,7 @@ export default defineComponent({
 
   methods: {
     onEdit(value) {
-      console.log("selectedMetalIdForEdit", value);
+      this.logic.onEdit(value);
     },
     onChangeBendingFee(newVal: boolean) {
       const { onEdit } = this.logic;

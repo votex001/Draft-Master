@@ -1,38 +1,42 @@
 import { ref } from "vue";
 import { useStore } from "vuex";
 
-type Dir = 1 | -1;
-
 export function useItemStoreControls<T>(options: {
   loadAction: string;
   editAction?: string;
   saveAction?: string;
   deleteAction?: string;
+  getById?: string;
 }) {
   const store = useStore();
-  const filter = ref<{ dir: 1 | -1; name: string }>({ dir: 1, name: "" });
+  const filter = ref<any>({});
 
-  const onQuery = (query?: { dir: 1 | -1; name: string }) => {
+  const onQuery = (query?: any) => {
     if (query) filter.value = query;
-    store.dispatch(options.loadAction, query);
+    return store.dispatch(options.loadAction, query);
   };
 
   const onAdd = (item: any) => {
-    store.dispatch(options.saveAction, item);
+    return store.dispatch(options.saveAction, item);
+  };
+  const getById = (id: string) => {
+    return store.dispatch(options.getById, id);
   };
 
   const onDelete = (id: string) => {
-    store.dispatch(options.deleteAction, id);
+    return store.dispatch(options.deleteAction, id);
   };
 
-  const onEdit = (item) => {
-    store.dispatch(options.editAction, item);
+  const onEdit = async (item) => {
+    const editedItem = await store.dispatch(options.editAction, item);
     onQuery();
+    return editedItem;
   };
 
   return {
     onQuery,
     onAdd,
+    getById,
     onDelete,
     onEdit,
   };
