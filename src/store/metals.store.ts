@@ -57,13 +57,10 @@ export const metalsStore = {
       }
     },
 
-    async deleteMetal({ commit, state }, id: string) {
+    async deleteMetal({ dispatch, state }, id: string) {
       try {
-        const success = await metalService.deleteById(id);
-        if (success) {
-          const updatedMetals = state.metals.filter((m: Metal) => m.id !== id);
-          commit("setMetals", updatedMetals);
-        }
+        await metalService.deleteById(id);
+        await dispatch("loadMetals", state.metalFilter);
       } catch (err) {
         throw err;
       }
@@ -87,15 +84,10 @@ export const metalsStore = {
       }
     },
 
-    async deleteMetalType({ commit, state }, id: string) {
+    async deleteMetalType({ dispatch, state }, id: string) {
       try {
-        const success = await metalTypesService.deleteById(id);
-        if (success) {
-          const updatedList = state.metalTypes.filter(
-            (t: MetalType) => t.id !== id
-          );
-          commit("setMetalTypes", updatedList);
-        }
+        await metalTypesService.deleteById(id);
+        await dispatch("loadMetalTypes", state.metalTypeFilter);
       } catch (err) {
         throw err;
       }
