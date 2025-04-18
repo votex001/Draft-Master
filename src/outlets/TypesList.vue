@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import ItemListComponent from "@/components/ItemListComponent.vue";
+import ItemListComponent from "@/components/item-mangment/ItemListComponent.vue";
 import { MetalType } from "@/models/metal.model";
 import { useItemStoreControls } from "@/services/useItemStoreControls";
 import { langService } from "@/services/lang-service";

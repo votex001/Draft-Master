@@ -31,8 +31,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import SearchCmp from "./SearchCmp.vue";
-import CheckBox from "./CheckBox.vue";
+import SearchCmp from "../shared/SearchCmp.vue";
+import CheckBox from "../shared/CheckBox.vue";
 export default defineComponent({
   props: {
     placeholder: { type: String, required: false, default: "" },

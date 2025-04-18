@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts">
-import LangBtn from "@/components/LangBtn.vue";
+import LangBtn from "@/components/header/LangBtn.vue";
 import { langService } from "@/services/lang-service";
 export default {
   computed: {

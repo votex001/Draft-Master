@@ -34,9 +34,9 @@
 </template>
 
 <script lang="ts">
-import ActionToolbar from "@/components/ActionToolbar.vue";
-import ColumnHeader from "@/components/ColumnHeader.vue";
-import ItemList from "@/components/ItemList.vue";
+import ActionToolbar from "@/components/item-mangment/ActionToolbar.vue";
+import ColumnHeader from "@/components/table-cmps/ColumnHeader.vue";
+import ItemList from "@/components/item-mangment/ItemList.vue";
 import { WithId } from "@/models/metal.model";
 import { defineComponent, PropType } from "vue";
 

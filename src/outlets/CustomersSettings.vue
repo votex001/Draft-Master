@@ -41,11 +41,11 @@
 </template>
 
 <script lang="ts">
-import AddCustomerCmp from "@/components/AddCustomerCmp.vue";
-import CustomersTableBody from "@/components/CustomerTable/CustomersTableBody.vue";
-import CustomersTableHeader from "@/components/CustomerTable/CustomersTableHeader.vue";
-import EditCustomerCmp from "@/components/EditCustomerCmp.vue";
-import SearchCmp from "@/components/SearchCmp.vue";
+import AddCustomerCmp from "@/components/modals/AddCustomerCmp.vue";
+import EditCustomerCmp from "@/components/modals/EditCustomerCmp.vue";
+import SearchCmp from "@/components/shared/SearchCmp.vue";
+import CustomersTableBody from "@/components/table-cmps/CustomerTable/CustomersTableBody.vue";
+import CustomersTableHeader from "@/components/table-cmps/CustomerTable/CustomersTableHeader.vue";
 import { Customer } from "@/models/custumer.model";
 import { langService } from "@/services/lang-service";
 import { useItemStoreControls } from "@/services/useItemStoreControls";

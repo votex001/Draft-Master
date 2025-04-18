@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
-import HeaderCmp from "@/components/HeaderCmp.vue";
-import SideBar from "@/components/SideBar.vue";
+import HeaderCmp from "@/components/header/HeaderCmp.vue";
+import SideBar from "@/components/shared/SideBar.vue";
 import { langService } from "@/services/lang-service";
 import { computed } from "vue";
 
@@ -35,20 +35,18 @@ export default {
     gap: 45px;
   }
 }
-@media (max-width:1000px) {
-  .settings{
-    .main{
+@media (max-width: 1000px) {
+  .settings {
+    .main {
       gap: 0;
     }
   }
-  
 }
 @media (max-width: 768px) {
-  .settings{
-    .main{
+  .settings {
+    .main {
       flex-direction: column;
     }
   }
-  
 }
 </style>
