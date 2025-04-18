@@ -103,9 +103,11 @@ export default defineComponent({
     }
     .btns {
       display: flex;
-      gap: 30px;
       padding: 5px 10px;
+      justify-content: space-around;
       .button {
+        display: grid;
+        place-content: center;
         cursor: pointer;
         background: none;
         border: none;
