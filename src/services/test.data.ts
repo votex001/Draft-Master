@@ -8,6 +8,7 @@ export const customers: Customer[] = [
     name: "Default",
     isUnchangeable: true,
     prices: {
+      "Bending price": 1,
       "Painted 0.4-1": 1,
       "Galvanized 0.4-1": 1,
       "Galvanized 1-4": 1,
@@ -19,6 +20,7 @@ export const customers: Customer[] = [
     id: makeId(),
     name: "John Smith",
     prices: {
+      "Bending price": 4.3,
       "Painted 0.4-1": 3.2,
       "Galvanized 0.4-1": 7.6,
       "Galvanized 1-4": 4.1,
@@ -30,6 +32,7 @@ export const customers: Customer[] = [
     id: makeId(),
     name: "Emma Johnson",
     prices: {
+      "Bending price": 2.5,
       "Painted 0.4-1": 9.9,
       "Galvanized 0.4-1": 2.3,
       "Galvanized 1-4": 8.7,
@@ -41,6 +44,7 @@ export const customers: Customer[] = [
     id: makeId(),
     name: "Olivia Davis",
     prices: {
+      "Bending price": 3.8,
       "Painted 0.4-1": 5.4,
       "Galvanized 0.4-1": 1.2,
       "Galvanized 1-4": 6.9,
@@ -52,6 +56,7 @@ export const customers: Customer[] = [
     id: makeId(),
     name: "Michael Brown",
     prices: {
+      "Bending price": 7.2,
       "Painted 0.4-1": 7.1,
       "Galvanized 0.4-1": 3.8,
       "Galvanized 1-4": 2.6,
@@ -63,6 +68,7 @@ export const customers: Customer[] = [
     id: makeId(),
     name: "Sophia Wilson",
     prices: {
+      "Bending price": 5.7,
       "Painted 0.4-1": 0.5,
       "Galvanized 0.4-1": 6.3,
       "Galvanized 1-4": 5.5,
@@ -74,6 +80,7 @@ export const customers: Customer[] = [
     id: "9d39b3ce-1c8d-46f5-8e96-7e20f10d1906",
     name: "James Miller",
     prices: {
+      "Bending price": 6.1,
       "Painted 0.4-1": 4.4,
       "Galvanized 0.4-1": 8.8,
       "Galvanized 1-4": 0.9,
@@ -85,6 +92,7 @@ export const customers: Customer[] = [
     id: makeId(),
     name: "Isabella Martinez",
     prices: {
+      "Bending price": 1.9,
       "Painted 0.4-1": 9.1,
       "Galvanized 0.4-1": 2.2,
       "Galvanized 1-4": 7.3,
@@ -96,6 +104,7 @@ export const customers: Customer[] = [
     id: makeId(),
     name: "William Anderson",
     prices: {
+      "Bending price": 3.6,
       "Painted 0.4-1": 1.9,
       "Galvanized 0.4-1": 9.7,
       "Galvanized 1-4": 3.0,
@@ -107,6 +116,7 @@ export const customers: Customer[] = [
     id: makeId(),
     name: "Mia Taylor",
     prices: {
+      "Bending price": 4.9,
       "Painted 0.4-1": 6.5,
       "Galvanized 0.4-1": 4.6,
       "Galvanized 1-4": 1.1,
@@ -118,14 +128,16 @@ export const customers: Customer[] = [
     id: makeId(),
     name: "Eugene Sagas",
     prices: {
-      "Painted 0.4-1": 6.5,
-      "Galvanized 0.4-1": 4.6,
-      "Galvanized 1-4": 1.1,
+      "Bending price": 3.3,
+      "Painted 0.4-1": 6.3,
+      "Galvanized 0.4-1": 4.2,
+      "Galvanized 1-4": 1.7,
     },
     lastOrder: Math.floor(Math.random() * 1000000000000),
     lastEdit: Math.floor(Math.random() * 1000000000000),
   },
 ];
+
 
 export const metals = [
   { id: makeId(), isUnchangeable: true, name: "Default" },
