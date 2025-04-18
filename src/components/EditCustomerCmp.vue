@@ -180,6 +180,7 @@ export default defineComponent({
         display: flex;
         gap: 20px;
         margin: 12px;
+        text-wrap: nowrap;
         .input {
           border: 1px solid var(--black);
           border-radius: 6px;
@@ -194,9 +195,16 @@ export default defineComponent({
   justify-content: flex-end;
   padding: 20px;
   gap: 20px;
-  
+
   &.he {
     flex-direction: row-reverse;
+  }
+}
+
+@media (max-width: 768px) {
+  .edit-customer{
+    width: 100%;
+    padding: 20px;
   }
 }
 </style>
