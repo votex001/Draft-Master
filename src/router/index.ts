@@ -2,12 +2,13 @@ import CustomersSettings from "@/outlets/CustomersSettings.vue";
 import MetalsList from "@/outlets/MetalsList.vue";
 import MetalsSettings from "@/outlets/MetalsSettings.vue";
 import TypesList from "@/outlets/TypesList.vue";
+import Drawings from "@/views/Drawings.vue";
 import Home from "@/views/Home.vue";
 import Settings from "@/views/Settings.vue";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 const routes: RouteRecordRaw[] = [
   { path: "/", component: Home },
-  { path: "/drawings", component: Home },
+  { path: "/drawings", component: Drawings },
   {
     path: "/settings",
     component: Settings,

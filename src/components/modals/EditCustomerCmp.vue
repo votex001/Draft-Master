@@ -63,8 +63,7 @@ export default defineComponent({
       return langService.currentLang.value;
     },
     translate() {
-      const currentLang = langService.currentLang.value;
-      return langService.translate[currentLang];
+      return langService.translate.value;
     },
   },
   data() {

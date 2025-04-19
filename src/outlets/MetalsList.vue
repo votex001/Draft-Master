@@ -36,8 +36,8 @@ export default defineComponent({
 
   computed: {
     translate() {
-      const currentLang = langService.currentLang.value;
-      return langService.translate[currentLang];
+      return langService.translate.value;
+
     },
     metals(): Array<Metal & { id: string }> {
       return this.$store.getters.getMetals;

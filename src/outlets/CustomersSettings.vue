@@ -72,8 +72,7 @@ export default defineComponent({
   },
   computed: {
     translate() {
-      const currentLang = langService.currentLang.value;
-      return langService.translate[currentLang];
+      return langService.translate.value;
     },
     currentCustomer() {
       return this.$store.getters.getCurrentCustomer;

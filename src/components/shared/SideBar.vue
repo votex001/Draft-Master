@@ -36,7 +36,7 @@ export default defineComponent({
       return langService.currentLang.value;
     },
     translate() {
-      return langService.translate[this.currentLang];
+      return langService.translate.value;
     },
   },
 });

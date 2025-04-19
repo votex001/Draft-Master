@@ -1,12 +1,13 @@
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const currentLang = ref(checkCurrentLang());
+const translation = translate();
 
 export const langService = {
   currentLang,
   checkCurrentLang,
   changeLang,
-  translate: translate(),
+  translate: computed(() => translation[currentLang.value]),
 };
 
 function checkCurrentLang(): "en" | "he" {

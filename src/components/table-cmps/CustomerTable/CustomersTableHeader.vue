@@ -21,8 +21,7 @@ export default defineComponent({
   components: { ColumnHeader },
   computed: {
     names() {
-      const currentLang = langService.currentLang.value;
-      const translate = langService.translate[currentLang];
+      const translate =  langService.translate.value;
       const { lastEdit, lastOrder, name } = translate.customersOutput.tables;
       return { lastEdit, lastOrder, name };
     },
