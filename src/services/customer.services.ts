@@ -60,6 +60,11 @@ async function getById(id: string): Promise<Customer | null> {
       return acc;
     }, {});
     customer.prices = { ...prices, ...customer.prices };
+    for(const key in customer.prices){
+      if(!prices.hasOwnProperty(key) && key !=="Bending price"){
+        delete customer.prices[key]
+      }
+    }
     return _delay(customer);
   } catch (err) {
     console.log(err);
