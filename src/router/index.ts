@@ -2,13 +2,14 @@ import CustomersSettings from "@/outlets/CustomersSettings.vue";
 import MetalsList from "@/outlets/MetalsList.vue";
 import MetalsSettings from "@/outlets/MetalsSettings.vue";
 import TypesList from "@/outlets/TypesList.vue";
+import { langService } from "@/services/lang-service";
 import Drawings from "@/views/Drawings.vue";
 import Home from "@/views/Home.vue";
 import Settings from "@/views/Settings.vue";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 const routes: RouteRecordRaw[] = [
   { path: "/", component: Home },
-  { path: "/drawings", component: Drawings, meta: { title: "Drawings" } },
+  { path: "/drawings", component: Drawings, meta: { title: "drawings" } },
   {
     path: "/settings",
     component: Settings,
@@ -16,7 +17,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: "",
         component: CustomersSettings,
-        meta: { title: "Settings | Customers" },
+        meta: { title: "customersSettings" },
       },
       {
         path: "metals",
@@ -25,19 +26,19 @@ const routes: RouteRecordRaw[] = [
           {
             path: "",
             component: MetalsList,
-            meta: { title: "Settings | Metals" },
+            meta: { title: "metalsSettings" },
           },
           {
             path: "types",
             component: TypesList,
-            meta: { title: "Settings | Types" },
+            meta: { title: "typesSettings" },
           },
         ],
       },
       {
         path: "customer/:id",
         component: CustomersSettings,
-        meta: { title: "Settings | Customers" },
+        meta: { title: "customerSettings" },
       },
     ],
   },
@@ -48,8 +49,10 @@ const router = createRouter({
   routes,
 });
 router.beforeEach((to, from, next) => {
-  const title = (to.meta.title as string) || "Draft Master";
-  document.title = title;
+  const t = langService.translate.value;
+
+  const metaTitleKey = to.meta.title as keyof typeof t.documentTitles;
+  document.title = t.documentTitles?.[metaTitleKey] || "Draft Master";
   next();
 });
 export default router;

@@ -30,6 +30,13 @@ function translate() {
       drawings: "drawings",
       settings: "settings",
       search: "Search",
+      documentTitles: {
+        customersSettings: "Settings | Customers",
+        metalsSettings: "Settings | Metals",
+        typesSettings: "Settings | Types",
+        customer: "Customer",
+        drawings: "Drawings",
+      },
       home: {
         h1: "Welcome to DraftMaster.",
         p: "The ultimate tool for creating metal list drawings and calculating sheet sizes. Start your project today!",
@@ -45,6 +52,9 @@ function translate() {
         editType: "Edit Type",
         save: "Save",
         cancel: "Cancel",
+      },
+      drawingsPage: {
+        title: "Drawings List",
       },
       customersOutput: {
         p1: "On the Customers settings page, you can perform the following actions:",
@@ -97,6 +107,13 @@ function translate() {
       drawings: "טיוטות",
       settings: "הגדרות",
       search: "חיפוש",
+      documentTitles: {
+        customersSettings: "הגדרות | לקוחות",
+        metalsSettings: "הגדרות | מתכות",
+        typesSettings: "הגדרות | סוגים",
+        customer: "לקוח",
+        drawings: "טיוטות",
+      },
       home: {
         h1: "ברוכים הבאים ל-DraftMaster.",
         p: "הכלי האולטימטיבי ליצירת שרטוטי רשימת מתכת וחישוב גדלי גיליון. התחל את הפרויקט שלך עוד היום!",
@@ -113,6 +130,7 @@ function translate() {
         save: "שמור",
         cancel: "בטל",
       },
+      drawingsPage: {},
       customersOutput: {
         p1: "בדף הגדרות לקוחות, תוכל לבצע את הפעולות הבאות:",
         ul: [

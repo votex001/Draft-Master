@@ -122,7 +122,7 @@ export default defineComponent({
     },
     updatePageTitle() {
       if (this.currentCustomer && this.currentCustomer.name) {
-        document.title = `${this.currentCustomer.name} | Customer`;
+        document.title = `${this.currentCustomer.name} | ${this.translate.documentTitles.customer}`;
       }
     },
   },
