@@ -54,12 +54,14 @@ async function getById(id: string): Promise<Customer | null> {
     if (!customer) {
       return _delay(null);
     }
+    // add all types to user
     const types = await metalTypesService.getQuery();
     const prices = types.reduce((acc, t) => {
       acc[t.type] = 1;
       return acc;
     }, {});
     customer.prices = { ...prices, ...customer.prices };
+    // removes from user types thats i don`t have
     for(const key in customer.prices){
       if(!prices.hasOwnProperty(key) && key !=="Bending price"){
         delete customer.prices[key]
