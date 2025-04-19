@@ -88,12 +88,18 @@ export default defineComponent({
       },
       deep: true,
     },
-    "$route.params.id"(newId) {
-      this.service.getById(newId);
+    "$route.params.id": {
+      handler(newId) {
+        this.service.getById(newId);
+      },
+      immediate: true,
     },
-  },
-  mounted() {
-    this.service.getById(this.$route.params.id);
+    currentCustomer: {
+      handler() {
+        this.updatePageTitle();
+      },
+      immediate: true,
+    },
   },
   methods: {
     navigateTo(path: string) {
@@ -114,10 +120,16 @@ export default defineComponent({
       this.service.onEdit(customer);
       this.navigateTo("/settings");
     },
+    updatePageTitle() {
+      if (this.currentCustomer && this.currentCustomer.name) {
+        document.title = `${this.currentCustomer.name} | Customer`;
+      }
+    },
   },
   beforeMount() {
     this.service.onQuery();
   },
+
   components: {
     SearchCmp,
     CustomersTableHeader,
