@@ -119,9 +119,6 @@ export default {
       flex-direction: column;
       width: 440px;
       gap: 30px;
-      &.he {
-        align-self: flex-end;
-      }
       .title {
         font-size: 64px;
         font-weight: 600;

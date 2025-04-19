@@ -22,6 +22,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   emits: ["search"],
   computed: {
+    
     translate() {
       return langService.translate.value;
     },
@@ -42,6 +43,7 @@ export default defineComponent({
 <style scoped lang="scss">
 .search {
   display: flex;
+
   width: 400px;
   border-radius: 32px;
   border: 1px solid var(--black);
@@ -67,6 +69,7 @@ export default defineComponent({
     border: none;
     padding: 8px 16px;
     max-height: min-content;
+    border-radius: 0;
     .img {
       width: 16px;
       height: 16px;

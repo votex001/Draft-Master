@@ -16,8 +16,8 @@
   --home-bg-img: url("imgs/home-page/Home-bg.svg");
   --home-bg-img-dark: url("imgs/home-page/Home-bg-dark.svg");
 }
-* {
-  &.he {
+.he {
+  * {
     direction: rtl;
   }
 }

@@ -1,11 +1,19 @@
-
 <template>
-    <section class="wrapper">
-      <router-view />
-    </section>
+  <section class="wrapper" :class="{ he: currentLang === 'he' }">
+    <router-view />
+  </section>
 </template>
-<script></script>
 
-<style scoped lang="scss">
+<script lang="ts">
+import { defineComponent } from "vue";
+import { langService } from "./services/lang-service";
+export default defineComponent({
+  computed: {
+    currentLang() {
+      return langService.currentLang.value;
+    },
+  },
+});
+</script>
 
-</style>
+<style scoped lang="scss"></style>
