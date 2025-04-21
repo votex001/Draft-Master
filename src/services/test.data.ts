@@ -1,10 +1,9 @@
 import { Customer } from "@/models/custumer.model";
 import { MetalType } from "@/models/metal.model";
-import { makeId } from "./customer.services";
 
 export const customers: Customer[] = [
   {
-    id: makeId(),
+    id: "xJ6aLxP9sZ",
     name: "Default",
     isUnchangeable: true,
     prices: {
@@ -17,7 +16,7 @@ export const customers: Customer[] = [
     lastEdit: null,
   },
   {
-    id: makeId(),
+    id: "Q9xg4M2pWh",
     name: "John Smith",
     prices: {
       "Bending price": 4.3,
@@ -25,11 +24,11 @@ export const customers: Customer[] = [
       "Galvanized 0.4-1": 7.6,
       "Galvanized 1-4": 4.1,
     },
-    lastOrder: Math.floor(Math.random() * 1000000000000),
-    lastEdit: Math.floor(Math.random() * 1000000000000),
+    lastOrder: 823431972153,
+    lastEdit: 342498435092,
   },
   {
-    id: makeId(),
+    id: "GdX4zJkE2R",
     name: "Emma Johnson",
     prices: {
       "Bending price": 2.5,
@@ -37,11 +36,11 @@ export const customers: Customer[] = [
       "Galvanized 0.4-1": 2.3,
       "Galvanized 1-4": 8.7,
     },
-    lastOrder: Math.floor(Math.random() * 1000000000000),
-    lastEdit: Math.floor(Math.random() * 1000000000000),
+    lastOrder: 682394782173,
+    lastEdit: 239847129378,
   },
   {
-    id: makeId(),
+    id: "ZkLm3W0xYT",
     name: "Olivia Davis",
     prices: {
       "Bending price": 3.8,
@@ -49,11 +48,11 @@ export const customers: Customer[] = [
       "Galvanized 0.4-1": 1.2,
       "Galvanized 1-4": 6.9,
     },
-    lastOrder: Math.floor(Math.random() * 1000000000000),
-    lastEdit: Math.floor(Math.random() * 1000000000000),
+    lastOrder: 492738471923,
+    lastEdit: 981273498123,
   },
   {
-    id: makeId(),
+    id: "BvQ2MnYxF8",
     name: "Michael Brown",
     prices: {
       "Bending price": 7.2,
@@ -61,11 +60,11 @@ export const customers: Customer[] = [
       "Galvanized 0.4-1": 3.8,
       "Galvanized 1-4": 2.6,
     },
-    lastOrder: Math.floor(Math.random() * 1000000000000),
-    lastEdit: Math.floor(Math.random() * 1000000000000),
+    lastOrder: 321934871237,
+    lastEdit: 948217349812,
   },
   {
-    id: makeId(),
+    id: "NcW5eOzR1K",
     name: "Sophia Wilson",
     prices: {
       "Bending price": 5.7,
@@ -73,8 +72,8 @@ export const customers: Customer[] = [
       "Galvanized 0.4-1": 6.3,
       "Galvanized 1-4": 5.5,
     },
-    lastOrder: Math.floor(Math.random() * 1000000000000),
-    lastEdit: Math.floor(Math.random() * 1000000000000),
+    lastOrder: 792134781273,
+    lastEdit: 349812374982,
   },
   {
     id: "9d39b3ce-1c8d-46f5-8e96-7e20f10d1906",
@@ -85,11 +84,11 @@ export const customers: Customer[] = [
       "Galvanized 0.4-1": 8.8,
       "Galvanized 1-4": 0.9,
     },
-    lastOrder: Math.floor(Math.random() * 1000000000000),
-    lastEdit: Math.floor(Math.random() * 1000000000000),
+    lastOrder: 812374982374,
+    lastEdit: 127348912873,
   },
   {
-    id: makeId(),
+    id: "XqP7bCvW4M",
     name: "Isabella Martinez",
     prices: {
       "Bending price": 1.9,
@@ -97,11 +96,11 @@ export const customers: Customer[] = [
       "Galvanized 0.4-1": 2.2,
       "Galvanized 1-4": 7.3,
     },
-    lastOrder: Math.floor(Math.random() * 1000000000000),
-    lastEdit: Math.floor(Math.random() * 1000000000000),
+    lastOrder: 974812374982,
+    lastEdit: 192837491827,
   },
   {
-    id: makeId(),
+    id: "FsW8NdCz9T",
     name: "William Anderson",
     prices: {
       "Bending price": 3.6,
@@ -109,11 +108,11 @@ export const customers: Customer[] = [
       "Galvanized 0.4-1": 9.7,
       "Galvanized 1-4": 3.0,
     },
-    lastOrder: Math.floor(Math.random() * 1000000000000),
-    lastEdit: Math.floor(Math.random() * 1000000000000),
+    lastOrder: 812739128374,
+    lastEdit: 492837491823,
   },
   {
-    id: makeId(),
+    id: "DpR3zBqXL7",
     name: "Mia Taylor",
     prices: {
       "Bending price": 4.9,
@@ -121,11 +120,11 @@ export const customers: Customer[] = [
       "Galvanized 0.4-1": 4.6,
       "Galvanized 1-4": 1.1,
     },
-    lastOrder: Math.floor(Math.random() * 1000000000000),
-    lastEdit: Math.floor(Math.random() * 1000000000000),
+    lastOrder: 123847129384,
+    lastEdit: 897123894712,
   },
   {
-    id: makeId(),
+    id: "EtY9VxLmP3",
     name: "Eugene Sagas",
     prices: {
       "Bending price": 3.3,
@@ -133,35 +132,38 @@ export const customers: Customer[] = [
       "Galvanized 0.4-1": 4.2,
       "Galvanized 1-4": 1.7,
     },
-    lastOrder: Math.floor(Math.random() * 1000000000000),
-    lastEdit: Math.floor(Math.random() * 1000000000000),
+    lastOrder: 129384129384,
+    lastEdit: 897234982134,
   },
 ];
 
-
 export const metals = [
-  { id: makeId(), isUnchangeable: true, name: "Default" },
-  { id: makeId(), name: "Aluminum" },
-  { id: makeId(), name: "Steel" },
-  { id: makeId(), name: "Copper" },
-  { id: makeId(), name: "Brass" },
-  { id: makeId(), name: "Titanium" },
-  { id: makeId(), name: "Zinc" },
-  { id: makeId(), name: "Iron" },
-  { id: makeId(), name: "Nickel" },
-  { id: makeId(), name: "Bronze" },
-  { id: makeId(), name: "Stainless Steel" },
+  { id: "XrL4wZp3Bn", isUnchangeable: true, name: "Default" },
+  { id: "YwP5cMnR8Q", name: "Aluminum" },
+  { id: "TaK3jUyL2D", name: "Steel" },
+  { id: "LzE1bFnX9K", name: "Copper" },
+  { id: "HwQ7mKrC6Z", name: "Brass" },
+  { id: "RtU8oPsJ5N", name: "Titanium" },
+  { id: "MuA2zBcQ4L", name: "Zinc" },
+  { id: "OjW3vHtY8M", name: "Iron" },
+  { id: "KpX6yVrN1S", name: "Nickel" },
+  { id: "ZtR9wXqF7E", name: "Bronze" },
+  { id: "CmV5uXyP2B", name: "Stainless Steel" },
 ];
 
 export const metalTypes: MetalType[] = [
   {
-    id: makeId(),
+    id: "SxM8jLuT4Q",
     type: "Default",
     isUnchangeable: true,
     paymentPerBending: false,
   },
-  { id: makeId(), type: "Painted 0.4-1", paymentPerBending: true },
-  { id: makeId(), type: "Galvanized 0.4-1", paymentPerBending: true },
-  { id: makeId(), type: "Galvanized 1-4", paymentPerBending: false },
-  { id: makeId(), type: "Aluminum 0.4-1", paymentPerBending: false },
+  { id: "AeN1vZrC5K", type: "Painted 0.4-1", paymentPerBending: true },
+  { id: "VtX3yWpE9L", type: "Galvanized 0.4-1", paymentPerBending: true },
+  { id: "BnW7lKsM2D", type: "Galvanized 1-4", paymentPerBending: false },
+  { id: "LuP6zNkF3R", type: "Aluminum 0.4-1", paymentPerBending: false },
 ];
+
+
+
+export const  drawings = [{}]
