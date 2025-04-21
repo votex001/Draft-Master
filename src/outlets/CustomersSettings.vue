@@ -18,7 +18,7 @@
       <section class="nav-tools">
         <SearchCmp @search="onSearch" />
         <button class="btn" @click="isAdding = true">
-          {{ translate.customersOutput.addNew }}
+          {{ translate.addNew }}
         </button>
       </section>
       <section class="customers-list">
@@ -44,8 +44,8 @@
 import AddCustomerCmp from "@/components/modals/AddCustomerCmp.vue";
 import EditCustomerCmp from "@/components/modals/EditCustomerCmp.vue";
 import SearchCmp from "@/components/shared/SearchCmp.vue";
-import CustomersTableBody from "@/components/table-cmps/CustomerTable/CustomersTableBody.vue";
-import CustomersTableHeader from "@/components/table-cmps/CustomerTable/CustomersTableHeader.vue";
+import CustomersTableBody from "@/components/table-cmps/customer-table/CustomersTableBody.vue";
+import CustomersTableHeader from "@/components/table-cmps/customer-table/CustomersTableHeader.vue";
 import { Customer } from "@/models/custumer.model";
 import { langService } from "@/services/lang-service";
 import { useItemStoreControls } from "@/services/useItemStoreControls";
