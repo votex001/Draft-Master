@@ -55,6 +55,7 @@ function translate() {
       },
       drawingsPage: {
         title: "Drawings List",
+        p: "Here you can view all your saved drafts. Manage your drafts with ease by using the search bar to find specific drafts, and use the buttons below to add new drafts, edit existing ones, or delete drafts you no longer need.",
       },
       customersOutput: {
         p1: "On the Customers settings page, you can perform the following actions:",
@@ -130,7 +131,10 @@ function translate() {
         save: "שמור",
         cancel: "בטל",
       },
-      drawingsPage: {},
+      drawingsPage: {
+        title: "רשימת טיוטות",
+        p: "כאן תוכל להציג את כל הטיוטות השמורות שלך. נהל את הטיוטות שלך בקלות על ידי שימוש בסרגל החיפוש כדי למצוא טיוטות ספציפיות, והשתמש בלחצנים למטה כדי להוסיף טיוטות חדשות, לערוך טיוטות קיימות או למחוק טיוטות שאינך צריך עוד.",
+      },
       customersOutput: {
         p1: "בדף הגדרות לקוחות, תוכל לבצע את הפעולות הבאות:",
         ul: [
