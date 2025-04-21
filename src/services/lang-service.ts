@@ -76,13 +76,13 @@ function translate() {
               "When editing a customer, you can change the prices for metal and bending in their data table.",
           },
         ],
-        addNew: "Add new",
         tables: {
           name: "Name",
           lastEdit: "Last Edit",
           lastOrder: "Last Order",
         },
       },
+      addNew: "Add new",
       metalsOutput: {
         p1: "The Metal Settings Page allows you to manage different types of metals used in calculations. You can add new metal types and remove existing ones.",
         ul: [
@@ -153,13 +153,13 @@ function translate() {
               "בעת עריכת לקוח, ניתן לשנות את המחירים של מתכת וכיפוף בטבלת הנתונים שלו.",
           },
         ],
-        addNew: "הוסף חדש",
         tables: {
           name: "שם",
           lastEdit: "עריכה אחרונה",
           lastOrder: "הזמנה אחרונה",
         },
       },
+      addNew: "הוסף חדש",
       metalsOutput: {
         p1: "דף הגדרות המתכת מאפשר לך לנהל סוגים שונים של מתכות המשמשות בחישובים. ניתן להוסיף סוגי מתכת חדשים ולהסיר את הקיימים:",
         ul: [
