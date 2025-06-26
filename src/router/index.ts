@@ -3,13 +3,14 @@ import MetalsList from "@/outlets/MetalsList.vue";
 import MetalsSettings from "@/outlets/MetalsSettings.vue";
 import TypesList from "@/outlets/TypesList.vue";
 import { langService } from "@/services/lang-service";
-import Drawings from "@/views/Drawings.vue";
+import Draft from "@/views/Draft.vue";
+import Drafts from "@/views/Drafts.vue";
 import Home from "@/views/Home.vue";
 import Settings from "@/views/Settings.vue";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 const routes: RouteRecordRaw[] = [
   { path: "/", component: Home },
-  { path: "/drawings", component: Drawings, meta: { title: "drawings" } },
+  { path: "/drafts", component: Drafts, meta: { title: "drafts" } },
   {
     path: "/settings",
     component: Settings,
@@ -41,6 +42,12 @@ const routes: RouteRecordRaw[] = [
         meta: { title: "customerSettings" },
       },
     ],
+  },
+  {
+    path: "/draft",
+    component: Draft,
+    meta: { title: "newDraft" },
+    children: [{ path: "new-draft", component: Draft }],
   },
 ];
 
