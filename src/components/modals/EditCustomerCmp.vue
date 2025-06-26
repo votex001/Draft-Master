@@ -1,5 +1,5 @@
 <template>
-  <Modal :title="translate.editCustomerCmp.title" @close="onClose">
+  <Modal :title="translate.editCustomerCmp.title" @close="$emit('close')">
     <main class="edit-customer">
       <div class="editable-wrapper" ref="wrapper">
         <h1
@@ -82,9 +82,6 @@ export default defineComponent({
     document.removeEventListener("click", this.onClickOutside);
   },
   methods: {
-    onClose() {
-      this.$emit("close");
-    },
     onInputName(event: Event) {
       const target = event.target as HTMLElement;
       this.name = target.textContent || "";
@@ -201,7 +198,7 @@ export default defineComponent({
 }
 
 @media (max-width: 768px) {
-  .edit-customer{
+  .edit-customer {
     width: 100%;
     padding: 20px;
   }
