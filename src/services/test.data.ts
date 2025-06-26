@@ -1,4 +1,5 @@
 import { Customer } from "@/models/custumer.model";
+import { Draft } from "@/models/drafts.model";
 import { MetalType } from "@/models/metal.model";
 
 export const customers: Customer[] = [
@@ -164,7 +165,7 @@ export const metalTypes: MetalType[] = [
   { id: "LuP6zNkF3R", type: "Aluminum 0.4-1", paymentPerBending: false },
 ];
 
-export const drawings: Drawing[] = [
+export const drafts: Draft[] = [
   {
     customerName: "John Smith",
     customerId: "Q9xg4M2pWh",

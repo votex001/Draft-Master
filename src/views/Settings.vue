@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import HeaderCmp from "@/components/header/HeaderCmp.vue";
+import HeaderCmp from "@/components/headers/HeaderCmp.vue";
 import SideBar from "@/components/shared/SideBar.vue";
 import { langService } from "@/services/lang-service";
 

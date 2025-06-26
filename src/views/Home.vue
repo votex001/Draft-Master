@@ -19,8 +19,8 @@
         </picture>
         <section class="btns">
           <nav class="navigation">
-            <router-link class="nav-link" to="/drawings">
-              {{ translate.drawings }}</router-link
+            <router-link class="nav-link" to="/drafts">
+              {{ translate.drafts }}</router-link
             >
             <router-link class="nav-link" to="/settings">
               {{ translate.settings }}
@@ -36,7 +36,7 @@
           </h1>
           <p class="text">{{ translate.home.p }}</p>
         </section>
-        <router-link to="/drawings" class="btn">{{
+        <router-link to="/drafts" class="btn">{{
           translate.home.btn
         }}</router-link>
       </main>
@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts">
-import LangBtn from "@/components/header/LangBtn.vue";
+import LangBtn from "@/components/headers/LangBtn.vue";
 import { langService } from "@/services/lang-service";
 export default {
   computed: {
