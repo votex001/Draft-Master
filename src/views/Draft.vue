@@ -2,11 +2,13 @@
   <HeaderCmp />
   <main>
     <DraftHeader :title="draft.customerName" />
-    <section>{{ draft }}</section>
+    <main>{{ draft }}</main>
+    <DraftFooter :metals="draft.metals" :total-price="draft.totalPrice"/>
   </main>
 </template>
 
 <script lang="ts">
+import DraftFooter from "@/components/footers/DraftFooter.vue";
 import DraftHeader from "@/components/headers/DraftHeader.vue";
 import HeaderCmp from "@/components/headers/HeaderCmp.vue";
 import { defineComponent } from "vue";
@@ -15,6 +17,7 @@ export default defineComponent({
   components: {
     HeaderCmp,
     DraftHeader,
+    DraftFooter,
   },
   computed: {
     draft() {
