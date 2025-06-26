@@ -27,7 +27,7 @@ function changeLang(lang: "en" | "he") {
 function translate() {
   return {
     en: {
-      drawings: "drawings",
+      drafts: "drafts",
       settings: "settings",
       search: "Search",
       documentTitles: {
@@ -35,11 +35,12 @@ function translate() {
         metalsSettings: "Settings | Metals",
         typesSettings: "Settings | Types",
         customer: "Customer",
-        drawings: "Drawings",
+        drafts: "Drawings",
+        newDraft: "New Draft",
       },
       home: {
         h1: "Welcome to DraftMaster.",
-        p: "The ultimate tool for creating metal list drawings and calculating sheet sizes. Start your project today!",
+        p: "The ultimate tool for creating metal list drafts and calculating sheet sizes. Start your project today!",
         btn: "Go to Drawings",
       },
       settingsPage: {
@@ -112,7 +113,7 @@ function translate() {
       addCustomer: "Add customer",
     },
     he: {
-      drawings: "טיוטות",
+      drafts: "טיוטות",
       settings: "הגדרות",
       search: "חיפוש",
       documentTitles: {
@@ -120,7 +121,8 @@ function translate() {
         metalsSettings: "הגדרות | מתכות",
         typesSettings: "הגדרות | סוגים",
         customer: "לקוח",
-        drawings: "טיוטות",
+        drafts: "טיוטות",
+        newDraft: "טיוטה חדשה",
       },
       home: {
         h1: "ברוכים הבאים ל-DraftMaster.",
