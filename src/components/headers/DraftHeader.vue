@@ -21,7 +21,7 @@ export default defineComponent({
   props: { title: { type: String, required: true } },
 });
 </script>
-
+<!-- TODO translate -->
 <style scoped lang="scss">
 .draft-header {
   width: 100%;
