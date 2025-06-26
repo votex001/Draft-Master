@@ -1,4 +1,4 @@
-interface Drawing {
+export interface Draft {
   customerName: string;
   customerId: string;
   metals: {
