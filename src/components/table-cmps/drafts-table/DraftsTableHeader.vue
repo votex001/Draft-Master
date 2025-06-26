@@ -1,5 +1,5 @@
 <template>
-  <section class="drawings-table-header">
+  <section class="drafts-table-header">
     <ColumnHeader
       v-for="key in Object.keys(arrows)"
       :key="key"
@@ -51,24 +51,32 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.drawings-table-header {
+.drafts-table-header {
+  margin-top: 10px;
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: subgrid;
   margin-bottom: 1px;
   background-color: var(--white);
+  box-shadow: 0px 4px 4px var(--divider);
+  text-wrap: nowrap;
   & > * {
-    box-shadow: 0px 4px 4px var(--divider);
+    border-right: 1px solid var(--divider);
   }
 }
-@media (max-width: 1000px) {
-  .drawings-table-header {
-    & > * {
+@media (max-width: 768px) {
+  .drafts-table-header {
+    & > :nth-child(5),
+    & > :nth-child(4),
+    & > :last-child {
       display: none;
     }
-    & > :first-child,
-    & > :last-child {
-      display: flex; // show only first and last
+  }
+}
+@media (max-width: 480px) {
+  .drafts-table-header {
+    & > :nth-child(2) {
+      display: none;
     }
   }
 }
