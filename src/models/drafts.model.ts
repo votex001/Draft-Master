@@ -15,5 +15,11 @@ export interface DraftMetal {
   width: number;
   price: number;
   deployment: number;
-  bendings: { bendingNum: number; width: number }[];
+  bendings: Bendings | [];
+  bendingFee: boolean;
 }
+
+export interface Bendings {
+  bendingNum: number;
+  width: number;
+}[];
