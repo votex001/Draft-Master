@@ -24,7 +24,21 @@ export const draftStore = {
       const newDraft: Draft = {
         customerId: customer.id,
         customerName: customer.name,
-        metals: [],
+        metals: [
+          {
+            amount: 6,
+            bendings: [],
+            deployment: 0.33,
+            metalPrice: customer.prices["Default"] | 1,
+            name: "Default",
+            paymentPerBending: customer.prices["Bending price"] | 1,
+            price: 0,
+            type: "Default",
+            width: 3,
+            bendingFee: true ,
+            metalThickness: 0.5,
+          },
+        ],
         totalPrice: 0,
       };
       commit("setCurrentDraft", newDraft);
