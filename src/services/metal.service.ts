@@ -1,10 +1,18 @@
 import { metals } from "./test.data";
 import { Metal } from "@/models/metal.model";
 import { makeId } from "./customer.services";
+import { Bendings } from "@/models/drafts.model";
 const STORAGE_KEY = "metals";
 const DELAY = 500;
 
-export const metalService = { getQuery, getById, saveMetal, deleteById };
+export const metalService = {
+  getQuery,
+  getById,
+  saveMetal,
+  deleteById,
+  getMetalSummary,
+  getTotalPriceFromMetals,
+};
 
 async function getQuery({
   dir = 1,
@@ -89,6 +97,55 @@ async function deleteById(id: string) {
 function loadMetals(): Metal[] {
   const data = localStorage.getItem(STORAGE_KEY);
   return data ? JSON.parse(data) : metals;
+}
+
+interface metalStats {
+  name: string;
+  deployment: number;
+  amount: number;
+  width: number;
+  paymentPerBending: number;
+  bendings: Bendings[];
+  metalThickness: number;
+  price: number;
+}
+
+function getMetalSummary(metalStats: metalStats) {
+  const totalArea = (
+    metalStats.deployment *
+    metalStats.amount *
+    metalStats.width
+  ).toFixed(2);
+  const bendingFee =
+    metalStats.paymentPerBending *
+    metalStats.bendings.length *
+    metalStats.amount;
+
+  const weightFee = +(
+    metalStats.metalThickness *
+    8 *
+    metalStats.deployment *
+    metalStats.width *
+    metalStats.price *
+    metalStats.amount
+  ).toFixed(2);
+
+  const totalPrice = (weightFee + bendingFee).toFixed(2);
+  return {
+    name: metalStats.name,
+    totalArea,
+    bendingFee,
+    weightFee,
+    totalPrice,
+  };
+}
+function getTotalPriceFromMetals(metals: metalStats[]): number {
+ const total = metals.reduce((sum, metal) => {
+    const summary = getMetalSummary(metal);
+    return sum + parseFloat(summary.totalPrice);
+  }, 0);
+
+  return parseFloat(total.toFixed(2));
 }
 
 function _delay<T>(result: any): Promise<T> {

@@ -1,6 +1,17 @@
 <template>
   <footer class="draft-footer">
-    <section class="details">{{ metals }}</section>
+    <section class="details" @wheel="handleWheel">
+      <div v-for="{ metal } in metalSummaries">
+        <h1>{{ metal.name }}</h1>
+        <p>
+          Total area:
+          {{ metal.totalArea }} м²
+        </p>
+        <p v-if="metal.bendingFee">Bending fee: {{ metal.bendingFee }} ₪</p>
+        <p>Weight fee: {{ metal.weightFee }} ₪</p>
+        <p>Total Price: {{ metal.totalPrice }} ₪</p>
+      </div>
+    </section>
     <section class="total-price">
       <h1>
         Total price: <span>{{ totalPrice }}</span> ₪
@@ -11,8 +22,27 @@
 
 <script lang="ts">
 import { DraftMetal } from "@/models/drafts.model";
+import { metalService } from "@/services/metal.service";
 import { defineComponent, PropType } from "vue";
 export default defineComponent({
+  computed: {
+    metalSummaries() {
+      return this.metals.map((metal) => {
+        return {
+          metal: metalService.getMetalSummary(metal),
+        };
+      });
+    },
+  },
+  methods: {
+    handleWheel(e: WheelEvent) {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        const details = e.currentTarget as HTMLElement;
+        details.scrollLeft += e.deltaY;
+      }
+    },
+  },
   props: {
     totalPrice: { type: Number, required: true },
     metals: { type: Array as PropType<DraftMetal[]>, required: true },
@@ -24,11 +54,21 @@ export default defineComponent({
 .draft-footer {
   position: fixed;
   bottom: 0;
-  height: 172px;
+  height: 150px;
   width: 100%;
   border-top: 1px solid var(--divider);
   display: grid;
   grid-template-columns: 1fr min-content;
+  .details {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 0 30px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+  }
   .total-price {
     border-left: 1px solid var(--divider);
     display: grid;
