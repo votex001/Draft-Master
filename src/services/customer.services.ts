@@ -1,6 +1,7 @@
 import { Customer } from "@/models/custumer.model";
 import { customers } from "./test.data";
 import { metalTypesService } from "./metal.types.service";
+import { makeId } from "./service";
 const STORAGE_KEY = "customers";
 const DELAY = 500;
 
@@ -151,13 +152,3 @@ function _saveCustomers(customers: Customer[]) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(customers));
 }
 
-export function makeId(length = 10) {
-  const chars =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  let id = "";
-  for (let i = 0; i < length; i++) {
-    const idx = Math.floor(Math.random() * chars.length);
-    id += chars[idx];
-  }
-  return id;
-}

@@ -1,6 +1,6 @@
+import { makeId } from "./service";
 import { metals } from "./test.data";
 import { Metal } from "@/models/metal.model";
-import { makeId } from "./customer.services";
 const STORAGE_KEY = "metals";
 const DELAY = 500;
 

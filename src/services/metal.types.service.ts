@@ -1,6 +1,6 @@
 import { metalTypes } from "./test.data";
 import { Metal, MetalType } from "@/models/metal.model";
-import { makeId } from "./customer.services";
+import { makeId } from "./service";
 const STORAGE_KEY = "metalTypes";
 const DELAY = 500;
 
