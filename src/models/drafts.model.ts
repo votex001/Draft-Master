@@ -6,8 +6,11 @@ export interface Draft {
 }
 
 export interface DraftMetal {
+  id: string;
   name: string;
   type: string;
+  metalId: string;
+  typeId: string;
   paymentPerBending: number;
   metalThickness: number;
   metalPrice: number;

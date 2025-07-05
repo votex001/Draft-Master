@@ -1,5 +1,9 @@
 import { Customer } from "@/models/custumer.model";
 import { Draft } from "@/models/drafts.model";
+import { Metal, MetalType } from "@/models/metal.model";
+import { metalService } from "@/services/metal.service";
+import { metalTypesService } from "@/services/metal.types.service";
+import { makeId } from "@/services/service";
 
 export const draftStore = {
   state(): {
@@ -15,26 +19,39 @@ export const draftStore = {
     },
   },
   actions: {
-    createEmptyDraft({ commit }, customer: Customer) {
+    async createEmptyDraft({ commit }, customer: Customer) {
       if (!customer) {
         commit("setCurrentDraft", null);
         localStorage.removeItem("draft");
         return null;
       }
+      const defaultMetal: Metal = (
+        await metalService.getQuery({
+          name: "default",
+        })
+      )[0];
+      const defaultType: MetalType = (
+        await metalTypesService.getQuery({
+          type: "default",
+        })
+      )[0];
       // console.log(customer);
       const newDraft: Draft = {
         customerId: customer.id,
         customerName: customer.name,
         metals: [
           {
+            id: makeId(),
             amount: 6,
             bendings: [],
             deployment: 0,
             metalPrice: customer.prices["Default"] | 1,
-            name: "Default",
+            name: defaultMetal.name,
+            metalId: defaultMetal.id,
             paymentPerBending: customer.prices["Bending price"] | 1,
             price: customer.prices["Default"] | 1,
-            type: "Default",
+            type: defaultType.type,
+            typeId: defaultType.id,
             width: 3,
             bendingFee: true,
             metalThickness: 0.5,
