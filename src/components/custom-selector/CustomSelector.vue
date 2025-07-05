@@ -11,13 +11,14 @@
       />
     </button>
 
-    <ul class="items" :class="isOpen ? 'open' : ''">
+    <ul v-if="itemsToShow.length" class="items" :class="isOpen ? 'open' : ''">
       <li
         @click="selectItem(item)"
         class="item"
         v-for="(item, index) in itemsToShow"
         :key="index"
         v-if="itemsToShow.length"
+        :class="{selected:item.id===selectedId}"
       >
         {{ formatItem(item) }}
       </li>
@@ -36,7 +37,7 @@ export default defineComponent({
   props: {
     objectArr: { type: Array as PropType<Object[]>, required: false },
     stringArr: { type: Array as PropType<String[]>, required: false },
-    selectedId: { type: String, required: false },
+    selectedId: { type: String, required: true },
     viewKey: { type: String, required: false },
   },
   methods: {
@@ -120,6 +121,11 @@ export default defineComponent({
     .item {
       cursor: pointer;
       padding: 5px 5px 5px 15px;
+      &.selected{
+        background-color: var(--selected);
+        cursor: default;
+        pointer-events: none;
+      }
       &:hover {
         background-color: var(--select-hover);
       }
