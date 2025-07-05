@@ -22,14 +22,14 @@
 
 <script lang="ts">
 import { DraftMetal } from "@/models/drafts.model";
-import { metalService } from "@/services/metal.service";
+import { draftService } from "@/services/draft.service";
 import { defineComponent, PropType } from "vue";
 export default defineComponent({
   computed: {
     metalSummaries() {
       return this.metals.map((metal) => {
         return {
-          metal: metalService.getMetalSummary(metal),
+          metal: draftService.getMetalSummary(metal),
         };
       });
     },

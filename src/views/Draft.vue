@@ -14,7 +14,7 @@ import DraftHeader from "@/components/headers/DraftHeader.vue";
 import HeaderCmp from "@/components/headers/HeaderCmp.vue";
 import { Draft } from "@/models/drafts.model";
 import MainDraft from "@/outlets/MainDraft.vue";
-import { metalService } from "@/services/metal.service";
+import { draftService } from "@/services/draft.service";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -44,7 +44,7 @@ export default defineComponent({
     "draft.metals": {
       handler(newMetals) {
         const calculatedTotalPrice =
-          metalService.getTotalPriceFromMetals(newMetals);
+          draftService.getTotalPriceFromMetals(newMetals);
         if (this.draft.totalPrice !== calculatedTotalPrice) {
           this.$store.dispatch("updateDraft", {
             totalPrice: calculatedTotalPrice,
