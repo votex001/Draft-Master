@@ -2,10 +2,13 @@
   <section class="draft-metal-control">
     <main>
       <div class="side-bar">
-        <CustomSelector
-          :object-arr="getMetals"
-          v-model:selectedId="selectedId"
-          view-key="name"
+        <MetalSelectControl
+          :metal="metal"
+          @on-select-metal="onUpdateDraftMetal"
+        />
+        <TypeSelectControl
+          :metal="metal"
+          @on-select-type="onUpdateDraftMetal"
         />
       </div>
     </main>
@@ -14,35 +17,18 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import CustomSelector from "../custom-selector/CustomSelector.vue";
-import { useItemStoreControls } from "@/services/useItemStoreControls";
-import { Metal } from "@/models/metal.model";
+import MetalSelectControl from "./MetalSelectControl.vue";
+import TypeSelectControl from "./TypeSelectControl.vue";
 export default defineComponent({
   props: {
     metal: { type: Object, required: true },
   },
-  data() {
-    return {
-      metalService: useItemStoreControls<Metal & { id: string }>({
-        loadAction: "loadMetals",
-        saveAction: "saveMetal",
-        deleteAction: "deleteMetal",
-        editAction: "saveMetal",
-      }),
-      selectedId: this.metal.metalId,
-    };
-  },
-  computed: {
-    getMetals() {
-      return this.$store.getters.getMetals;
+  methods: {
+    onUpdateDraftMetal(metal) {
+      console.log(metal);
     },
   },
-  components: {
-    CustomSelector,
-  },
-  beforeMount() {
-    this.metalService.onQuery();
-  },
+  components: { MetalSelectControl, TypeSelectControl },
 });
 </script>
 
