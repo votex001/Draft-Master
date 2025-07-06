@@ -50,7 +50,6 @@ export default defineComponent({
   watch: {
     selectedId(newId: string) {
       const selectedType = this.getTypes.find((t) => t.id === newId);
-      console.log(selectedType);
       if (selectedType) {
         this.$emit("onSelectType", {
           ...this.metal,
