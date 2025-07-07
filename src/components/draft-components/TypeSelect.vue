@@ -1,6 +1,6 @@
 <template>
   <section class="type-select">
-    <h1>Type:</h1>
+    <h2>Type:</h2>
     <CustomSelector
       :object-arr="getTypes"
       v-model:selectedId="selectedId"

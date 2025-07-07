@@ -1,6 +1,6 @@
 <template>
   <section class="metal-select">
-    <h1>Metal:</h1>
+    <h2>Metal:</h2>
     <CustomSelector
       :object-arr="getMetals"
       v-model:selectedId="selectedId"
@@ -23,9 +23,6 @@ export default defineComponent({
     return {
       metalService: useItemStoreControls<Metal & { id: string }>({
         loadAction: "loadMetals",
-        saveAction: "saveMetal",
-        deleteAction: "deleteMetal",
-        editAction: "saveMetal",
       }),
       selectedId: this.metal.metalId,
     };

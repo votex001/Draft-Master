@@ -2,14 +2,11 @@
   <section class="draft-metal-control">
     <main>
       <div class="side-bar">
-        <MetalSelectControl
-          :metal="metal"
-          @on-select-metal="onUpdateDraftMetal"
-        />
-        <TypeSelectControl
-          :metal="metal"
-          @on-select-type="onUpdateDraftMetal"
-        />
+        <MetalSelect :metal="metal" @on-select-metal="onUpdateDraftMetal" />
+        <TypeSelect :metal="metal" @on-select-type="onUpdateDraftMetal" />
+        <PriceThicknessControl :metal="metal" />
+        <BendingFee :metal="metal" />
+        <WidthAmountInput :metal="metal" />
       </div>
     </main>
   </section>
@@ -17,8 +14,11 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import MetalSelectControl from "./MetalSelectControl.vue";
-import TypeSelectControl from "./TypeSelectControl.vue";
+import MetalSelect from "./MetalSelect.vue";
+import TypeSelect from "./TypeSelect.vue";
+import PriceThicknessControl from "./PriceThicknessControl.vue";
+import BendingFee from "./BendingFee.vue";
+import WidthAmountInput from "./WidthAmountInput.vue";
 export default defineComponent({
   props: {
     metal: { type: Object, required: true },
@@ -28,8 +28,22 @@ export default defineComponent({
       console.log(metal);
     },
   },
-  components: { MetalSelectControl, TypeSelectControl },
+  components: {
+    MetalSelect,
+    TypeSelect,
+    PriceThicknessControl,
+    BendingFee,
+    WidthAmountInput,
+  },
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+:deep() {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+</style>
