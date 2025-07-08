@@ -13,7 +13,7 @@
 import { Metal } from "@/models/metal.model";
 import { useItemStoreControls } from "@/services/useItemStoreControls";
 import { defineComponent } from "vue";
-import CustomSelector from "../custom-selector/CustomSelector.vue";
+import CustomSelector from "../../custom-selector/CustomSelector.vue";
 export default defineComponent({
   emits: ["onSelectMetal"],
   props: {

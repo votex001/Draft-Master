@@ -14,11 +14,11 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import MetalSelect from "./MetalSelect.vue";
-import TypeSelect from "./TypeSelect.vue";
-import PriceThicknessControl from "./PriceThicknessControl.vue";
-import BendingFee from "./BendingFee.vue";
-import WidthAmountInput from "./WidthAmountInput.vue";
+import MetalSelect from "./side-bar/MetalSelect.vue";
+import TypeSelect from "./side-bar/TypeSelect.vue";
+import PriceThicknessControl from "./side-bar/PriceThicknessControl.vue";
+import BendingFee from "./side-bar/BendingFee.vue";
+import WidthAmountInput from "./side-bar/WidthAmountInput.vue";
 export default defineComponent({
   props: {
     metal: { type: Object, required: true },
@@ -72,7 +72,7 @@ export default defineComponent({
     gap: 10px;
     .unit-label{
       font-size: 24px;
-      
+
     }
   }
 }

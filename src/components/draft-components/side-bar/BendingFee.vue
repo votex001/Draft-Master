@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import CheckBox from "../shared/CheckBox.vue";
+import CheckBox from "../../shared/CheckBox.vue";
 export default defineComponent({
   data() {
     return {
