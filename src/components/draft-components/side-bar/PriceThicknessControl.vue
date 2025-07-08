@@ -9,8 +9,8 @@
           type="number"
           @keyup.enter="onEnter"
           @blur="save"
-          @keyup.esc="restoreOldMetalThicknessValue('price')"
-          @focus="cacheOldValue('price')"
+          @keyup.esc="cacheOrRestore('price', 'restore')"
+          @focus="cacheOrRestore('price', 'cache')"
         /><span class="unit-label">₪</span>
       </div>
     </div>
@@ -24,10 +24,10 @@
           min="0.0"
           max="9.9"
           step="0.1"
-          @focus="cacheOldValue('thickness')"
+          @focus="cacheOrRestore('thickness', 'cache')"
           @blur="normalizeMetalThickness"
           @keyup.enter="onEnter"
-          @keyup.esc="restoreOldMetalThicknessValue('thickness')"
+          @keyup.esc="cacheOrRestore('thickness', 'restore')"
         /><span class="unit-label small">mm</span>
       </div>
     </div>
@@ -51,13 +51,17 @@ export default defineComponent({
     };
   },
   methods: {
-    cacheOldValue(type: string) {
+    cacheOrRestore(type: "thickness" | "price", command: "cache" | "restore") {
       switch (type) {
         case "thickness":
-          this.oldMetalThicknessValue = this.metalThickness;
+          command === "cache"
+            ? (this.oldMetalThicknessValue = this.metalThickness)
+            : (this.metalThickness = this.oldMetalThicknessValue);
           break;
         case "price":
-          this.oldMetalPriceValue = this.metalPriceValue;
+          command === "cache"
+            ? (this.oldMetalPriceValue = this.metalPriceValue)
+            : (this.metalPriceValue = this.oldMetalPriceValue);
           break;
         default:
           console.log("Unknown type", type);
@@ -79,19 +83,6 @@ export default defineComponent({
         metalThickness: this.metalThickness,
         price: this.metalPriceValue,
       });
-    },
-    restoreOldMetalThicknessValue(type: string) {
-      switch (type) {
-        case "thickness":
-          this.metalThickness = this.oldMetalThicknessValue;
-          break;
-        case "price":
-          this.metalPriceValue = this.oldMetalPriceValue;
-          break;
-        default:
-          console.log("Unknown type", type);
-          break;
-      }
     },
     onEnter(event) {
       event.target.blur();
