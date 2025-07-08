@@ -39,22 +39,4 @@ body {
   font-weight: 400;
   background-color: var(--bg);
 }
-.btn {
-  color: var(--white);
-  background-color: var(--btn);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 11px;
-  font-weight: 600;
-  &:hover {
-    background-color: var(--btn-hover);
-  }
-  &.white {
-    background-color: var(--white);
-    color: var(--black);
-    border: 1px solid var(--black);
-    &:hover {
-      filter: brightness(0.9);
-    }
-  }
-}
+

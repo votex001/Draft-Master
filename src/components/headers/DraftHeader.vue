@@ -50,13 +50,6 @@ export default defineComponent({
     display: flex;
     justify-content: space-between;
     width: 255px;
-    .add-btn {
-      background-color: var(--bg);
-      padding: 0;
-      &:hover .img {
-        opacity: 0.7;
-      }
-    }
     .save,
     .btn {
       font-size: 18px;
