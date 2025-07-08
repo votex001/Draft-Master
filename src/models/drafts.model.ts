@@ -18,11 +18,11 @@ export interface DraftMetal {
   width: number;
   price: number;
   deployment: number;
-  bendings: Bendings[];
+  bendings: Bending[];
   bendingFee: boolean;
 }
 
-export interface Bendings {
-  bendingNum: number;
+export interface Bending {
+  id: string;
   width: number;
 }
