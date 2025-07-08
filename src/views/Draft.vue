@@ -1,7 +1,7 @@
 <template>
   <section class="draft">
     <HeaderCmp />
-    <main class="draft-main">
+    <main class="draft-main" v-if="draft">
       <DraftHeader :title="draft.customerName" />
       <MainDraft :metals="draft.metals" />
       <DraftFooter :metals="draft.metals" :total-price="draft.totalPrice" />
@@ -44,6 +44,7 @@ export default defineComponent({
     },
     "draft.metals": {
       handler(newMetals) {
+        if (!newMetals) return
         const calculatedTotalPrice =
           draftService.getTotalPriceFromMetals(newMetals);
         if (this.draft.totalPrice !== calculatedTotalPrice) {
