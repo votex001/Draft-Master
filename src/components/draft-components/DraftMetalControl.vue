@@ -5,7 +5,7 @@
       <TypeSelect :metal="metal" @on-select-type="onUpdateDraftMetal" />
       <PriceThicknessControl :metal="metal" @save="onUpdateDraftMetal" />
       <BendingFee :metal="metal" @save="onUpdateDraftMetal" />
-      <WidthAmountInput :metal="metal" />
+      <WidthAmountInput :metal="metal" @save="onUpdateDraftMetal" />
     </div>
     <BendingControl :metal="metal" @change="onUpdateDraftMetal" />
   </section>
@@ -27,6 +27,7 @@ export default defineComponent({
   },
   methods: {
     onUpdateDraftMetal(metal) {
+      console.log(metal)
       this.$emit("save", metal);
     },
   },
@@ -44,6 +45,7 @@ export default defineComponent({
 <style scoped lang="scss">
 .draft-metal-control {
   display: flex;
+  border-top: 1px solid var(--divider);
 }
 .side-bar {
   border: 1px solid red;

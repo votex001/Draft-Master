@@ -42,7 +42,7 @@ export const draftStore = {
         metals: [
           {
             id: makeId(),
-            amount: 6,
+            amount: 1,
             bendings: [],
             deployment: 0,
             metalPrice: customer.prices["Default"] | 1,
