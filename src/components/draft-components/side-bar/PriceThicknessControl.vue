@@ -8,6 +8,9 @@
           v-model.number="metalPriceValue"
           type="number"
           @keyup.enter="onEnter"
+          @blur="save"
+          @keyup.esc="restoreOldMetalThicknessValue('price')"
+          @focus="cacheOldValue('price')"
         /><span class="unit-label">₪</span>
       </div>
     </div>
@@ -21,10 +24,10 @@
           min="0.0"
           max="9.9"
           step="0.1"
-          @focus="cacheOldValue"
-          @blur="normalizeValue"
+          @focus="cacheOldValue('thickness')"
+          @blur="normalizeMetalThickness"
           @keyup.enter="onEnter"
-          @keyup.esc="restoreOldValue"
+          @keyup.esc="restoreOldMetalThicknessValue('thickness')"
         /><span class="unit-label small">mm</span>
       </div>
     </div>
@@ -35,6 +38,7 @@
 import { DraftMetal } from "@/models/drafts.model";
 import { defineComponent, PropType } from "vue";
 export default defineComponent({
+  emits: ["save"],
   props: {
     metal: { type: Object as PropType<DraftMetal>, required: true },
   },
@@ -47,19 +51,47 @@ export default defineComponent({
     };
   },
   methods: {
-    cacheOldValue() {
-      this.oldValue = this.value;
-    },
-    normalizeValue() {
-      if (this.value < 0.0) {
-        this.value = 0.0;
-      } else if (this.value > 9.9) {
-        this.value = 9.9;
+    cacheOldValue(type: string) {
+      switch (type) {
+        case "thickness":
+          this.oldMetalThicknessValue = this.metalThickness;
+          break;
+        case "price":
+          this.oldMetalPriceValue = this.metalPriceValue;
+          break;
+        default:
+          console.log("Unknown type", type);
+          break;
       }
-      this.value = Math.round(this.value * 10) / 10;
     },
-    restoreOldValue() {
-      this.value = this.oldValue;
+    normalizeMetalThickness() {
+      if (this.metalThickness < 0.0) {
+        this.metalThickness = 0.0;
+      } else if (this.metalThickness > 9.9) {
+        this.metalThickness = 9.9;
+      }
+      this.metalThickness = Math.round(this.metalThickness * 10) / 10;
+      this.save();
+    },
+    save() {
+      this.$emit("save", {
+        ...this.metal,
+        metalThickness: this.metalThickness,
+        price: this.metalPriceValue,
+      });
+    },
+    restoreOldMetalThicknessValue(type: string) {
+      switch (type) {
+        case "thickness":
+          this.metalThickness = this.oldMetalThicknessValue;
+          break;
+        case "price":
+          this.metalPriceValue = this.oldMetalPriceValue;
+          break;
+        default:
+          console.log("Unknown type", type);
+          break;
+      }
     },
     onEnter(event) {
       event.target.blur();

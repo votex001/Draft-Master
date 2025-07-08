@@ -1,6 +1,6 @@
 <template>
   <section class="main-draft">
-    <DraftMetalControl v-for="metal in metals" :metal="metal" />
+    <DraftMetalControl v-for="metal in metals" :metal="metal" @save="saveChanges"/>
   </section>
 </template>
 
@@ -9,8 +9,17 @@ import DraftMetalControl from "@/components/draft-components/DraftMetalControl.v
 import { DraftMetal } from "@/models/drafts.model";
 import { defineComponent, PropType } from "vue";
 export default defineComponent({
+  emits: ["save"],
   props: {
     metals: { type: Array as PropType<DraftMetal[]>, required: true },
+  },
+  methods: {
+    saveChanges(metal: DraftMetal) {
+      const metals = this.metals.map((m) =>
+        m.id === metal.id ? (m = metal) : m
+      );
+      this.$emit("save", metals);
+    },
   },
   components: {
     DraftMetalControl,
@@ -19,7 +28,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.main-draft{
+.main-draft {
   overflow: auto;
 }
 </style>

@@ -3,7 +3,7 @@
     <HeaderCmp />
     <main class="draft-main" v-if="draft">
       <DraftHeader :title="draft.customerName" />
-      <MainDraft :metals="draft.metals" />
+      <MainDraft :metals="draft.metals" @save="saveNewMetalArr" />
       <DraftFooter :metals="draft.metals" :total-price="draft.totalPrice" />
     </main>
   </section>
@@ -13,7 +13,7 @@
 import DraftFooter from "@/components/footers/DraftFooter.vue";
 import DraftHeader from "@/components/headers/DraftHeader.vue";
 import HeaderCmp from "@/components/headers/HeaderCmp.vue";
-import { Draft } from "@/models/drafts.model";
+import { Draft, DraftMetal } from "@/models/drafts.model";
 import MainDraft from "@/outlets/MainDraft.vue";
 import { draftService } from "@/services/draft.service";
 import { defineComponent } from "vue";
@@ -24,6 +24,12 @@ export default defineComponent({
     DraftHeader,
     MainDraft,
     DraftFooter,
+  },
+  methods: {
+    saveNewMetalArr(metals: DraftMetal[]) {
+      const newDraft = { ...this.draft, metals };
+      this.$store.dispatch("updateDraft", newDraft);
+    },
   },
   computed: {
     draft() {
@@ -44,7 +50,7 @@ export default defineComponent({
     },
     "draft.metals": {
       handler(newMetals) {
-        if (!newMetals) return
+        if (!newMetals) return;
         const calculatedTotalPrice =
           draftService.getTotalPriceFromMetals(newMetals);
         if (this.draft.totalPrice !== calculatedTotalPrice) {
@@ -64,10 +70,10 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.draft{
-height: 100vh;
-display: grid;
-grid-template-rows: auto 1fr;
+.draft {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
   .draft-main {
     display: grid;
     min-height: max-content;

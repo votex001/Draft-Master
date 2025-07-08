@@ -12,8 +12,8 @@
         /><span class="unit-label">₪</span>
       </div>
     </div>
-    <div class="metal-control" @click="checked = !checked">
-      <CheckBox v-model:checked="checked" />
+    <div class="checkbox-control" @click="checked = !checked">
+      <CheckBox :checked="checked" />
       <p>Bending fee</p>
     </div>
   </section>
@@ -24,6 +24,7 @@ import { defineComponent, PropType } from "vue";
 import CheckBox from "../../shared/CheckBox.vue";
 import { DraftMetal } from "@/models/drafts.model";
 export default defineComponent({
+  emits: ["save"],
   data() {
     return {
       bendingFee: 0,
@@ -35,13 +36,42 @@ export default defineComponent({
     onEnter(event) {
       event.target.blur();
     },
+    toggleCheckBox() {
+      this.checked = !this.checked;
+    },
   },
   components: { CheckBox },
   beforeMount() {
     this.bendingFee = this.metal.paymentPerBending;
     this.checked = this.metal.bendingFee;
   },
+  watch: {
+    bendingFee: {
+      handler(newVal) {
+        if (newVal !== this.metal.paymentPerBending) {
+          this.$emit("save", { ...this.metal, paymentPerBending: newVal });
+        }
+      },
+      deep: true,
+      immediate: true,
+    },
+    checked: {
+      handler(newVal) {
+        if (newVal !== this.metal.bendingFee) {
+          this.$emit("save", { ...this.metal, bendingFee: newVal });
+        }
+      },
+      deep: true,
+      immediate: true,
+    },
+  },
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.checkbox-control {
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+}
+</style>
