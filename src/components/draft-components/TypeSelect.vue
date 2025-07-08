@@ -1,6 +1,6 @@
 <template>
-  <section class="type-select">
-    <h2>Type:</h2>
+  <section class="type-select metal-control">
+    <h2 class="title">Type:</h2>
     <CustomSelector
       :object-arr="getTypes"
       v-model:selectedId="selectedId"
@@ -69,4 +69,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.type-select.metal-control{
+ margin: 0;
+}
+</style>

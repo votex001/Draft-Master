@@ -1,13 +1,13 @@
 <template>
   <section class="draft-metal-control">
+    <div class="side-bar">
+      <MetalSelect :metal="metal" @on-select-metal="onUpdateDraftMetal" />
+      <TypeSelect :metal="metal" @on-select-type="onUpdateDraftMetal" />
+      <PriceThicknessControl :metal="metal" />
+      <BendingFee :metal="metal" />
+      <WidthAmountInput :metal="metal" />
+    </div>
     <main>
-      <div class="side-bar">
-        <MetalSelect :metal="metal" @on-select-metal="onUpdateDraftMetal" />
-        <TypeSelect :metal="metal" @on-select-type="onUpdateDraftMetal" />
-        <PriceThicknessControl :metal="metal" />
-        <BendingFee :metal="metal" />
-        <WidthAmountInput :metal="metal" />
-      </div>
     </main>
   </section>
 </template>
@@ -39,11 +39,32 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+.draft-metal-control{
+  display: flex;
+}
+.side-bar{
+  border: 1px solid red;
+  padding: 20px;
+  width: fit-content;
+}
 :deep() {
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
     opacity: 1;
     pointer-events: auto;
+  }
+  .metal-control{
+    margin: 15px 0;
+  }
+  .title{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  .input{
+    width: 60px;
+    padding: 5px 0 5px 15px;
+    border-radius: 6px;
   }
 }
 </style>

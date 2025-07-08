@@ -18,7 +18,7 @@
         v-for="(item, index) in itemsToShow"
         :key="index"
         v-if="itemsToShow.length"
-        :class="{selected:item.id===selectedId}"
+        :class="{ selected: item.id === selectedId }"
       >
         {{ formatItem(item) }}
       </li>
@@ -95,6 +95,7 @@ export default defineComponent({
     gap: 10px;
     border: 1px solid var(--black);
     border-radius: 6px;
+    margin-bottom: 15px;
     .img {
       transition: all ease-out 0.3s;
 
@@ -106,7 +107,7 @@ export default defineComponent({
   .items {
     max-height: 0;
     overflow: hidden;
-    transition: max-height ease-out 0.3s;
+    transition: all ease-out 0.3s;
     background-color: white;
     width: 150px;
     padding: 0;
@@ -116,11 +117,12 @@ export default defineComponent({
       overflow-y: auto;
       border-radius: 6px;
       border: 1px solid var(--black);
+      margin-bottom: 15px;
     }
     .item {
       cursor: pointer;
       padding: 5px 5px 5px 15px;
-      &.selected{
+      &.selected {
         background-color: var(--selected);
         cursor: default;
         pointer-events: none;

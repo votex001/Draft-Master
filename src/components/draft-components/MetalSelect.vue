@@ -1,6 +1,6 @@
 <template>
-  <section class="metal-select">
-    <h2>Metal:</h2>
+  <section class="metal-select metal-control">
+    <h2 class="title">Metal:</h2>
     <CustomSelector
       :object-arr="getMetals"
       v-model:selectedId="selectedId"
@@ -15,7 +15,7 @@ import { useItemStoreControls } from "@/services/useItemStoreControls";
 import { defineComponent } from "vue";
 import CustomSelector from "../custom-selector/CustomSelector.vue";
 export default defineComponent({
-    emits:['onSelectMetal'],
+  emits: ["onSelectMetal"],
   props: {
     metal: { type: Object, required: true },
   },
@@ -64,4 +64,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.metal-select.metal-control{
+ margin: 0;
+}
+</style>

@@ -1,19 +1,21 @@
 <template>
   <section class="price-thickness-control">
     <div>
-      <h2>Metal Price:</h2>
+      <h2 class="title">Metal Price:</h2>
       <div>
         <input
+          class="input"
           v-model.number="metalPriceValue"
           type="number"
           @keyup.enter="onEnter"
         /><span>₪</span>
       </div>
     </div>
-    <div>
-      <h2>Metal thickness:</h2>
+    <div class="metal-control">
+      <h2 class="title">Metal thickness:</h2>
       <div>
         <input
+          class="input"
           v-model.number="metalThickness"
           type="number"
           min="0.0"
@@ -63,8 +65,8 @@ export default defineComponent({
     },
   },
   beforeMount() {
-    this.metalPriceValue = this.metal.price
-    this.metalThickness = this.metal.metalThickness
+    this.metalPriceValue = this.metal.price;
+    this.metalThickness = this.metal.metalThickness;
   },
 });
 </script>

@@ -1,18 +1,19 @@
 <template>
   <section class="bending-fee">
-    <div>
-      <h2>Bending fee:</h2>
+    <div class="metal-control">
+      <h2 class="title">Bending fee:</h2>
       <div>
         <input
+          class="input"
           v-model.number="bendingFee"
           type="number"
           @keyup.enter="onEnter"
         /><span>₪</span>
       </div>
     </div>
-    <div @click="checked = !checked">
+    <div class="metal-control" @click="checked = !checked">
       <CheckBox v-model:checked="checked" />
-      <p >Bending fee</p>
+      <p>Bending fee</p>
     </div>
   </section>
 </template>
@@ -36,7 +37,7 @@ export default defineComponent({
   components: { CheckBox },
   beforeMount() {
     this.bendingFee = this.metal.paymentPerBending;
-    this.checked = this.metal.bendingFee
+    this.checked = this.metal.bendingFee;
   },
 });
 </script>

@@ -52,7 +52,6 @@ export default defineComponent({
 <!-- TODO translate -->
 <style scoped lang="scss">
 .draft-footer {
-  position: fixed;
   bottom: 0;
   height: 150px;
   width: 100%;

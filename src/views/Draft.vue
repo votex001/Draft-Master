@@ -1,11 +1,12 @@
 <template>
-  <HeaderCmp />
-  <main>
-    <DraftHeader :title="draft.customerName" />
-    <!-- <main>{{ draft }}</main> -->
-    <MainDraft :metals="draft.metals" />
-    <DraftFooter :metals="draft.metals" :total-price="draft.totalPrice" />
-  </main>
+  <section class="draft">
+    <HeaderCmp />
+    <main class="draft-main">
+      <DraftHeader :title="draft.customerName" />
+      <MainDraft :metals="draft.metals" />
+      <DraftFooter :metals="draft.metals" :total-price="draft.totalPrice" />
+    </main>
+  </section>
 </template>
 
 <script lang="ts">
@@ -61,4 +62,15 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.draft{
+height: 100vh;
+display: grid;
+grid-template-rows: auto 1fr;
+  .draft-main {
+    display: grid;
+    min-height: max-content;
+    grid-template-rows: min-content auto min-content;
+  }
+}
+</style>

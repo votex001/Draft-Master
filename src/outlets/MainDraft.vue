@@ -18,4 +18,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.main-draft{
+  overflow: auto;
+}
+</style>
