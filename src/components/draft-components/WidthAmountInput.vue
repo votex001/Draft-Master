@@ -1,13 +1,28 @@
 <template>
   <section class="width-amount-input">
-    <div>
-      <h2>Width:</h2>
-      <input v-model.number="width" type="number" @keyup.enter="onEnter" />
-      <span>mm</span>
+    <div class="metal-control">
+      <h2 class="title">Width:</h2>
+      <div class="input-wrapper">
+        <input
+          class="input width"
+          v-model.number="width"
+          type="number"
+          @keyup.enter="onEnter"
+          step="250"
+          @blur="onEnter"
+        />
+        <span class="unit-label">mm</span>
+      </div>
     </div>
-    <div>
-      <h2>Amount:</h2>
-      <input v-model.number="amount" type="number" @keyup.enter="onEnter" />
+    <div class="metal-control">
+      <h2 class="title">Amount:</h2>
+      <input
+        class="input"
+        v-model.number="amount"
+        type="number"
+        @keyup.enter="onEnter"
+        @blur="onEnter"
+      />
     </div>
   </section>
 </template>
@@ -34,4 +49,12 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.width-amount-input {
+  .metal-control {
+    .width {
+      width: 120px;
+    }
+  }
+}
+</style>

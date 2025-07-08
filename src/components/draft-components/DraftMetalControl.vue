@@ -66,5 +66,14 @@ export default defineComponent({
     padding: 5px 0 5px 15px;
     border-radius: 6px;
   }
+  .input-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .unit-label{
+      font-size: 24px;
+      
+    }
+  }
 }
 </style>

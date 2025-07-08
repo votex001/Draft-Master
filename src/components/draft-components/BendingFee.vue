@@ -2,13 +2,14 @@
   <section class="bending-fee">
     <div class="metal-control">
       <h2 class="title">Bending fee:</h2>
-      <div>
+      <div class="input-wrapper">
         <input
           class="input"
           v-model.number="bendingFee"
           type="number"
           @keyup.enter="onEnter"
-        /><span>₪</span>
+          @blur="onEnter"
+        /><span class="unit-label">₪</span>
       </div>
     </div>
     <div class="metal-control" @click="checked = !checked">

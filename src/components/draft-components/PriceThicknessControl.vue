@@ -2,18 +2,18 @@
   <section class="price-thickness-control">
     <div>
       <h2 class="title">Metal Price:</h2>
-      <div>
+      <div class="input-wrapper">
         <input
           class="input"
           v-model.number="metalPriceValue"
           type="number"
           @keyup.enter="onEnter"
-        /><span>₪</span>
+        /><span class="unit-label">₪</span>
       </div>
     </div>
     <div class="metal-control">
       <h2 class="title">Metal thickness:</h2>
-      <div>
+      <div class="input-wrapper">
         <input
           class="input"
           v-model.number="metalThickness"
@@ -25,7 +25,7 @@
           @blur="normalizeValue"
           @keyup.enter="onEnter"
           @keyup.esc="restoreOldValue"
-        /><span>mm</span>
+        /><span class="unit-label">mm</span>
       </div>
     </div>
   </section>
