@@ -95,7 +95,6 @@ export default defineComponent({
     gap: 10px;
     border: 1px solid var(--black);
     border-radius: 6px;
-    margin-bottom: 16px;
     .img {
       transition: all ease-out 0.3s;
 
