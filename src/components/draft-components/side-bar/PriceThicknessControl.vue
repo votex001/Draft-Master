@@ -32,10 +32,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { DraftMetal } from "@/models/drafts.model";
+import { defineComponent, PropType } from "vue";
 export default defineComponent({
   props: {
-    metal: { type: Object, required: true },
+    metal: { type: Object as PropType<DraftMetal>, required: true },
   },
   data() {
     return {

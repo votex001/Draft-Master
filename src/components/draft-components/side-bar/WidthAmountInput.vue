@@ -28,7 +28,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { DraftMetal } from "@/models/drafts.model";
+import { defineComponent, PropType } from "vue";
 export default defineComponent({
   data() {
     return {
@@ -36,7 +37,7 @@ export default defineComponent({
       amount: 0,
     };
   },
-  props: { metal: { type: Object, required: true } },
+  props: { metal: { type: Object as PropType<DraftMetal>, required: true } },
   methods: {
     onEnter(event) {
       event.target.blur();

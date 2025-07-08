@@ -20,8 +20,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import CheckBox from "../../shared/CheckBox.vue";
+import { DraftMetal } from "@/models/drafts.model";
 export default defineComponent({
   data() {
     return {
@@ -29,7 +30,7 @@ export default defineComponent({
       checked: false,
     };
   },
-  props: { metal: { type: Object, required: true } },
+  props: { metal: { type: Object as PropType<DraftMetal>, required: true } },
   methods: {
     onEnter(event) {
       event.target.blur();

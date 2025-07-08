@@ -7,20 +7,22 @@
       <BendingFee :metal="metal" />
       <WidthAmountInput :metal="metal" />
     </div>
-    <main></main>
+    <BendingControl :metal="metal" />
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import MetalSelect from "./side-bar/MetalSelect.vue";
 import TypeSelect from "./side-bar/TypeSelect.vue";
 import PriceThicknessControl from "./side-bar/PriceThicknessControl.vue";
 import BendingFee from "./side-bar/BendingFee.vue";
 import WidthAmountInput from "./side-bar/WidthAmountInput.vue";
+import BendingControl from "./main-bending-control/BendingControl.vue";
+import { DraftMetal } from "@/models/drafts.model";
 export default defineComponent({
   props: {
-    metal: { type: Object, required: true },
+    metal: { type: Object as PropType<DraftMetal>, required: true },
   },
   methods: {
     onUpdateDraftMetal(metal) {
@@ -33,6 +35,7 @@ export default defineComponent({
     PriceThicknessControl,
     BendingFee,
     WidthAmountInput,
+    BendingControl,
   },
 });
 </script>

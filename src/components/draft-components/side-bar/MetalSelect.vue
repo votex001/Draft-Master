@@ -12,12 +12,13 @@
 <script lang="ts">
 import { Metal } from "@/models/metal.model";
 import { useItemStoreControls } from "@/services/useItemStoreControls";
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import CustomSelector from "../../custom-selector/CustomSelector.vue";
+import { DraftMetal } from "@/models/drafts.model";
 export default defineComponent({
   emits: ["onSelectMetal"],
   props: {
-    metal: { type: Object, required: true },
+    metal: { type: Object as PropType<DraftMetal>, required: true },
   },
   data() {
     return {
@@ -65,7 +66,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.metal-select.metal-control{
- margin: 0;
+.metal-select.metal-control {
+  margin: 0;
 }
 </style>
