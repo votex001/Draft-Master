@@ -1,4 +1,4 @@
-import { Bendings } from "@/models/drafts.model";
+import { Bending } from "@/models/drafts.model";
 
 export const draftService = {
   getMetalSummary,
@@ -11,9 +11,10 @@ interface metalStats {
   amount: number;
   width: number;
   paymentPerBending: number;
-  bendings: Bendings[];
+  bendings: Bending[];
   metalThickness: number;
   price: number;
+  bendingFee: boolean;
 }
 
 function getMetalSummary(metalStats: metalStats) {
@@ -22,10 +23,11 @@ function getMetalSummary(metalStats: metalStats) {
     metalStats.amount *
     metalStats.width
   ).toFixed(2);
-  const bendingFee =
-    metalStats.paymentPerBending *
-    metalStats.bendings.length *
-    metalStats.amount;
+  const bendingFee = metalStats.bendingFee
+    ? metalStats.paymentPerBending *
+      metalStats.bendings.length *
+      metalStats.amount
+    : 0;
 
   const weightFee = +(
     metalStats.metalThickness *
