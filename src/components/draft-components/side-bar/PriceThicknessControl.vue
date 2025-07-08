@@ -25,7 +25,7 @@
           @blur="normalizeValue"
           @keyup.enter="onEnter"
           @keyup.esc="restoreOldValue"
-        /><span class="unit-label">mm</span>
+        /><span class="unit-label small">mm</span>
       </div>
     </div>
   </section>

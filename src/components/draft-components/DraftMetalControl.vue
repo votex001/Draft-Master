@@ -7,8 +7,7 @@
       <BendingFee :metal="metal" />
       <WidthAmountInput :metal="metal" />
     </div>
-    <main>
-    </main>
+    <main></main>
   </section>
 </template>
 
@@ -39,10 +38,10 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.draft-metal-control{
+.draft-metal-control {
   display: flex;
 }
-.side-bar{
+.side-bar {
   border: 1px solid red;
   padding: 20px;
   width: fit-content;
@@ -53,26 +52,28 @@ export default defineComponent({
     opacity: 1;
     pointer-events: auto;
   }
-  .metal-control{
+  .metal-control {
     margin: 15px 0;
   }
-  .title{
+  .title {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 15px;
   }
-  .input{
+  .input {
     width: 60px;
     padding: 5px 0 5px 15px;
     border-radius: 6px;
   }
-  .input-wrapper{
+  .input-wrapper {
     display: flex;
     align-items: center;
     gap: 10px;
-    .unit-label{
+    .unit-label {
       font-size: 24px;
-
+      &.small {
+        font-size: 16px;
+      }
     }
   }
 }

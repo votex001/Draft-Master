@@ -11,7 +11,7 @@
           step="250"
           @blur="onEnter"
         />
-        <span class="unit-label">mm</span>
+        <span class="unit-label small">mm</span>
       </div>
     </div>
     <div class="metal-control">
