@@ -7,8 +7,10 @@
           class="input"
           v-model.number="bendingFee"
           type="number"
+          @focus="cacheOrRestore('cache')"
           @keyup.enter="onEnter"
           @blur="onEnter"
+          @keyup.esc="cacheOrRestore('restore')"
         /><span class="unit-label">₪</span>
       </div>
     </div>
@@ -28,12 +30,23 @@ export default defineComponent({
   data() {
     return {
       bendingFee: 0,
+      oldBendingFee: 0,
       checked: false,
     };
   },
   props: { metal: { type: Object as PropType<DraftMetal>, required: true } },
   methods: {
+    cacheOrRestore(command: "cache" | "restore") {
+      command === "cache"
+        ? (this.oldBendingFee = this.bendingFee)
+        : (this.bendingFee = this.oldBendingFee);
+    },
     onEnter(event) {
+      const target = event.target as HTMLInputElement;
+      const newVal = target.value;
+      if (newVal !== this.metal.paymentPerBending) {
+        this.$emit("save", { ...this.metal, paymentPerBending: newVal });
+      }
       event.target.blur();
     },
     toggleCheckBox() {
@@ -47,11 +60,7 @@ export default defineComponent({
   },
   watch: {
     bendingFee: {
-      handler(newVal) {
-        if (newVal !== this.metal.paymentPerBending) {
-          this.$emit("save", { ...this.metal, paymentPerBending: newVal });
-        }
-      },
+      handler(newVal) {},
       deep: true,
       immediate: true,
     },
