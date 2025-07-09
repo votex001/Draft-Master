@@ -17,7 +17,7 @@
           {{ translate.editCustomerCmp.prices }}
         </h2>
         <ul class="prices-list">
-          <li class="price" v-for="Name of Object.keys(customer.prices)">
+          <li class="price" v-for="Name of Object.keys(customer.prices)" :key="Name">
             <p>{{ Name }}</p>
             <span class="wraper">
               <span

@@ -3,7 +3,7 @@
     class="customers-table-body"
     :class="{ scroll: customers.length > 10 }"
   >
-    <section v-for="customer of customers" class="customer">
+    <section v-for="customer of customers" class="customer" :key="customer.id">
       <div class="cell">
         <p>{{ customer.name }}</p>
       </div>

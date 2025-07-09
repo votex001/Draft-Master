@@ -9,6 +9,7 @@
           class="customer"
           v-for="customer in customers"
           @click="$emit('select', customer), $emit('close')"
+          :key="customer.id"
         >
           {{ customer.name }}
         </li>
@@ -52,7 +53,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .select-customer-modal {
-  .loading{
+  .loading {
     display: grid;
     place-content: center;
   }

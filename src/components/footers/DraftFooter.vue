@@ -1,7 +1,7 @@
 <template>
   <footer class="draft-footer">
     <section class="details" @wheel="handleWheel">
-      <div v-for="{ metal } in metalSummaries">
+      <div v-for="{ metal } in metalSummaries" :key="metal.id">
         <h1>{{ metal.name }}</h1>
         <p>
           Total area:
