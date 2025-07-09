@@ -1,5 +1,8 @@
 <template>
   <section class="draft-metal-control">
+    <button class="close" v-if="showCloseBtn">
+      <img src="/src/assets/imgs/draft-header/plus.svg" alt="" />
+    </button>
     <div class="side-bar">
       <MetalSelect :metal="metal" @on-select-metal="onUpdateDraftMetal" />
       <TypeSelect :metal="metal" @on-select-type="onUpdateDraftMetal" />
@@ -24,10 +27,10 @@ export default defineComponent({
   emits: ["save"],
   props: {
     metal: { type: Object as PropType<DraftMetal>, required: true },
+    showCloseBtn: { type: Boolean, default: false },
   },
   methods: {
     onUpdateDraftMetal(metal) {
-      console.log(metal)
       this.$emit("save", metal);
     },
   },
@@ -46,6 +49,28 @@ export default defineComponent({
 .draft-metal-control {
   display: flex;
   border-top: 1px solid var(--divider);
+  position: relative;
+  overflow: hidden;
+  &:hover {
+    .close {
+      top: 2px;
+    }
+  }
+  .close {
+    cursor: pointer;
+    z-index: 2;
+    background-color: transparent;
+    padding: 0;
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translate(-50%);
+    transition: all 1s ease;
+    img {
+      rotate: 45deg;
+      width: 40px;
+    }
+  }
 }
 .side-bar {
   border: 1px solid var(--divider);
