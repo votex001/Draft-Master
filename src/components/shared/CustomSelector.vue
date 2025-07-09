@@ -96,6 +96,7 @@ export default defineComponent({
     border: 1px solid var(--black);
     border-radius: 6px;
     margin-bottom: 15px;
+    text-wrap: nowrap;
     .img {
       transition: all ease-out 0.3s;
 
@@ -112,6 +113,7 @@ export default defineComponent({
     width: 150px;
     padding: 0;
     margin: 0;
+    text-wrap: nowrap;
     &.open {
       max-height: 200px;
       overflow-y: auto;

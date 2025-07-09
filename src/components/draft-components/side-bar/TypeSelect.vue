@@ -12,7 +12,7 @@
 <script lang="ts">
 import { useItemStoreControls } from "@/services/useItemStoreControls";
 import { defineComponent, PropType } from "vue";
-import CustomSelector from "../../custom-selector/CustomSelector.vue";
+import CustomSelector from "../../shared/CustomSelector.vue";
 import { MetalType } from "@/models/metal.model";
 import { DraftMetal } from "@/models/drafts.model";
 export default defineComponent({
