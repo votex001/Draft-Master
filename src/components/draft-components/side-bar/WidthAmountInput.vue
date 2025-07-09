@@ -67,7 +67,6 @@ export default defineComponent({
       }
     },
     save() {
-      console.log();
       if (
         +this.amount === this.metal.amount &&
         +this.width === this.metal.width * 1000
@@ -82,7 +81,6 @@ export default defineComponent({
     },
   },
   beforeMount() {
-    console.log(this.metal);
     this.width = this.metal.width * 1000;
     this.amount = this.metal.amount;
   },
