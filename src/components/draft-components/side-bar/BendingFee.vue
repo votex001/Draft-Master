@@ -14,8 +14,8 @@
         /><span class="unit-label">₪</span>
       </div>
     </div>
-    <div class="checkbox-control" @click="checked = !checked">
-      <CheckBox :checked="checked" />
+    <div class="checkbox-control" @click="toggleCheckBox(!metal.bendingFee)">
+      <CheckBox :checked="metal.bendingFee" />
       <p>Bending fee</p>
     </div>
   </section>
@@ -31,7 +31,6 @@ export default defineComponent({
     return {
       bendingFee: 0,
       oldBendingFee: 0,
-      checked: false,
     };
   },
   props: { metal: { type: Object as PropType<DraftMetal>, required: true } },
@@ -49,30 +48,16 @@ export default defineComponent({
       }
       event.target.blur();
     },
-    toggleCheckBox() {
-      this.checked = !this.checked;
+    toggleCheckBox(newVal) {
+      if (newVal !== this.metal.bendingFee) {
+        this.$emit("save", { ...this.metal, bendingFee: newVal });
+      }
     },
   },
   components: { CheckBox },
   beforeMount() {
     this.bendingFee = this.metal.paymentPerBending;
     this.checked = this.metal.bendingFee;
-  },
-  watch: {
-    bendingFee: {
-      handler(newVal) {},
-      deep: true,
-      immediate: true,
-    },
-    checked: {
-      handler(newVal) {
-        if (newVal !== this.metal.bendingFee) {
-          this.$emit("save", { ...this.metal, bendingFee: newVal });
-        }
-      },
-      deep: true,
-      immediate: true,
-    },
   },
 });
 </script>
