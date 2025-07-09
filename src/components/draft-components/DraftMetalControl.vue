@@ -48,7 +48,7 @@ export default defineComponent({
   border-top: 1px solid var(--divider);
 }
 .side-bar {
-  border: 1px solid red;
+  border: 1px solid var(--divider);
   padding: 20px;
   width: fit-content;
 }
