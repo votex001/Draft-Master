@@ -2,8 +2,10 @@
   <section class="main-draft">
     <DraftMetalControl
       v-for="metal in metals"
+      :key="metal.id"
       :metal="metal"
       @save="saveChanges"
+      @delete-metal="onDeleteMetal"
       :show-close-btn="metals.length > 1"
     />
   </section>
@@ -24,6 +26,10 @@ export default defineComponent({
         m.id === metal.id ? (m = metal) : m
       );
       this.$emit("save", metals);
+    },
+    onDeleteMetal(id: string) {
+      const updatedMetals = this.metals.filter((m) => m.id !== id);
+      this.$emit("save", updatedMetals);
     },
   },
   components: {
