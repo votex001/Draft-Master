@@ -1,6 +1,10 @@
 <template>
   <section class="draft-metal-control">
-    <button class="close" v-if="showCloseBtn">
+    <button
+      class="close"
+      v-if="showCloseBtn"
+      @click="$emit('delete-metal', metal.id)"
+    >
       <img src="/src/assets/imgs/draft-header/plus.svg" alt="" />
     </button>
     <div class="side-bar">
@@ -24,7 +28,7 @@ import WidthAmountInput from "./side-bar/WidthAmountInput.vue";
 import BendingControl from "./main-bending-control/BendingControl.vue";
 import { DraftMetal } from "@/models/drafts.model";
 export default defineComponent({
-  emits: ["save"],
+  emits: ["save", "delete-metal"],
   props: {
     metal: { type: Object as PropType<DraftMetal>, required: true },
     showCloseBtn: { type: Boolean, default: false },
@@ -53,7 +57,7 @@ export default defineComponent({
   overflow: hidden;
   &:hover {
     .close {
-      top: 2px;
+      top: 10px;
     }
   }
   .close {
@@ -62,7 +66,7 @@ export default defineComponent({
     background-color: transparent;
     padding: 0;
     position: absolute;
-    top: -100px;
+    top: -50px;
     left: 50%;
     transform: translate(-50%);
     transition: all 1s ease;
@@ -74,6 +78,7 @@ export default defineComponent({
 }
 .side-bar {
   border: 1px solid var(--divider);
+  border-top: none;
   padding: 20px;
   width: fit-content;
 }
