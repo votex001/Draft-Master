@@ -1,16 +1,20 @@
 <template>
   <header class="draft-header">
-    <button class="btn">
+    <button class="btn" :class="{ loading: isLoading }">
       <img class="img" src="/src/assets/imgs/draft-header/arrow-left.svg" />Go
       Back
     </button>
     <h1 class="title">{{ title }}</h1>
     <section class="right-controllers">
-      <button class="add-btn">
+      <button
+        class="add-btn"
+        @click="$emit('add')"
+        :class="{ loading: isLoading }"
+      >
         <img class="img" src="/src/assets/imgs/draft-header/plus.svg" />
       </button>
-      <button class="btn save">Save</button>
-      <button class="btn">Print</button>
+      <button class="btn save" :class="{ loading: isLoading }">Save</button>
+      <button class="btn" :class="{ loading: isLoading }">Print</button>
     </section>
   </header>
 </template>
@@ -18,10 +22,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
-  props: { title: { type: String, required: true } },
+  emits: ["add"],
+  props: {
+    title: { type: String, required: true },
+    isLoading: { type: Boolean, default: false },
+  },
 });
 </script>
-<!-- TODO translate -->
 <style scoped lang="scss">
 .draft-header {
   width: 100%;
@@ -30,6 +37,10 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   align-items: center;
+  .loading {
+    pointer-events: none;
+    user-select: none;
+  }
   .btn {
     display: flex;
     align-items: center;
