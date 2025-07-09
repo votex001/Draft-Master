@@ -1,6 +1,11 @@
 <template>
   <section class="main-draft">
-    <DraftMetalControl v-for="metal in metals" :metal="metal" @save="saveChanges"/>
+    <DraftMetalControl
+      v-for="metal in metals"
+      :metal="metal"
+      @save="saveChanges"
+      :show-close-btn="metals.length > 1"
+    />
   </section>
 </template>
 
