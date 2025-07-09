@@ -126,7 +126,6 @@ export default defineComponent({
   padding: 40px 30px;
   width: 100%;
   gap: 30px;
-  border-top: 1px solid var(--divider);
   .bendings {
     display: grid;
     grid-template-columns: repeat(auto-fit, 120px);
