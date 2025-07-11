@@ -40,16 +40,22 @@ export const draftStore = {
         try {
           const draft: Draft = JSON.parse(savedDraft);
           commit("setCurrentDraft", draft);
+          return draft;
         } catch (e) {
           console.error("Error get draft", e);
         }
       }
+      return null;
     },
     updateDraft({ state, commit }, updateFields: Partial<Draft>) {
       if (!state.currentDraft) return;
       const updatedDraft = { ...state.currentDraft, ...updateFields };
       commit("setCurrentDraft", updatedDraft);
       localStorage.setItem("draft", JSON.stringify(updatedDraft));
+    },
+    removeCurrentDraft({ commit }) {
+      localStorage.removeItem("draft");
+      commit("setCurrentDraft", null);
     },
   },
   getters: {

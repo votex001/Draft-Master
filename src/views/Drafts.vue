@@ -1,8 +1,9 @@
 <template>
   <HeaderCmp />
+  <UnsavedChangesModal />
   <section class="drafts">
     <header class="header">
-      <h1>{{ translate.drawingsPage.title }}</h1>
+      <h1 class="title">{{ translate.drawingsPage.title }}</h1>
       <p>{{ translate.drawingsPage.p }}</p>
     </header>
     <main class="main">
@@ -30,6 +31,7 @@
 <script lang="ts">
 import HeaderCmp from "@/components/headers/HeaderCmp.vue";
 import ChooseCustomerModal from "@/components/modals/SelectCustomerModal.vue";
+import UnsavedChangesModal from "@/components/modals/UnsavedChangesModal.vue";
 import SearchCmp from "@/components/shared/SearchCmp.vue";
 import DraftsTableHeader from "@/components/table-cmps/drafts-table/DraftsTableHeader.vue";
 import { Customer } from "@/models/custumer.model";
@@ -59,6 +61,7 @@ export default defineComponent({
     SearchCmp,
     DraftsTableHeader,
     ChooseCustomerModal,
+    UnsavedChangesModal,
   },
 });
 </script>
@@ -66,6 +69,11 @@ export default defineComponent({
 <style scoped lang="scss">
 .drafts {
   padding: 40px;
+  .header{
+    .title{
+      font-size: 24px;
+    }
+  }
   .main {
     .controls {
       margin-top: 20px;
