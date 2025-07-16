@@ -1,6 +1,6 @@
 <template>
   <section
-    class="customers-table-body"
+    class="customers-table-item"
     :class="{ scroll: customers.length > 10 }"
   >
     <section v-for="customer of customers" class="customer" :key="customer.id">
@@ -73,7 +73,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.customers-table-body {
+.customers-table-item {
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: subgrid;

@@ -23,7 +23,7 @@
       </section>
       <section class="customers-list">
         <CustomersTableHeader @sort="onSort" />
-        <CustomersTableBody :customers="customers" />
+        <CustomersTableItem :customers="customers" />
       </section>
     </main>
     <EditCustomerCmp
@@ -44,7 +44,7 @@
 import AddCustomerCmp from "@/components/modals/AddCustomerCmp.vue";
 import EditCustomerCmp from "@/components/modals/EditCustomerCmp.vue";
 import SearchCmp from "@/components/shared/SearchCmp.vue";
-import CustomersTableBody from "@/components/table-cmps/customer-table/CustomersTableBody.vue";
+import CustomersTableItem from "@/components/table-cmps/customer-table/CustomerTableItem.vue";
 import CustomersTableHeader from "@/components/table-cmps/customer-table/CustomersTableHeader.vue";
 import { Customer } from "@/models/custumer.model";
 import { langService } from "@/services/lang-service";
@@ -133,7 +133,7 @@ export default defineComponent({
   components: {
     SearchCmp,
     CustomersTableHeader,
-    CustomersTableBody,
+    CustomersTableItem,
     EditCustomerCmp,
     AddCustomerCmp,
   },
