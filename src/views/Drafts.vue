@@ -17,8 +17,31 @@
         </button>
       </section>
       <section class="drafts-table">
-        <DraftsTableHeader @sort="console.log" />
-        <DraftsTableItem />
+        <DraftsTableHeader @sort="onSort" />
+        <div
+          :class="{
+            'draft-items': draftList.length,
+            'empty-wrapper': !draftList.length,
+          }"
+        >
+          <div class="oops-no-items" v-if="!draftList.length">
+            <img src="/src/assets/imgs/drafts-empty-list/draftImg.png" />
+            <div class="text">
+              <h2>No drafts, yet?</h2>
+              <p>Your drawings will be listed here.</p>
+              <button class="btn" @click="isOpen = true">
+                {{ translate.addNew }}
+              </button>
+            </div>
+          </div>
+          <DraftsTableItem
+            v-if="draftList.length"
+            v-for="draft in draftList"
+            :draft="draft"
+            :key="draft.id"
+            @delete="onDelete"
+          />
+        </div>
       </section>
     </main>
     <!-- After click on Add new Draft opens modal -->
@@ -40,6 +63,7 @@ import DraftsTableHeader from "@/components/table-cmps/drafts-table/DraftsTableH
 import { Customer } from "@/models/custumer.model";
 import { langService } from "@/services/lang-service";
 import { defineComponent } from "vue";
+import { querySort } from "@/store/drafts.list.store";
 export default defineComponent({
   data() {
     return {
@@ -52,6 +76,12 @@ export default defineComponent({
       if (draft) {
         this.$router.push(`/draft/new-draft`);
       }
+    },
+    onSort(sort: querySort) {
+      this.$store.dispatch("loadDraftList", sort);
+    },
+    onDelete(draftId: string) {
+      this.$store.dispatch("deleteDraftFromList", draftId);
     },
   },
   computed: {
@@ -72,7 +102,10 @@ export default defineComponent({
   },
   async created() {
     try {
-      await this.$store.dispatch("loadDraftList");
+      await this.$store.dispatch("loadDraftList", {
+        column: "draftName",
+        dir: 1 as 1 | -1,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -100,7 +133,38 @@ export default defineComponent({
     }
     .drafts-table {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: 3fr repeat(3, 2fr) 1fr;
+      .empty-wrapper {
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-column: 1/-1;
+        height: 400px;
+        .oops-no-items {
+          grid-column: 1/-1;
+          display: flex;
+          width: 340px;
+          align-self: center;
+          justify-self: center;
+          .text {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            height: 160px;
+            justify-content: center;
+            .btn {
+              width: max-content;
+            }
+          }
+        }
+      }
+      .draft-items {
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-column: 1/-1;
+        max-height: calc((35 * 19 + 17.5) * 1px);
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
     }
   }
 }
@@ -123,11 +187,14 @@ export default defineComponent({
     }
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 580px) {
   .drafts {
     .main {
       .drafts-table {
         grid-template-columns: repeat(2, 1fr);
+        .draft-items {
+          max-height: calc(35 * 18 * 1px);
+        }
       }
     }
   }
