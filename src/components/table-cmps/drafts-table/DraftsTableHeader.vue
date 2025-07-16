@@ -31,7 +31,6 @@ export default defineComponent({
         name: 1 as -1 | 1 | null,
         metals: null as -1 | 1 | null,
         totalPrice: null as -1 | 1 | null,
-        lastPrint: null as -1 | 1 | null,
         lastEdit: null as -1 | 1 | null,
       },
     };
