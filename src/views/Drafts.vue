@@ -18,8 +18,10 @@
       </section>
       <section class="drafts-table">
         <DraftsTableHeader @sort="console.log" />
+        <DraftsTableBody />
       </section>
     </main>
+    <!-- After click on Add new Draft opens modal -->
     <ChooseCustomerModal
       v-if="isOpen"
       @close="isOpen = false"
@@ -33,6 +35,7 @@ import HeaderCmp from "@/components/headers/HeaderCmp.vue";
 import ChooseCustomerModal from "@/components/modals/SelectCustomerModal.vue";
 import UnsavedChangesModal from "@/components/modals/UnsavedChangesModal.vue";
 import SearchCmp from "@/components/shared/SearchCmp.vue";
+import DraftsTableBody from "@/components/table-cmps/drafts-table/DraftsTableBody.vue";
 import DraftsTableHeader from "@/components/table-cmps/drafts-table/DraftsTableHeader.vue";
 import { Customer } from "@/models/custumer.model";
 import { langService } from "@/services/lang-service";
@@ -55,6 +58,9 @@ export default defineComponent({
     translate() {
       return langService.translate.value;
     },
+    draftList() {
+      return this.$store.getters.getDraftList;
+    },
   },
   components: {
     HeaderCmp,
@@ -62,6 +68,14 @@ export default defineComponent({
     DraftsTableHeader,
     ChooseCustomerModal,
     UnsavedChangesModal,
+    DraftsTableBody,
+  },
+  async created() {
+    try {
+      await this.$store.dispatch("loadDraftList");
+    } catch (err) {
+      console.log(err);
+    }
   },
 });
 </script>
@@ -69,8 +83,8 @@ export default defineComponent({
 <style scoped lang="scss">
 .drafts {
   padding: 40px;
-  .header{
-    .title{
+  .header {
+    .title {
       font-size: 24px;
     }
   }
