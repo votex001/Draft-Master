@@ -1,10 +1,16 @@
 <template>
   <header class="draft-header">
-    <button class="btn" :class="{ loading: isLoading }" @click="isOpen = true">
+    <button
+      class="btn"
+      :class="{ loading: isLoading }"
+      @click="isOpenCloseModal = true"
+    >
       <img class="img" src="/src/assets/imgs/draft-header/arrow-left.svg" />Go
       Back
     </button>
+    <!-- Customer Name -->
     <h1 class="title">{{ title }}</h1>
+
     <section class="right-controllers">
       <button
         class="add-btn"
@@ -13,15 +19,48 @@
       >
         <img class="img" src="/src/assets/imgs/draft-header/plus.svg" />
       </button>
-      <button class="btn save" :class="{ loading: isLoading }">Save</button>
+      <button
+        class="btn save"
+        @click="isOpenSaveModal = true"
+        :class="{ loading: isLoading }"
+      >
+        Save
+      </button>
     </section>
-    <Modal v-if="isOpen" @close="isOpen = false">
+    <!-- Close asking -->
+    <Modal v-if="isOpenCloseModal" @close="isOpenCloseModal = false">
       <section class="confirm">
         <h2 class="title">Do you want to quit without saving?</h2>
         <section class="btns">
-          <button class="btn white" @click="isOpen = false">Cancel</button>
+          <button class="btn white" @click="isOpenCloseModal = false">
+            Cancel
+          </button>
           <router-link to="/drafts" class="btn">ok</router-link>
         </section>
+      </section>
+    </Modal>
+    <!-- Save asking -->
+    <Modal v-if="isOpenSaveModal" @close="isOpenSaveModal = false"
+      ><section class="confirm">
+        <div>
+          <h2 class="title">Do you want to rename this Draft?</h2>
+          <input
+            v-model="newSaveName"
+            @focus="($event.target as HTMLInputElement).select()"
+            class="new-draft-name"
+          />
+        </div>
+        <div class="btns">
+          <!--Cancel button reset input -->
+          <button
+            class="btn white"
+            @click="(isOpenSaveModal = false), (newSaveName = title)"
+          >
+            Cancel
+          </button>
+          <!-- Save button send emit to draft component -->
+          <button class="btn" @click="$emit('save', newSaveName)">ok</button>
+        </div>
       </section>
     </Modal>
   </header>
@@ -31,12 +70,15 @@
 import { defineComponent } from "vue";
 import Modal from "../modals/Modal.vue";
 export default defineComponent({
-  emits: ["add"],
+  emits: ["add", "save"],
   data() {
     return {
-      isOpen: false, //Opening "Go back" confirm window
+      isOpenCloseModal: false, //Opening "Go back" confirm window
+      isOpenSaveModal: false, //Opening "Save" confirm window
+      newSaveName: this.title,
     };
   },
+
   components: { Modal },
   props: {
     title: { type: String, required: true },
@@ -76,7 +118,8 @@ export default defineComponent({
   .right-controllers {
     display: flex;
     justify-content: space-between;
-    width: 255px;
+    width: max-content;
+    gap: 20px;
     .save,
     .btn {
       font-size: 18px;
@@ -96,6 +139,14 @@ export default defineComponent({
     padding: 0 30px 30px 30px;
     .title {
       font-size: 18px;
+    }
+    .new-draft-name{
+      margin-top: 20px;
+      padding: 5px 5px;
+      border-radius: 6px;
+      &:focus{
+        outline-color: var(--selected);
+      }
     }
     .btns {
       display: flex;
