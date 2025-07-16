@@ -29,7 +29,7 @@ export const draftsListStore = {
     },
   },
   actions: {
-    async loadDraftList({ commit }, sort: querySort) {
+    async loadDraftList({ commit, state }, sort: querySort) {
       try {
         const draftList = await draftsListService.onQuery(sort);
         commit("setCurrentList", draftList);
@@ -39,10 +39,18 @@ export const draftsListStore = {
         throw err;
       }
     },
-    async saveDraftToList({ dispatch }, draft: Draft) {
+    async saveDraftToList({ dispatch, state }, draft: Draft) {
       try {
         await draftsListService.saveDraft(draft);
-        dispatch("loadDraftList");
+        dispatch("loadDraftList", state.querySort);
+      } catch (err) {
+        throw err;
+      }
+    },
+    async deleteDraftFromList({ dispatch, state }, draftId: string) {
+      try {
+        await draftsListService.deleteDraft(draftId);
+        dispatch("loadDraftList", state.querySort);
       } catch (err) {
         throw err;
       }

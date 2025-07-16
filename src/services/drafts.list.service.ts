@@ -2,7 +2,7 @@ import { Draft } from "@/models/drafts.model";
 import { makeId } from "./service";
 import { querySort } from "@/store/drafts.list.store";
 const STORAGE_KEY = "drafts";
-export const draftsListService = { onQuery, saveDraft };
+export const draftsListService = { onQuery, saveDraft, deleteDraft };
 
 async function onQuery(filter: querySort) {
   try {
@@ -49,6 +49,17 @@ async function saveDraft(draft: Draft) {
       _saveDrafts(drafts);
       return drafts;
     }
+  } catch (err) {
+    throw err;
+  }
+}
+
+async function deleteDraft(draftId) {
+  try {
+    const draftList = loadDrafts();
+    const updatedDraftList = draftList.filter((d) => d.id !== draftId);
+    _saveDrafts(updatedDraftList);
+    return updatedDraftList;
   } catch (err) {
     throw err;
   }
