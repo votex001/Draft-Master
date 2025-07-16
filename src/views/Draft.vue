@@ -3,9 +3,10 @@
     <HeaderCmp />
     <main class="draft-main" v-if="draft">
       <DraftHeader
-        :title="draft.customerName"
+        :title="draft.draftName"
         @add="onAddMetal"
         :is-loading="isLoading"
+        @save="saveNewDraft"
       />
       <MainDraft :metals="draft.metals" @save="saveNewMetalArr" />
       <DraftFooter :metals="draft.metals" :total-price="draft.totalPrice" />
@@ -49,6 +50,12 @@ export default defineComponent({
       updatedDraft.metals.push(emptyMetalDraft);
       await this.$store.dispatch("updateDraft", updatedDraft);
       this.isLoading = false;
+    },
+    async saveNewDraft(draftName: string) {
+      const updatedDraft: Draft = { ...this.draft, draftName };
+      await this.$store.dispatch("saveDraftToList", updatedDraft);
+      await this.$store.dispatch("removeCurrentDraft");
+      this.$router.push("/drafts");
     },
   },
   computed: {
