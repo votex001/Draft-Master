@@ -26,9 +26,11 @@ export const draftStore = {
 
       const newDraft: Draft = {
         customerId: customer.id,
+        draftName: customer.name,
         customerName: customer.name,
         metals: [emptyDraftMetal],
         totalPrice: 0,
+        lastEdit: null,
       };
       commit("setCurrentDraft", newDraft);
       localStorage.setItem("draft", JSON.stringify(newDraft));

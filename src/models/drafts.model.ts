@@ -1,8 +1,11 @@
 export interface Draft {
+  id?: string;
+  draftName: string;
   customerName: string;
   customerId: string;
   metals: DraftMetal[];
   totalPrice: number;
+  lastEdit: number;
 }
 
 export interface DraftMetal {
