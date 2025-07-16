@@ -14,7 +14,6 @@
         <img class="img" src="/src/assets/imgs/draft-header/plus.svg" />
       </button>
       <button class="btn save" :class="{ loading: isLoading }">Save</button>
-      <button class="btn" :class="{ loading: isLoading }">Print</button>
     </section>
     <Modal v-if="isOpen" @close="isOpen = false">
       <section class="confirm">
