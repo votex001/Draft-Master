@@ -16,7 +16,7 @@ async function onQuery(filter: querySort) {
       }
 
       if (typeof valueA === "number" && typeof valueB === "number") {
-        return (valueA - valueB) * filter.dir;
+        return (valueA - valueB) * -filter.dir;
       }
 
       return 0;

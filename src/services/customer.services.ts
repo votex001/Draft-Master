@@ -29,10 +29,10 @@ async function getQuery(filter?: {
         const { sortBy, dir } = filter.sort;
 
         if (sortBy === "lastOrder") {
-          return dir * (a.lastOrder - b.lastOrder);
+          return -dir * (a.lastOrder - b.lastOrder);
         }
         if (sortBy === "lastEdit") {
-          return dir * (a.lastEdit - b.lastEdit);
+          return -dir * (a.lastEdit - b.lastEdit);
         }
         if (sortBy === "name") {
           return dir * a.name.localeCompare(b.name);
