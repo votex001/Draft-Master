@@ -72,7 +72,7 @@ export default defineComponent({
     }
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 580px) {
   .drafts-table-header {
     & > :nth-child(2) {
       display: none;
