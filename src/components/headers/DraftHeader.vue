@@ -47,7 +47,7 @@
           <input
             v-model="newSaveName"
             @focus="($event.target as HTMLInputElement).select()"
-            class="new-draft-name"
+            class="new-draft-name-input"
           />
         </div>
         <div class="btns">
@@ -140,9 +140,11 @@ export default defineComponent({
     .title {
       font-size: 18px;
     }
-    .new-draft-name{
+    .new-draft-name-input{
+      width: 80%;
       margin-top: 20px;
       padding: 5px 5px;
+      padding-right: 20px;
       border-radius: 6px;
       &:focus{
         outline-color: var(--selected);
