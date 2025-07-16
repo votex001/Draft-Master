@@ -18,7 +18,7 @@
       </section>
       <section class="drafts-table">
         <DraftsTableHeader @sort="console.log" />
-        <DraftsTableBody />
+        <DraftsTableItem />
       </section>
     </main>
     <!-- After click on Add new Draft opens modal -->
@@ -35,7 +35,7 @@ import HeaderCmp from "@/components/headers/HeaderCmp.vue";
 import ChooseCustomerModal from "@/components/modals/SelectCustomerModal.vue";
 import UnsavedChangesModal from "@/components/modals/UnsavedChangesModal.vue";
 import SearchCmp from "@/components/shared/SearchCmp.vue";
-import DraftsTableBody from "@/components/table-cmps/drafts-table/DraftsTableBody.vue";
+import DraftsTableItem from "@/components/table-cmps/drafts-table/DraftsTableItem.vue";
 import DraftsTableHeader from "@/components/table-cmps/drafts-table/DraftsTableHeader.vue";
 import { Customer } from "@/models/custumer.model";
 import { langService } from "@/services/lang-service";
@@ -68,7 +68,7 @@ export default defineComponent({
     DraftsTableHeader,
     ChooseCustomerModal,
     UnsavedChangesModal,
-    DraftsTableBody,
+    DraftsTableItem,
   },
   async created() {
     try {

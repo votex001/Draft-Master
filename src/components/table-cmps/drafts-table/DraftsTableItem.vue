@@ -1,5 +1,5 @@
 <template>
-  <section class="drafts-table-body"></section>
+  <section class="drafts-table-item"></section>
 </template>
 
 <script lang="ts">
