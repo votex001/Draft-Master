@@ -28,7 +28,7 @@ export default defineComponent({
   data() {
     return {
       arrows: {
-        name: 1 as -1 | 1 | null,
+        draftName: 1 as -1 | 1 | null,
         metals: null as -1 | 1 | null,
         totalPrice: null as -1 | 1 | null,
         lastEdit: null as -1 | 1 | null,
@@ -37,7 +37,7 @@ export default defineComponent({
   },
   methods: {
     onSort(
-      column: "name" | "lastEdit" | "metals" | "totalPrice" | "lastPrint"
+      column: "draftName" | "lastEdit" | "metals" | "totalPrice" | "lastPrint"
     ) {
       Object.keys(this.arrows).forEach((key) => {
         if (key !== column) this.arrows[key] = null;
