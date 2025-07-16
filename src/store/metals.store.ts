@@ -1,7 +1,6 @@
 import { Metal, MetalType } from "@/models/metal.model";
 import { metalService } from "@/services/metal.service";
 import { metalTypesService } from "@/services/metal.types.service";
-import { createStore } from "vuex";
 
 interface Filter {
   name: string;
