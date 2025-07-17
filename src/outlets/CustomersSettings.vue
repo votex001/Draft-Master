@@ -47,7 +47,7 @@ import SearchCmp from "@/components/shared/SearchCmp.vue";
 import CustomersTableItem from "@/components/table-cmps/customer-table/CustomerTableItem.vue";
 import CustomersTableHeader from "@/components/table-cmps/customer-table/CustomersTableHeader.vue";
 import { Customer } from "@/models/custumer.model";
-import { langService } from "@/services/lang-service";
+import { langService } from "@/translate/lang-service";
 import { useItemStoreControls } from "@/services/useItemStoreControls";
 import { defineComponent } from "vue";
 

@@ -46,7 +46,7 @@
 
 <script lang="ts">
 import LangBtn from "@/components/headers/LangBtn.vue";
-import { langService } from "@/services/lang-service";
+import { langService } from "@/translate/lang-service";
 export default {
   computed: {
     currentLang() {

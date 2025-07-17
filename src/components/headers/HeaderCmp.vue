@@ -22,7 +22,7 @@
   </header>
 </template>
 <script lang="ts">
-import { langService } from "@/services/lang-service";
+import { langService } from "@/translate/lang-service";
 import LangBtn from "./LangBtn.vue";
 import { defineComponent } from "vue";
 

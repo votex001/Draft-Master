@@ -1,6 +1,6 @@
 <template>
   <HeaderCmp />
-  <UnsavedChangesModal />
+  <UnsavedChangesModal :txt="translate.drawingsPage.UnsavedChangesModal"/>
   <section class="drafts">
     <header class="header">
       <h1 class="title">{{ translate.drawingsPage.title }}</h1>
@@ -28,8 +28,8 @@
           <div class="oops-no-items" v-if="!draftList.length">
             <img src="/src/assets/imgs/drafts-empty-list/draftImg.png" />
             <div class="text">
-              <h2>No drafts, yet?</h2>
-              <p>Your drawings will be listed here.</p>
+              <h2>{{ translate.drawingsPage.emptyItems.title }}</h2>
+              <p>{{ translate.drawingsPage.emptyItems.txt }}</p>
               <button class="btn" @click="isOpen = true">
                 {{ translate.addNew }}
               </button>
@@ -49,6 +49,7 @@
       v-if="isOpen"
       @close="isOpen = false"
       @select="onSelectCustomer"
+      :title="translate.drawingsPage.chooseCustomer"
     />
   </section>
 </template>
@@ -61,7 +62,7 @@ import SearchCmp from "@/components/shared/SearchCmp.vue";
 import DraftsTableItem from "@/components/table-cmps/drafts-table/DraftsTableItem.vue";
 import DraftsTableHeader from "@/components/table-cmps/drafts-table/DraftsTableHeader.vue";
 import { Customer } from "@/models/custumer.model";
-import { langService } from "@/services/lang-service";
+import { langService } from "@/translate/lang-service";
 import { defineComponent } from "vue";
 import { querySort } from "@/store/drafts.list.store";
 export default defineComponent({

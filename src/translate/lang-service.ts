@@ -1,6 +1,6 @@
 import { computed, ref } from "vue";
 
-const currentLang = ref(checkCurrentLang());
+export const currentLang = ref(checkCurrentLang());
 const translation = translate();
 
 export const langService = {
@@ -63,6 +63,16 @@ function translate() {
           totalPrice: "Total Price",
           lastPrint: "Last Print",
           lastEdit: "Last Edit",
+        },
+        emptyItems: {
+          title: "No drafts, yet?",
+          txt: "Your drawings will be listed here.",
+        },
+        chooseCustomer: "Select Customer",
+        UnsavedChangesModal: {
+          title: "You have a draft in progress.",
+          edit: "Edit draft",
+          delete: "Delete draft",
         },
       },
       customersOutput: {
@@ -149,6 +159,17 @@ function translate() {
           totalPrice: "מחיר כולל",
           lastPrint: "הדפס אחרון",
           lastEdit: "עריכה אחרונה",
+        },
+        emptyItems: {
+          title: "אין טיוטות עדיין?",
+          txt: "הציורים שלך יופיעו כאן.",
+        },
+        chooseCustomer: "בחר לקוח",
+
+        UnsavedChangesModal: {
+          title: "יש לך טיוטה בתהליך עיבוד.",
+          edit: "עריכת טיוטה",
+          delete: "מחיקת טיוטה",
         },
       },
       customersOutput: {

@@ -11,7 +11,7 @@
 <script lang="ts">
 import HeaderCmp from "@/components/headers/HeaderCmp.vue";
 import SideBar from "@/components/shared/SideBar.vue";
-import { langService } from "@/services/lang-service";
+import { langService } from "@/translate/lang-service";
 
 export default {
   computed: {

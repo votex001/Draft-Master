@@ -16,7 +16,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import ColumnHeader from "../ColumnHeader.vue";
-import { langService } from "@/services/lang-service";
+import { langService } from "@/translate/lang-service";
 export default defineComponent({
   components: { ColumnHeader },
   computed: {

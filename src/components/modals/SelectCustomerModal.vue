@@ -1,5 +1,5 @@
 <template>
-  <Modal @close="$emit('close')" title="Select Customer">
+  <Modal @close="$emit('close')" :title="title">
     <div class="select-customer-modal">
       <span v-if="!customers.length" class="loading">
         <LoadingSvg />
@@ -26,6 +26,7 @@ import { Customer } from "@/models/custumer.model";
 import LoadingSvg from "@/assets/imgs/LoadingSvg.vue";
 export default defineComponent({
   emits: ["select", "close"],
+  props: { title: { type: String, required: true } },
   data() {
     return {
       service: useItemStoreControls<Customer>({

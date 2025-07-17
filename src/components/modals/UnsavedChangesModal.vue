@@ -6,15 +6,17 @@
     @animationend="onAnimationEnd"
   >
     <header class="header">
-      <h2 class="title">You have a draft in progress.</h2>
+      <h2 class="title">{{ txt.title }}</h2>
       <button class="close" @click="onClose">
         <img class="img" src="/src/assets/imgs/draft-header/plus.svg" />
       </button>
     </header>
     <main class="main">
-      <router-link to="/draft/new-draft" class="btn">Edit draft</router-link>
+      <router-link to="/draft/new-draft" class="btn">{{
+        txt.edit
+      }}</router-link>
       <button @click="deleteCurrentDraft" class="btn white">
-        Delete draft
+        {{ txt.delete }}
       </button>
     </main>
   </section>
@@ -29,6 +31,7 @@ export default defineComponent({
       shouldShow: false,
     };
   },
+  props: { txt: Object },
   methods: {
     onClose() {
       this.isOpen = false;
@@ -69,6 +72,17 @@ export default defineComponent({
     transform: translateY(-300px) translate(-50%);
   }
 }
+.wrapper.he {
+  .unsaved-changes-modal {
+    .close {
+      left: 10px;
+      right: unset;
+    }
+    .main {
+      justify-content: start;
+    }
+  }
+}
 .unsaved-changes-modal {
   background-color: var(--bg);
   width: 400px;
@@ -92,6 +106,7 @@ export default defineComponent({
     padding: 20px 0px;
     .title {
       font-size: 20px;
+      text-wrap: nowrap;
     }
     .close {
       position: fixed;

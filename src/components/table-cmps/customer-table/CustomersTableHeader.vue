@@ -16,12 +16,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import ColumnHeader from "../ColumnHeader.vue";
-import { langService } from "@/services/lang-service";
+import { langService } from "@/translate/lang-service";
 export default defineComponent({
   components: { ColumnHeader },
   computed: {
     names() {
-      const translate =  langService.translate.value;
+      const translate = langService.translate.value;
       const { lastEdit, lastOrder, name } = translate.customersOutput.tables;
       return { lastEdit, lastOrder, name };
     },

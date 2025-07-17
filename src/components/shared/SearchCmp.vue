@@ -16,13 +16,12 @@
 </template>
 
 <script lang="ts">
-import { langService } from "@/services/lang-service";
+import { langService } from "@/translate/lang-service";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   emits: ["search"],
   computed: {
-    
     translate() {
       return langService.translate.value;
     },

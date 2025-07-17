@@ -17,7 +17,11 @@
           {{ translate.editCustomerCmp.prices }}
         </h2>
         <ul class="prices-list">
-          <li class="price" v-for="Name of Object.keys(customer.prices)" :key="Name">
+          <li
+            class="price"
+            v-for="Name of Object.keys(customer.prices)"
+            :key="Name"
+          >
             <p>{{ Name }}</p>
             <span class="wraper">
               <span
@@ -51,7 +55,7 @@
 import { Customer } from "@/models/custumer.model";
 import { defineComponent, PropType } from "vue";
 import Modal from "./Modal.vue";
-import { langService } from "@/services/lang-service";
+import { langService } from "@/translate/lang-service";
 
 export default defineComponent({
   emits: ["close", "save"],

@@ -18,7 +18,7 @@ import { defineComponent } from "vue";
 import ItemListComponent from "@/components/item-mangment/ItemListComponent.vue";
 import { Metal } from "@/models/metal.model";
 import { useItemStoreControls } from "@/services/useItemStoreControls";
-import { langService } from "@/services/lang-service";
+import { langService } from "@/translate/lang-service";
 
 export default defineComponent({
   name: "MetalList",
@@ -37,7 +37,6 @@ export default defineComponent({
   computed: {
     translate() {
       return langService.translate.value;
-
     },
     metals(): Array<Metal & { id: string }> {
       return this.$store.getters.getMetals;

@@ -2,7 +2,7 @@ import CustomersSettings from "@/outlets/CustomersSettings.vue";
 import MetalsList from "@/outlets/MetalsList.vue";
 import MetalsSettings from "@/outlets/MetalsSettings.vue";
 import TypesList from "@/outlets/TypesList.vue";
-import { langService } from "@/services/lang-service";
+import { langService } from "@/translate/lang-service";
 import Draft from "@/views/Draft.vue";
 import Drafts from "@/views/Drafts.vue";
 import Home from "@/views/Home.vue";
