@@ -79,7 +79,7 @@ export default defineComponent({
 .side-bar {
   border: 1px solid var(--divider);
   border-top: none;
-  padding: 20px;
+  padding: 12px;
   width: fit-content;
 }
 :deep() {
