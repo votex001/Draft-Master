@@ -8,11 +8,31 @@
       <img src="/src/assets/imgs/draft-header/plus.svg" alt="" />
     </button>
     <div class="side-bar">
-      <MetalSelect :metal="metal" @on-select-metal="onUpdateDraftMetal" />
-      <TypeSelect :metal="metal" @on-select-type="onUpdateDraftMetal" />
-      <PriceThicknessControl :metal="metal" @save="onUpdateDraftMetal" />
-      <BendingFee :metal="metal" @save="onUpdateDraftMetal" />
-      <WidthAmountInput :metal="metal" @save="onUpdateDraftMetal" />
+      <MetalSelect
+        :metal="metal"
+        @on-select-metal="onUpdateDraftMetal"
+        :title="translate.metal"
+      />
+      <TypeSelect
+        :metal="metal"
+        @on-select-type="onUpdateDraftMetal"
+        :title="translate.type"
+      />
+      <PriceThicknessControl
+        :metal="metal"
+        @save="onUpdateDraftMetal"
+        :title="translate"
+      />
+      <BendingFee
+        :metal="metal"
+        @save="onUpdateDraftMetal"
+        :title="translate.bendingFee"
+      />
+      <WidthAmountInput
+        :metal="metal"
+        @save="onUpdateDraftMetal"
+        :title="translate"
+      />
     </div>
     <BendingControl :metal="metal" @change="onUpdateDraftMetal" />
   </section>
@@ -27,11 +47,17 @@ import BendingFee from "./side-bar/BendingFee.vue";
 import WidthAmountInput from "./side-bar/WidthAmountInput.vue";
 import BendingControl from "./main-bending-control/BendingControl.vue";
 import { DraftMetal } from "@/models/drafts.model";
+import { draftTranslate } from "@/translate/draft.translate";
 export default defineComponent({
   emits: ["save", "delete-metal"],
   props: {
     metal: { type: Object as PropType<DraftMetal>, required: true },
     showCloseBtn: { type: Boolean, default: false },
+  },
+  computed: {
+    translate() {
+      return draftTranslate.sideBar;
+    },
   },
   methods: {
     onUpdateDraftMetal(metal) {
@@ -82,6 +108,9 @@ export default defineComponent({
   padding: 12px;
   width: fit-content;
 }
+:global(.wrapper.he .input) {
+  padding: 5px 15px 5px 0px !important;
+}
 :deep() {
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
@@ -104,6 +133,7 @@ export default defineComponent({
       outline: 1px solid var(--selected);
     }
   }
+
   .input-wrapper {
     display: flex;
     align-items: center;

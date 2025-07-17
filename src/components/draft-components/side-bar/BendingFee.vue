@@ -1,7 +1,7 @@
 <template>
   <section class="bending-fee">
     <div class="metal-control">
-      <h2 class="title">Bending fee:</h2>
+      <h2 class="title">{{ title }}:</h2>
       <div class="input-wrapper">
         <input
           class="input"
@@ -16,7 +16,7 @@
     </div>
     <div class="checkbox-control" @click="toggleCheckBox(!metal.bendingFee)">
       <CheckBox :checked="metal.bendingFee" />
-      <p>Bending fee</p>
+      <p>{{ title }}</p>
     </div>
   </section>
 </template>
@@ -33,7 +33,10 @@ export default defineComponent({
       oldBendingFee: 0,
     };
   },
-  props: { metal: { type: Object as PropType<DraftMetal>, required: true } },
+  props: {
+    metal: { type: Object as PropType<DraftMetal>, required: true },
+    title: String,
+  },
   methods: {
     cacheOrRestore(command: "cache" | "restore") {
       command === "cache"

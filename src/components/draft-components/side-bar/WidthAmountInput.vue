@@ -1,7 +1,7 @@
 <template>
   <section class="width-amount-input">
     <div class="metal-control">
-      <h2 class="title">Width:</h2>
+      <h2 class="title">{{ title.width }}:</h2>
       <div class="input-wrapper">
         <input
           class="input width"
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="metal-control">
-      <h2 class="title">Amount:</h2>
+      <h2 class="title">{{ title.amount }}:</h2>
       <input
         class="input"
         v-model.number="amount"
@@ -44,7 +44,10 @@ export default defineComponent({
       oldAmount: 0,
     };
   },
-  props: { metal: { type: Object as PropType<DraftMetal>, required: true } },
+  props: {
+    metal: { type: Object as PropType<DraftMetal>, required: true },
+    title: Object,
+  },
   methods: {
     onEnter(event) {
       event.target.blur();

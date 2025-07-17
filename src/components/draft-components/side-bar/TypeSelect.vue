@@ -1,6 +1,6 @@
 <template>
   <section class="type-select metal-control">
-    <h2 class="title">Type:</h2>
+    <h2 class="title">{{ title }}:</h2>
     <CustomSelector
       :object-arr="getTypes"
       v-model:selectedId="selectedId"
@@ -18,7 +18,7 @@ import { DraftMetal } from "@/models/drafts.model";
 export default defineComponent({
   emits: ["onSelectType"],
   props: {
-    metal: { type: Object as PropType<DraftMetal>, required: true },
+    metal: { type: Object as PropType<DraftMetal>, required: true },title: String,
   },
   data() {
     return {

@@ -1,7 +1,7 @@
 <template>
   <section class="price-thickness-control">
     <div>
-      <h2 class="title">Metal Price:</h2>
+      <h2 class="title">{{ title.metalPrice }}:</h2>
       <div class="input-wrapper">
         <input
           class="input"
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="metal-control">
-      <h2 class="title">Metal thickness:</h2>
+      <h2 class="title">{{ title.metalThickness }}:</h2>
       <div class="input-wrapper">
         <input
           class="input"
@@ -41,6 +41,7 @@ export default defineComponent({
   emits: ["save"],
   props: {
     metal: { type: Object as PropType<DraftMetal>, required: true },
+    title: Object,
   },
   data() {
     return {

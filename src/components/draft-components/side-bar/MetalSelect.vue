@@ -1,6 +1,6 @@
 <template>
   <section class="metal-select metal-control">
-    <h2 class="title">Metal:</h2>
+    <h2 class="title">{{ title }}:</h2>
     <CustomSelector
       :object-arr="getMetals"
       v-model:selectedId="selectedId"
@@ -19,6 +19,7 @@ export default defineComponent({
   emits: ["onSelectMetal"],
   props: {
     metal: { type: Object as PropType<DraftMetal>, required: true },
+    title: String,
   },
   data() {
     return {
