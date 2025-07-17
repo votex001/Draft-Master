@@ -65,7 +65,7 @@ async function deleteDraft(draftId) {
   }
 }
 
-function loadDrafts(): Draft[] {
+export function loadDrafts(): Draft[] {
   const data = localStorage.getItem(STORAGE_KEY);
   return data ? JSON.parse(data) : [];
 }

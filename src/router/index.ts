@@ -45,9 +45,10 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: "/draft",
-    component: Draft,
-    meta: { title: "newDraft" },
-    children: [{ path: "new-draft", component: Draft }],
+    children: [
+      { path: "new-draft", component: Draft, meta: { title: "newDraft" } },
+      { path: ":id", component: Draft },
+    ],
   },
 ];
 

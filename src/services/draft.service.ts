@@ -4,11 +4,13 @@ import { Customer } from "@/models/custumer.model";
 import { metalService } from "./metal.service";
 import { metalTypesService } from "./metal.types.service";
 import { Metal, MetalType } from "@/models/metal.model";
+import { loadDrafts } from "./drafts.list.service";
 
 export const draftService = {
   getMetalSummary,
   getTotalPriceFromMetals,
   createNewDraftMetal,
+  getDraftById,
 };
 
 interface metalStats {
@@ -89,4 +91,10 @@ async function createNewDraftMetal(customer: Customer) {
     bendingFee: true,
     metalThickness: 0.5,
   };
+}
+
+async function getDraftById(id: string) {
+  const draftList = await loadDrafts();
+  const draft = draftList.find((d) => (d.id = id));
+  return draft;
 }

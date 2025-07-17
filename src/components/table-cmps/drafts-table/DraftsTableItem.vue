@@ -7,7 +7,7 @@
       {{ new Date(draft.lastEdit).toLocaleDateString() }}
     </h4>
     <div class="btns">
-      <router-link class="button" to="/drafts">
+      <router-link class="button" :to="`/draft/${draft.id}`">
         <img
           src="/src/assets/imgs/column-body/edit.svg"
           alt="edit"

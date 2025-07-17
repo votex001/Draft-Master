@@ -49,6 +49,11 @@ export const draftStore = {
       }
       return null;
     },
+    async getDraftById({ commit }, id: string) {
+      if (!id) return;
+      const draft = await draftService.getDraftById(id);
+      commit("setCurrentDraft", draft);
+    },
     updateDraft({ state, commit }, updateFields: Partial<Draft>) {
       if (!state.currentDraft) return;
       const updatedDraft = { ...state.currentDraft, ...updateFields };

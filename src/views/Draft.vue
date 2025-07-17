@@ -33,7 +33,7 @@ export default defineComponent({
   },
   data() {
     return {
-      isLoading: false,
+      isLoading: true,
     };
   },
   methods: {
@@ -62,18 +62,23 @@ export default defineComponent({
     draft() {
       const draft = this.$store.getters.getDraft;
       if (!draft) {
-        this.$router.push("/drafts");
         return;
+      } else {
+        document.title = draft?.customerName;
+        return draft as Draft;
       }
-      document.title = draft.customerName;
-      return draft as Draft;
     },
   },
   watch: {
-    draft(newVal) {
-      if (newVal === null) {
-        this.$router.push("/drafts");
-      }
+    draft: {
+      immediate: true,
+      handler(newVal) {
+        if (!newVal && !this.isLoading) {
+          this.$nextTick(() => {
+            this.$router.push("/drafts");
+          });
+        }
+      },
     },
     "draft.metals": {
       handler(newMetals) {
@@ -90,8 +95,13 @@ export default defineComponent({
       immediate: true,
     },
   },
-  async beforeCreate() {
+  async created() {
+    const id = this.$route.params.id;
+    if (id) {
+      await this.$store.dispatch("getDraftById", id);
+    }
     await this.$store.dispatch("loadDraftFromStorage");
+    this.isLoading = false;
   },
 });
 </script>
