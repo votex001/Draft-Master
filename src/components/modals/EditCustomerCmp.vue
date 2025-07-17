@@ -40,7 +40,7 @@
       <button @click="onSave" class="btn">
         {{ translate.settingsPage.save }}
       </button>
-      <button @click="onClose" class="btn white">
+      <button @click="$emit('close')" class="btn white">
         {{ translate.settingsPage.cancel }}
       </button>
     </footer>
