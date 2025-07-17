@@ -7,6 +7,7 @@
         @add="onAddMetal"
         :is-loading="isLoading"
         @save="saveNewDraft"
+        :translate="translate.header"
       />
       <MainDraft :metals="draft.metals" @save="saveNewMetalArr" />
       <DraftFooter :metals="draft.metals" :total-price="draft.totalPrice" />
@@ -22,6 +23,7 @@ import { Draft, DraftMetal } from "@/models/drafts.model";
 import MainDraft from "@/outlets/MainDraft.vue";
 import { customerService } from "@/services/customer.services";
 import { draftService } from "@/services/draft.service";
+import { draftTranslate } from "@/translate/draft.translate";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -67,6 +69,9 @@ export default defineComponent({
         document.title = draft?.customerName;
         return draft as Draft;
       }
+    },
+    translate() {
+      return draftTranslate;
     },
   },
   watch: {
