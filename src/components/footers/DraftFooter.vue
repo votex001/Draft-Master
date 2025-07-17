@@ -3,18 +3,17 @@
     <section class="details" @wheel="handleWheel">
       <div v-for="{ metal } in metalSummaries" :key="metal.id">
         <h1>{{ metal.name }}</h1>
-        <p>
-          Total area:
-          {{ metal.totalArea }} м²
+        <p>{{ translate.totalArea }}: {{ metal.totalArea }} м²</p>
+        <p v-if="metal.bendingFee">
+          {{ translate.bendingFee }}: {{ metal.bendingFee }} ₪
         </p>
-        <p v-if="metal.bendingFee">Bending fee: {{ metal.bendingFee }} ₪</p>
-        <p>Weight fee: {{ metal.weightFee }} ₪</p>
-        <p>Total Price: {{ metal.totalPrice }} ₪</p>
+        <p>{{ translate.weightFee }}: {{ metal.weightFee }} ₪</p>
+        <p>{{ translate.totalPrice }}: {{ metal.totalPrice }} ₪</p>
       </div>
     </section>
     <section class="total-price">
       <h1>
-        Total price: <span>{{ totalPrice }}</span> ₪
+        {{ translate.totalPrice }}: <span>{{ totalPrice }}</span> ₪
       </h1>
     </section>
   </footer>
@@ -46,6 +45,7 @@ export default defineComponent({
   props: {
     totalPrice: { type: Number, required: true },
     metals: { type: Array as PropType<DraftMetal[]>, required: true },
+    translate: Object,
   },
 });
 </script>

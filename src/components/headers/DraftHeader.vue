@@ -103,10 +103,10 @@ export default defineComponent({
   }
 }
 .draft-header {
+  border-bottom: 1px solid var(--divider);
   direction: ltr;
   width: 100%;
-  margin: 10px 0;
-  padding: 3px 60px 3px 37px;
+  padding: 10px 60px 10px 37px;
   display: flex;
   justify-content: space-between;
   align-items: center;

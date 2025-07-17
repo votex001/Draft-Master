@@ -10,7 +10,11 @@
         :translate="translate.header"
       />
       <MainDraft :metals="draft.metals" @save="saveNewMetalArr" />
-      <DraftFooter :metals="draft.metals" :total-price="draft.totalPrice" />
+      <DraftFooter
+        :metals="draft.metals"
+        :total-price="draft.totalPrice"
+        :translate="translate.draftFooter"
+      />
     </main>
   </section>
 </template>

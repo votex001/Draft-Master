@@ -50,6 +50,21 @@ const mainDraft = {
   he: { deployment: "פריסה", price: "מחיר", add: "הוסף", bending: "כיפוף" },
 };
 
+const draftFooter = {
+  en: {
+    totalArea: "Total Area",
+    bendingFee: "Bending Fee",
+    weightFee: "Weight Fee",
+    totalPrice: "Total Price",
+  },
+  he: {
+    totalArea: "שטח כולל",
+    bendingFee: "עמלת כיפוף",
+    weightFee: "עמלת משקל",
+    totalPrice: "מחיר כולל",
+  },
+};
+
 // exporting translate
 const translation = translateFnc();
 export const draftTranslate = computed(
@@ -69,6 +84,9 @@ function translateFnc() {
       mainDraft: {
         ...mainDraft.en,
       },
+      draftFooter: {
+        ...draftFooter.en,
+      },
     },
     he: {
       header: {
@@ -79,6 +97,9 @@ function translateFnc() {
       },
       mainDraft: {
         ...mainDraft.he,
+      },
+      draftFooter: {
+        ...draftFooter.he,
       },
     },
   };
