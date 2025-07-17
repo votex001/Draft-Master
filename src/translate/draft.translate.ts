@@ -1,4 +1,4 @@
-import { computed } from "vue";
+import { computed, reactive } from "vue";
 import { currentLang } from "./lang-service";
 
 // components write here
@@ -66,10 +66,8 @@ const draftFooter = {
 };
 
 // exporting translate
-const translation = translateFnc();
-export const draftTranslate = computed(
-  () => translation[currentLang.value]
-).value;
+const translation = reactive(translateFnc());
+export const draftTranslate = computed(() => translation[currentLang.value]);
 
 // don't forget to add your translate here
 function translateFnc() {

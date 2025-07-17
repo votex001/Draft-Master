@@ -60,7 +60,7 @@ export default defineComponent({
   },
   computed: {
     translate() {
-      return draftTranslate;
+      return draftTranslate.value;
     },
   },
   methods: {

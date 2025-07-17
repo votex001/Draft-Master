@@ -75,7 +75,7 @@ export default defineComponent({
       }
     },
     translate() {
-      return draftTranslate;
+      return draftTranslate.value;
     },
   },
   watch: {

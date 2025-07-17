@@ -49,8 +49,15 @@ export default defineComponent({
   },
 });
 </script>
-<!-- TODO translate -->
 <style scoped lang="scss">
+.he{
+  .draft-footer{
+    .total-price{
+      border-left: none;
+      border-right: 1px solid var(--divider);
+    }
+  }
+}
 .draft-footer {
   bottom: 0;
   height: 150px;
