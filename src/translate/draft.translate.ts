@@ -1,7 +1,7 @@
 import { computed } from "vue";
 import { currentLang } from "./lang-service";
-import SideBar from "@/components/shared/SideBar.vue";
 
+// components write here
 const header = {
   en: {
     back: "Go Back",
@@ -40,11 +40,23 @@ const sideBar = {
   },
 };
 
+const mainDraft = {
+  en: {
+    deployment: "Deployment",
+    price: "Price",
+    add: "Add",
+    bending: "Bending",
+  },
+  he: { deployment: "פריסה", price: "מחיר", add: "הוסף", bending: "כיפוף" },
+};
+
+// exporting translate
 const translation = translateFnc();
 export const draftTranslate = computed(
   () => translation[currentLang.value]
 ).value;
 
+// don't forget to add your translate here
 function translateFnc() {
   return {
     en: {
@@ -54,6 +66,9 @@ function translateFnc() {
       sideBar: {
         ...sideBar.en,
       },
+      mainDraft: {
+        ...mainDraft.en,
+      },
     },
     he: {
       header: {
@@ -61,6 +76,9 @@ function translateFnc() {
       },
       sideBar: {
         ...sideBar.he,
+      },
+      mainDraft: {
+        ...mainDraft.he,
       },
     },
   };

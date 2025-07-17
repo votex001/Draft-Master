@@ -1,13 +1,13 @@
 <template>
   <main class="bending-control">
-    <h2>Add bending</h2>
+    <h2>{{ translate.add }} {{ translate.bending }}</h2>
     <div class="bendings">
       <div
         class="bending-wrapper"
         v-for="(bending, index) in bendings"
         :key="bending.id"
       >
-        <h3>Bending {{ index + 1 }}</h3>
+        <h3>{{ translate.bending }} {{ index + 1 }}</h3>
         <button
           v-if="bendings.length > 1"
           @click="close(bending.id)"
@@ -34,11 +34,13 @@
       </button>
     </div>
     <div class="deployment">
-      <p>
-        Deployment: {{ totalWidth }} <span class="unit-label small">mm</span>
+      <p class="txt">
+        {{ translate.deployment }}: {{ totalWidth }}
+        <span class="unit-label small">mm</span>
       </p>
-      <p>
-        Price: {{ metalSummaries() }} <span class="unit-label small">₪</span>
+      <p class="txt">
+        {{ translate.price }}: {{ metalSummaries() }}
+        <span class="unit-label small">₪</span>
       </p>
     </div>
   </main>
@@ -53,6 +55,7 @@ export default defineComponent({
   emits: ["change"],
   props: {
     metal: { type: Object as PropType<DraftMetal>, required: true },
+    translate: Object,
   },
   data() {
     return {
@@ -119,6 +122,26 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+.wrapper.he {
+  .bending-control {
+    .bending-wrapper {
+      padding: 10px 0px 10px 30px;
+      .close {
+        left: 0;
+        right: unset;
+      }
+    }
+  }
+  .deployment {
+    left: 0;
+    right: unset;
+    border-left: none;
+    border-right: 1px solid var(--divider);
+    .txt {
+      direction: rtr;
+    }
+  }
+}
 .bending-control {
   display: flex;
   position: relative;

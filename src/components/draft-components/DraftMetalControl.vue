@@ -11,30 +11,34 @@
       <MetalSelect
         :metal="metal"
         @on-select-metal="onUpdateDraftMetal"
-        :title="translate.metal"
+        :title="translate.sideBar.metal"
       />
       <TypeSelect
         :metal="metal"
         @on-select-type="onUpdateDraftMetal"
-        :title="translate.type"
+        :title="translate.sideBar.type"
       />
       <PriceThicknessControl
         :metal="metal"
         @save="onUpdateDraftMetal"
-        :title="translate"
+        :title="translate.sideBar"
       />
       <BendingFee
         :metal="metal"
         @save="onUpdateDraftMetal"
-        :title="translate.bendingFee"
+        :title="translate.sideBar.bendingFee"
       />
       <WidthAmountInput
         :metal="metal"
         @save="onUpdateDraftMetal"
-        :title="translate"
+        :title="translate.sideBar"
       />
     </div>
-    <BendingControl :metal="metal" @change="onUpdateDraftMetal" />
+    <BendingControl
+      :metal="metal"
+      @change="onUpdateDraftMetal"
+      :translate="translate.mainDraft"
+    />
   </section>
 </template>
 
@@ -56,7 +60,7 @@ export default defineComponent({
   },
   computed: {
     translate() {
-      return draftTranslate.sideBar;
+      return draftTranslate;
     },
   },
   methods: {
