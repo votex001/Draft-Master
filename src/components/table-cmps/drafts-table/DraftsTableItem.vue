@@ -19,7 +19,7 @@
           class="icon-hover"
         />
       </router-link>
-      <button class="button" @click="$emit('delete', draft.id)">
+      <button class="button delete" :data-id="draft.id">
         <img
           src="/src/assets/imgs/column-body/Trash.svg"
           alt="edit"
@@ -39,7 +39,6 @@
 import { Draft } from "@/models/drafts.model";
 import { defineComponent, PropType } from "vue";
 export default defineComponent({
-  emits: ["delete"],
   props: { draft: { type: Object as PropType<Draft>, required: true } },
 });
 </script>

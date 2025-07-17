@@ -23,6 +23,7 @@
             'draft-items': draftList.length,
             'empty-wrapper': !draftList.length,
           }"
+          @click="onDelete"
         >
           <div class="oops-no-items" v-if="!draftList.length">
             <img src="/src/assets/imgs/drafts-empty-list/draftImg.png" />
@@ -39,7 +40,6 @@
             v-for="draft in draftList"
             :draft="draft"
             :key="draft.id"
-            @delete="onDelete"
           />
         </div>
       </section>
@@ -80,8 +80,16 @@ export default defineComponent({
     onSort(sort: querySort) {
       this.$store.dispatch("loadDraftList", sort);
     },
-    onDelete(draftId: string) {
-      this.$store.dispatch("deleteDraftFromList", draftId);
+    onDelete(event: MouseEvent) {
+      const target = event.target as HTMLElement;
+      const emptyDraftsList = target.closest(".oops-no-items");
+      const deleteButton = target.closest(".delete") as HTMLElement;
+      if (emptyDraftsList) {
+        return;
+      }
+      if (deleteButton) {
+        this.$store.dispatch("deleteDraftFromList", deleteButton.dataset.id);
+      }
     },
   },
   computed: {
