@@ -42,7 +42,7 @@ export const draftsListStore = {
     async saveDraftToList({ dispatch, state }, draft: Draft) {
       try {
         await draftsListService.saveDraft(draft);
-        dispatch("loadDraftList", state.querySort);
+        dispatch("loadDraftList", state.draftSort);
       } catch (err) {
         throw err;
       }
@@ -50,7 +50,7 @@ export const draftsListStore = {
     async deleteDraftFromList({ dispatch, state }, draftId: string) {
       try {
         await draftsListService.deleteDraft(draftId);
-        dispatch("loadDraftList", state.querySort);
+        dispatch("loadDraftList", state.draftSort);
       } catch (err) {
         throw err;
       }
