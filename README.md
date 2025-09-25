@@ -1,14 +1,21 @@
 # Draft-Master
 
-This template should help get you started developing with Vue 3 in Vite.
+I worked at a factory where sheet metal counting and pricing were done on slips of paper. I decided to write an application that would store customers, their prices, and the ability to create new counts.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Routers
 
-## Customize configuration
+-'/' - home page
+-'/drafts' - here u can add new order and count price
+-'/settings' - this tab of settings is for Customer list, here u can add new and delete old customer
+-'/settings/customer/:id' - here u can change customer and personal prices
+-'/settings/metals' - here u can add new metals
+-'/settings/metals/types' - here u can change global types of metals and price of them (its more about thickness)
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+---
+
+[Here u can see demo](draft-master.netlify.app)
 
 ## Project Setup
 
