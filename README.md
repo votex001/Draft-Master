@@ -15,7 +15,7 @@ Frontend web application designed to replace manual sheet metal counting and pri
 
 ---
 
-[Here u can see demo](draft-master.netlify.app)
+[Here u can see demo](https://draft-master.netlify.app/)
 
 ## Project Setup
 
