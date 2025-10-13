@@ -1,6 +1,6 @@
 # Draft-Master
 
-I worked at a factory where sheet metal counting and pricing were done on slips of paper. I decided to write an application that would store customers, their prices, and the ability to create new counts.
+Frontend web application designed to replace manual sheet metal counting and pricing at a factory. Built functionality to store customers, their prices, and create new calculations digitally.
 
 ---
 
