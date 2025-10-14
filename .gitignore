@@ -1,30 +1,27 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Laravel
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+/.env
+/.env.backup
+/.env.production
+Homestead.json
+Homestead.yaml
+.phpunit.result.cache
+.phpactor.json
+/.phpunit.cache
 
-node_modules
+# OS & Editor
 .DS_Store
-dist
-dist-ssr
-coverage
-*.local
+Thumbs.db
+/.idea
+/.vscode
+/.fleet
+/.zed
 
-/cypress/videos/
-/cypress/screenshots/
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-*.tsbuildinfo
+# Logs & temp
+*.log
+/public/build
+/public/hot
+/storage/pail
