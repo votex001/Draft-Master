@@ -1,0 +1,26 @@
+# Node / Angular / Vue / React
+node_modules
+dist
+dist-ssr
+*.log
+
+# Laravel storage & vendor
+/vendor
+/public/build
+/public/hot
+/storage/*.key
+/storage/pail
+
+# Environment
+.env
+.env.*    # любые backup/env.production
+
+# IDE / Editor
+.vscode
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
